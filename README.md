@@ -1,6 +1,71 @@
-https://img.shields.io/github/downloads/ChadProbert/new-page-app/total.svg
+<a name="readme-top"></a>
 
-## Basic Usage
+<!-- PROJECT LOGO -->
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="logo5.png" alt="Logo" width="80" height="80">
+  </a>
+
+  ### Custom New Tab
+
+  <p align="center">
+    For those who love keyboard shortcuts and minimalism.
+    <br />
+    <br />
+    <a href="https://chadprobert.github.io/new-page-app/">View Demo</a>
+    ·
+    <a href="https://github.com/ChadProbert/new-page-app/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/ChadProbert/new-page-app/pulls">Request Feature</a>
+  </p>
+
+  <!-- SHIELDS.IO -->
+
+  ![GitHub repo size](https://img.shields.io/github/repo-size/ChadProbert/new-page-app)
+  ![GitHub last commit](https://img.shields.io/github/last-commit/ChadProbert/new-page-app)
+  ![GitHub issues](https://img.shields.io/github/issues-raw/ChadProbert/new-page-app)
+  ![GitHub pull requests](https://img.shields.io/github/issues-pr/ChadProbert/new-page-app)
+  ![GitHub Repo stars](https://img.shields.io/github/stars/ChadProbert/new-page-app?style=social)
+
+  #### Built With
+
+  ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+  ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
+
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+  </ol>
+</details>
+
+
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+- [New Tab Redirect Chrome Extension](https://chromewebstore.google.com/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna)
+
+### Installation
+
+```sh
+git clone https://github.com/ChadProbert/new-page-app.git
+```
+
+## Usage
 
 To go to a site, type the corresponding key and press enter. e.g:
 
@@ -22,3 +87,8 @@ e.g:
 
 - `r/r/startpages` will redirect you to
   [reddit.com/r/startpages](https://www.reddit.com/r/startpages)
+
+<br />
+<br />
+<br />
+<p align="center"><a href="#readme-top">(back to top)</a></p>
