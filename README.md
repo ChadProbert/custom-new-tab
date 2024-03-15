@@ -1,3 +1,5 @@
+https://img.shields.io/github/downloads/ChadProbert/new-page-app/total.svg
+
 ## Basic Usage
 
 To go to a site, type the corresponding key and press enter. e.g:
