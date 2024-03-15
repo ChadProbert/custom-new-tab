@@ -10,7 +10,7 @@
     For those who love keyboard shortcuts and minimalism.
     <br />
     <br />
-    <a href="https://chadprobert.github.io/new-page-app/">View Demo</a>
+    <a href="https://chadprobert.github.io/custom-new-tab/">View Demo</a>
     ·
     <a href="https://github.com/ChadProbert/new-page-app/issues">Report Bug</a>
     ·
