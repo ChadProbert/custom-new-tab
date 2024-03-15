@@ -1,0 +1,22 @@
+/* VARIABLES */
+
+:root {
+  --border-radius: 1rem;
+  --color-background: #21242a;
+  --color-text-subtle: #9579cf;
+  --color-text: #888;
+  --font-family: -apple-system, Helvetica, sans-serif;
+  --font-size: clamp(16px, 1.6vw, 18px);
+  --font-weight-bold: 700;
+  --font-weight-normal: 400;
+  --space: 1rem;
+  --transition-speed: 200ms;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: #e8e8e8;
+    --color-text-subtle: #606060;
+    --color-text: #111;
+  }
+}
