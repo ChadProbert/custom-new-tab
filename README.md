@@ -106,7 +106,7 @@ e.g:
 - `r/r/startpages` will redirect you to
   [reddit.com/r/startpages](https://www.reddit.com/r/startpages)
   
-  <img src="example-usage.png" alt="Logo" width="" height="150" border="2px">
+  <img src="example-usage.png" alt="Logo" height="150">
 
 <br />
   
