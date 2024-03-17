@@ -41,6 +41,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#setup">Setup</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -60,6 +61,14 @@ To get a local copy up and running follow these steps.
 ```sh
 git clone https://github.com/ChadProbert/new-page-app.git
 ```
+
+### Setup
+
+1. Open the New Tab Redirect extension options
+2. Set the redirect URL to the path of the deployed app URL
+<img src="redirectURL.png" alt="Logo" width="470" height="120">
+3. Save the changes
+
 
 ## Usage
 
@@ -84,6 +93,11 @@ e.g:
 - `r/r/startpages` will redirect you to
   [reddit.com/r/startpages](https://www.reddit.com/r/startpages)
 
+## Mofiying the App
+
+You can modify the shortcut keys and URLs by editing the `COMMANDS` variable inside the index.html file.
+
+If you choose to modify the app, you will need to deploy the modified version and set the redirect URL to your own deployed app URL.
 <br />
 <br />
 <br />
