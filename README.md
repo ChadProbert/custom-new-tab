@@ -45,6 +45,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#modifying-the-app">Modifying The App</a></li>
   </ol>
 </details>
 
@@ -92,7 +93,7 @@ e.g:
 - `r/r/startpages` will redirect you to
   [reddit.com/r/startpages](https://www.reddit.com/r/startpages)
 
-## Mofiying the App
+## Modifying The App
 
 You can modify the shortcut keys and URLs by editing the `COMMANDS` variable inside the index.html file.
 
