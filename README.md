@@ -32,6 +32,8 @@
 
 </div>
 
+<br/>
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -47,11 +49,16 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#modifying-the-app">Modifying The App</a></li>
+    <li><a href="#contributors">Contributors</a></li>
   </ol>
 </details>
 
+<br/>
+
 ## About The App
 This is a custom new tab page that allows you to quickly navigate to your favourite sites using keyboard shortcuts. It is designed to be minimalistic and easy to use. The app can be set as the default new tab page by using the `New Tab Redirect` Chrome extension.
+
+<br/>
 
 ## Getting Started
 
@@ -72,6 +79,7 @@ git clone https://github.com/ChadProbert/new-page-app.git
 2. Set the redirect URL to the path of the deployed app URL <br /><img src="redirectURL.png" alt="Logo" width="470" height="120">
 3. Save the changes
 
+<br/>
 
 ## Usage
 
@@ -87,7 +95,7 @@ query. e.g:
 - `y introduction to python` will
   [search YouTube for introduction to python videos](https://www.youtube.com/results?search_query=introduction+to+python)
 
-A google search will be triggered if your input doesn't match a key.
+A Google search will be triggered if your input doesn't match a key.
 e.g:
 
 - `hello world python` will [search Google for hello world python](https://www.google.com/search?q=hello%20world%20python)
@@ -97,12 +105,21 @@ e.g:
 
 - `r/r/startpages` will redirect you to
   [reddit.com/r/startpages](https://www.reddit.com/r/startpages)
-  <img src="example-usage.png" alt="Logo" width="" height="150">
+  
+  <img src="example-usage.png" alt="Logo" width="" height="150" border="2px">
+
+<br />
+  
 ## Modifying The App
 
 You can modify the shortcut keys and URLs by editing the `COMMANDS` variable inside the index.html file.
 
 If you choose to modify the app, you will need to deploy the modified version and set the redirect URL to your own deployed app URL.
+
+<br/>
+
+## Contributors
+[<img src="https://github.com/ChadProbert.png" width="40px;"/>](https://github.com/ChadProbert/)
 <br />
 <br />
 <br />
