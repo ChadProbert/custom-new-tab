@@ -36,6 +36,7 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
+    <li><a href="#about-the-app">About The App</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -49,6 +50,8 @@
   </ol>
 </details>
 
+## About The App
+This is a custom new tab page that allows you to quickly navigate to your favourite sites using keyboard shortcuts. It is designed to be minimalistic and easy to use. The app can be set as the default new tab page by using the `New Tab Redirect` Chrome extension.
 
 ## Getting Started
 
@@ -72,6 +75,8 @@ git clone https://github.com/ChadProbert/new-page-app.git
 
 ## Usage
 
+<img src="app.png" alt="Logo" width="7000" height="500">
+
 To go to a site, type the corresponding key and press enter. e.g:
 
 - `g` will redirect you to [gmail.com](https://gmail.com)
@@ -92,7 +97,7 @@ e.g:
 
 - `r/r/startpages` will redirect you to
   [reddit.com/r/startpages](https://www.reddit.com/r/startpages)
-
+  <img src="example-usage.png" alt="Logo" width="" height="150">
 ## Modifying The App
 
 You can modify the shortcut keys and URLs by editing the `COMMANDS` variable inside the index.html file.
