@@ -2,7 +2,7 @@
 
 :root {
   --border-radius: 1rem;
-  --color-background: #fff;
+  --color-background: #21272A;
   --color-text-subtle: #9579cf;
   --color-text: #888;
   --font-family: -apple-system, Helvetica, sans-serif;
@@ -15,7 +15,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --color-background: #fff;
+    --color-background: #21272A;
     --color-text-subtle: #606060;
     --color-text: #111;
   }
