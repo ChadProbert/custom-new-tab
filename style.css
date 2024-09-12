@@ -2,9 +2,10 @@
 
 :root {
   --border-radius: 1rem;
-  --color-background: #21272A;
-  --color-text-subtle: #9579cf;
-  --color-text: #888;
+  /* Old value #21272A */
+  --color-background: #1E1E2E;
+  --color-text-subtle: #7B7DD1;
+  --color-text: #CDD6F4;
   --font-family: -apple-system, Helvetica, sans-serif;
   --font-size: clamp(16px, 1.6vw, 18px);
   --font-weight-bold: 700;
