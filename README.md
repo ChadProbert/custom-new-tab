@@ -2,7 +2,7 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-    <img src="logo5.png" alt="Logo" width="200" height="200">
+    <img src="logo5.png" alt="Logo" width="150" height="150">
 
   ### Custom New Tab
 
