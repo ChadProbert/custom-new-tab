@@ -1,23 +1,23 @@
 /* VARIABLES */
 
 :root {
-  --border-radius: 1rem;
-  /* Old value #21272A */
-  --color-background: #1E1E2E;
-  --color-text-subtle: #7B7DD1;
-  --color-text: #CDD6F4;
-  --font-family: -apple-system, Helvetica, sans-serif;
-  --font-size: clamp(16px, 1.6vw, 18px);
-  --font-weight-bold: 700;
-  --font-weight-normal: 400;
-  --space: 1rem;
-  --transition-speed: 200ms;
+	--border-radius: 1rem;
+	/* Old value #21272A */
+	--color-background: #000;
+	--color-text-subtle: #555;
+	--color-text: #fff;
+	--font-family: Helvetica, sans-serif;
+	--font-size: clamp(16px, 1.6vw, 18px);
+	--font-weight-bold: 700;
+	--font-weight-normal: 400;
+	--space: 1rem;
+	--transition-speed: 200ms;
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    --color-background: #21272A;
-    --color-text-subtle: #606060;
-    --color-text: #111;
-  }
+	:root {
+		--color-background: #21272a;
+		--color-text-subtle: #606060;
+		--color-text: #111;
+	}
 }
