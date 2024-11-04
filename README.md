@@ -2,7 +2,7 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-    <img src="refined-logo4.png" alt="Logo" width="150" height="150">
+    <img src="images/refined-logo4.png" alt="Logo" width="150" height="150">
 
   ### Custom New Tab
 
@@ -76,14 +76,14 @@ git clone https://github.com/ChadProbert/new-page-app.git
 ### Setup
 
 1. Open the New Tab Redirect extension options
-2. Set the redirect URL to the path of the deployed app URL <br /><img src="redirectURL.png" alt="Logo" width="470" height="120">
+2. Set the redirect URL to the path of the deployed app URL <br /><img src="images/redirectURL.png" alt="Logo" width="470" height="120">
 3. Save the changes
 
 <br/>
 
 ## Usage
 
-<img src="app-usage2.png" alt="Logo" width="1000">
+<img src="images/app-usage2.png" alt="Logo" width="1000">
 
 To go to a site, type the corresponding key and press enter. e.g:
 
@@ -106,7 +106,7 @@ e.g:
 - `r/r/startpages` will redirect you to
   [reddit.com/r/startpages](https://www.reddit.com/r/startpages)
 
-  <img src="app-usage4.png" alt="Logo" height="200">
+  <img src="images/app-usage4.png" alt="Logo" height="200">
 
 <br />
 
