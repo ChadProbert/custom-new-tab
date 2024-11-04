@@ -83,7 +83,7 @@ git clone https://github.com/ChadProbert/new-page-app.git
 
 ## Usage
 
-<img src="app-usage2.png" alt="Logo" width="9000" height="500">
+<img src="app-usage2.png" alt="Logo" width="1000">
 
 To go to a site, type the corresponding key and press enter. e.g:
 
@@ -106,7 +106,7 @@ e.g:
 - `r/r/startpages` will redirect you to
   [reddit.com/r/startpages](https://www.reddit.com/r/startpages)
 
-  <img src="app-usage4.png" alt="Logo" height="150">
+  <img src="app-usage4.png" alt="Logo" height="200">
 
 <br />
 
