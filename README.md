@@ -83,7 +83,7 @@ git clone https://github.com/ChadProbert/new-page-app.git
 
 ## Usage
 
-<img src="images/app-usage2.png" alt="Logo" width="1000">
+<img src="images/app-usage5.png" alt="Logo" width="1000">
 
 To go to a site, type the corresponding key and press enter. e.g:
 
