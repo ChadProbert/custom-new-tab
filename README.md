@@ -2,7 +2,7 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-    <img src="logo5.png" alt="Logo" width="150" height="150">
+    <img src="refined-logo4.png" alt="Logo" width="150" height="150">
 
   ### Custom New Tab
 
@@ -83,7 +83,7 @@ git clone https://github.com/ChadProbert/new-page-app.git
 
 ## Usage
 
-<img src="app.png" alt="Logo" width="7000" height="500">
+<img src="app-usage2.png" alt="Logo" width="9000" height="500">
 
 To go to a site, type the corresponding key and press enter. e.g:
 
@@ -105,11 +105,11 @@ e.g:
 
 - `r/r/startpages` will redirect you to
   [reddit.com/r/startpages](https://www.reddit.com/r/startpages)
-  
-  <img src="example-usage.png" alt="Logo" height="150">
+
+  <img src="app-usage4.png" alt="Logo" height="150">
 
 <br />
-  
+
 ## Modifying The App
 
 You can modify the shortcut keys and URLs by editing the `COMMANDS` variable inside the index.html file.
