@@ -22,8 +22,21 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --color-background: #21272a;
-    --color-text-subtle: #606060;
-    --color-text: #111;
+    [data-theme="light"] {
+      --color-background: #e9e9e9;
+      --color-text: #000000;
+      --color-text-subtle: #555;
+      --accent-color: #dadada;
+      --hover-color: #cfcfcf;
+      --input-color: #e4e3e3;
+      --modal-background-color: rgba(0, 0, 0, 0.5);
+    }
+    [data-theme="light"] input:focus,
+    [data-theme="light"] select:focus {
+      /* Creates the inner border effect */
+      border: 1px solid black;
+      outline: none;
+      box-shadow: inset 0 0 0 2px black;
+    }
   }
 }

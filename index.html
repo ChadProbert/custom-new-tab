@@ -49,10 +49,23 @@
             url: "https://youtube.com/",
           },
         ],
-        ["m", { name: "Metabase", url: "https://metabase.hyperiondev.com/dashboard/157-my-dashboard" }],
+        [
+          "m",
+          {
+            name: "Metabase",
+            url: "https://metabase.hyperiondev.com/dashboard/157-my-dashboard",
+          },
+        ],
         // Column 2
         ["d", { name: "Dropbox", url: "https://www.dropbox.com/work" }],
-        ["a", { name: "Chat", url: "https://chat.openai.com" }],
+        [
+          "a",
+          {
+            name: "Chat",
+            searchTemplate: "/?q={}",
+            url: "https://chat.openai.com/chat",
+          },
+        ],
         ["n", { name: "Netflix", url: "https://www.netflix.com/browse" }],
         // Column 3
         [
@@ -71,7 +84,10 @@
         // Column 4
         [
           "k",
-          { name: "Knowledge", url: "https://sites.google.com/hyperiondev.com/hyperiondev-kb/home?authuser=0" },
+          {
+            name: "Knowledge",
+            url: "https://sites.google.com/hyperiondev.com/hyperiondev-kb/home?authuser=0",
+          },
         ],
         [
           "r",
@@ -86,7 +102,14 @@
             url: "https://reddit.com",
           },
         ],
-        ["s", { name: "Spotify", url: "https://open.spotify.com/" }],
+        [
+          "s",
+          {
+            name: "Spotify",
+            searchTemplate: "/search/{}",
+            url: "https://open.spotify.com",
+          },
+        ],
       ]);
     </script>
   </head>
@@ -105,6 +128,20 @@
           width: 100vw;
         }
 
+        @media (min-width: 500px) {
+          .commands {
+            columns: 2;
+            max-width: 25rem;
+          }
+        }
+
+        @media (min-width: 900px) {
+          .commands {
+            columns: 4;
+            max-width: 45rem;
+          }
+        }
+
         .command {
           display: flex;
           gap: var(--space);
@@ -112,6 +149,10 @@
           padding: var(--space);
           position: relative;
           text-decoration: none;
+        }
+
+        .command:hover {
+          background: var(--accent-color);
         }
 
         .command::after {
@@ -143,18 +184,86 @@
           color: var(--color-text);
         }
 
-        @media (min-width: 500px) {
-          .commands {
-            columns: 2;
-            max-width: 25rem;
-          }
+        .settings-button {
+          position: fixed;
+          bottom: var(--space);
+          right: var(--space);
+          background-color: var(--hover-color);
+          color: var(--color-text-subtle);
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          padding: 8px 16px;
+          transition: background-color 0.2s ease, color 0.2s ease;
+          font-size: 16px;
         }
 
-        @media (min-width: 900px) {
-          .commands {
-            columns: 4;
-            max-width: 45rem;
-          }
+        .settings-button:hover {
+          background-color: var(--hover-color);
+          color: var(--color-text);
+        }
+
+        .key-input,
+        .name-input,
+        .value-input {
+          padding: 8px;
+          background-color: var(--input-color);
+          color: var(--color-text);
+          border: 1px solid var(--border-color);
+          border-radius: 4px;
+        }
+
+        .key-input {
+          width: 10%;
+        }
+
+        .name-input {
+          width: 20%; /* Adjust the width as needed */
+        }
+
+        .value-input {
+          width: 60%;
+        }
+
+        .add-button {
+          background-color: var(--accent-color);
+          color: var(--color-text);
+          border: none;
+          padding: 8px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+
+        .add-button:hover {
+          background-color: var(--hover-color);
+        }
+
+        .shortcut-list {
+          background-color: transparent;
+          border: none;
+        }
+
+        .shortcut-item {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          margin-bottom: 5px;
+        }
+
+        .fa-plus {
+          font-size: 15px;
+          color: var(--color-text-subtle);
+        }
+
+        .add-button:hover .fa-plus {
+          color: var(--color-text);
+          transition: color 0.3s ease;
+        }
+
+        .modal-content.scrollable {
+          max-height: 80vh;
+          overflow-y: auto;
         }
       </style>
       <nav>
@@ -176,6 +285,11 @@
         constructor() {
           super();
           this.attachShadow({ mode: "open" });
+          this.render();
+        }
+
+        render() {
+          this.shadowRoot.innerHTML = "";
           const template = document.getElementById("commands-template");
           const clone = template.content.cloneNode(true);
           const commands = clone.querySelector(".commands");
@@ -183,13 +297,13 @@
 
           for (const [key, { name, url }] of COMMANDS.entries()) {
             if (!name || !url) continue;
-            const clone = commandTemplate.content.cloneNode(true);
-            const command = clone.querySelector(".command");
+            const commandClone = commandTemplate.content.cloneNode(true);
+            const command = commandClone.querySelector(".command");
             command.href = url;
             if (CONFIG.openLinksInNewTab) command.target = "_blank";
-            clone.querySelector(".key").innerText = key;
-            clone.querySelector(".name").innerText = name;
-            commands.append(clone);
+            commandClone.querySelector(".key").innerText = key;
+            commandClone.querySelector(".name").innerText = name;
+            commands.append(commandClone);
           }
 
           this.shadowRoot.append(clone);
@@ -203,8 +317,6 @@
       <style>
         input,
         button {
-          -moz-appearance: none;
-          -webkit-appearance: none;
           background: transparent;
           border: 0;
           display: block;
@@ -661,6 +773,69 @@
       .fa-sliders {
         font-size: 20px;
       }
+
+      .key-input,
+      .name-input,
+      .value-input {
+        padding: 8px;
+        background-color: var(--input-color);
+        color: var(--color-text);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+      }
+
+      .key-input {
+        width: 10%;
+      }
+
+      .name-input {
+        width: 30%; /* Adjust the width as needed */
+      }
+
+      .value-input {
+        width: 60%;
+      }
+
+      .add-button {
+        background-color: var(--accent-color);
+        color: var(--color-text);
+        border: none;
+        padding: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .add-button:hover {
+        background-color: var(--hover-color);
+      }
+
+      .shortcut-list {
+        background-color: transparent;
+        border: none;
+      }
+
+      .shortcut-item {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+
+      .fa-plus {
+        font-size: 15px;
+        color: var(--color-text-subtle);
+      }
+
+      .add-button:hover .fa-plus {
+        color: var(--color-text);
+        transition: color 0.3s ease;
+      }
+
+      .modal-content.scrollable {
+        max-height: 80vh;
+        overflow-y: auto;
+      }
     </style>
 
     <main>
@@ -717,8 +892,6 @@
             <!-- Dynamic shortcut items will go here -->
           </div>
         </div>
-
-        <button class="save-button">Save Changes</button>
       </div>
     </div>
 
@@ -823,6 +996,7 @@
       }
 
       .key-input,
+      .name-input,
       .value-input {
         padding: 8px;
         background-color: var(--input-color);
@@ -831,12 +1005,19 @@
         border-radius: 4px;
       }
 
+      .key-input {
+        width: 5%;
+      }
+
+      .name-input {
+        width: 14%; /* Adjust the width as needed */
+      }
+
       .value-input {
         flex: 1;
       }
 
-      .add-button,
-      .save-button {
+      .add-button {
         background-color: var(--accent-color);
         color: var(--color-text);
         border: none;
@@ -846,12 +1027,7 @@
         transition: background-color 0.3s ease;
       }
 
-      .save-button {
-        margin-top: 10px;
-      }
-
-      .add-button:hover,
-      .save-button:hover {
+      .add-button:hover {
         background-color: var(--hover-color);
       }
 
@@ -872,11 +1048,9 @@
         color: var(--color-text-subtle);
       }
 
-      .add-button:hover {
-        .fa-plus {
-          color: var(--color-text);
-          transition: color 0.3s ease;
-        }
+      .add-button:hover .fa-plus {
+        color: var(--color-text);
+        transition: color 0.3s ease;
       }
 
       .shortcut-item .key-input {
@@ -884,17 +1058,12 @@
       }
 
       .shortcut-item .value-input {
-        flex: 1;
+        width: 5%;
       }
 
       .modal-content.scrollable {
         max-height: 80vh;
         overflow-y: auto;
-      }
-
-      /* Invisible Scrollbar */
-      .modal-content.scrollable::-webkit-scrollbar {
-        width: 0px;
       }
     </style>
 
@@ -926,11 +1095,12 @@
       });
     </script>
 
-    <!-- Keyboard shortcuts display and edit script -->
+    <!-- Keyboard shortcuts display and CRUD options-->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const shortcutList = document.getElementById("shortcutList");
         const modalContent = document.querySelector(".modal-content");
+        const commandsComponent = document.querySelector("commands-component");
 
         function renderShortcuts() {
           shortcutList.innerHTML = "";
@@ -943,12 +1113,18 @@
             keyInput.value = key;
             keyInput.classList.add("key-input");
 
+            const nameInput = document.createElement("input");
+            nameInput.type = "text";
+            nameInput.value = value.name || "";
+            nameInput.classList.add("name-input");
+
             const valueInput = document.createElement("input");
             valueInput.type = "text";
             valueInput.value = value.url || "";
             valueInput.classList.add("value-input");
 
             shortcutItem.appendChild(keyInput);
+            shortcutItem.appendChild(nameInput);
             shortcutItem.appendChild(valueInput);
 
             shortcutList.appendChild(shortcutItem);
@@ -967,6 +1143,11 @@
           newKeyInput.placeholder = "Key";
           newKeyInput.classList.add("key-input");
 
+          const newNameInput = document.createElement("input");
+          newNameInput.type = "text";
+          newNameInput.placeholder = "Name";
+          newNameInput.classList.add("name-input");
+
           const newValueInput = document.createElement("input");
           newValueInput.type = "text";
           newValueInput.placeholder = "Value";
@@ -977,16 +1158,23 @@
           addButton.innerHTML = '<i class="fa-solid fa-plus"></i>';
 
           addButton.addEventListener("click", () => {
-            if (newKeyInput.value && newValueInput.value) {
+            if (
+              newKeyInput.value &&
+              newNameInput.value &&
+              newValueInput.value
+            ) {
               COMMANDS.set(newKeyInput.value, {
-                name: newValueInput.value,
+                name: newNameInput.value,
                 url: newValueInput.value,
               });
+              saveCommands();
               renderShortcuts();
+              commandsComponent.render(); // Re-render the commands component
             }
           });
 
           newShortcutItem.appendChild(newKeyInput);
+          newShortcutItem.appendChild(newNameInput);
           newShortcutItem.appendChild(newValueInput);
           newShortcutItem.appendChild(addButton);
 
@@ -994,14 +1182,31 @@
         }
 
         function checkModalScrollability() {
-          if (COMMANDS.size >= 17) {
+          if (COMMANDS.size >= 15) {
             modalContent.classList.add("scrollable");
           } else {
             modalContent.classList.remove("scrollable");
           }
         }
 
+        function saveCommands() {
+          const commandsObj = Object.fromEntries(COMMANDS);
+          localStorage.setItem("commands", JSON.stringify(commandsObj));
+        }
+
+        function loadCommands() {
+          const commandsStr = localStorage.getItem("commands");
+          if (commandsStr) {
+            const commandsObj = JSON.parse(commandsStr);
+            for (const [key, value] of Object.entries(commandsObj)) {
+              COMMANDS.set(key, value);
+            }
+          }
+        }
+
+        loadCommands();
         renderShortcuts();
+        commandsComponent.render(); // Ensure the commands component is rendered after loading commands
       });
     </script>
 
@@ -1042,11 +1247,11 @@
 
       /* One Dark Pro Theme */
       [data-theme="one-dark-pro"] {
-        --color-background: #282c34;
+        --color-background: #252931;
         --color-text: #abb2bf;
-        --color-text-subtle: #5c6370;
-        --accent-color: #61afef;
-        --hover-color: #3e4451;
+        --color-text-subtle: #68707d;
+        --accent-color: #3e4551;
+        --hover-color: #2b2f39;
         --input-color: #2c313c;
         --modal-background-color: rgba(40, 44, 52, 0.9);
       }
@@ -1055,8 +1260,8 @@
       [data-theme="catppuccin-frappe"] {
         --color-background: #303446;
         --color-text: #c6d0f5;
-        --color-text-subtle: #b5bfe2;
-        --accent-color: #f2d5cf;
+        --color-text-subtle: #6b7188;
+        --accent-color: #494d63;
         --hover-color: #414559;
         --input-color: #292c3c;
         --modal-background-color: rgba(48, 52, 70, 0.9);
@@ -1066,8 +1271,8 @@
       [data-theme="catppuccin-macchiato"] {
         --color-background: #24273a;
         --color-text: #cad3f5;
-        --color-text-subtle: #a5adcb;
-        --accent-color: #ed8796;
+        --color-text-subtle: #5c637b;
+        --accent-color: #3e425b;
         --hover-color: #363a4f;
         --input-color: #1e2030;
         --modal-background-color: rgba(36, 39, 58, 0.9);
@@ -1077,8 +1282,8 @@
       [data-theme="catppuccin-mocha"] {
         --color-background: #1e1e2e;
         --color-text: #cdd6f4;
-        --color-text-subtle: #a6adc8;
-        --accent-color: #ffb9f0;
+        --color-text-subtle: #505772;
+        --accent-color: #38394e;
         --hover-color: #313244;
         --input-color: #181825;
         --modal-background-color: rgba(30, 30, 46, 0.9);
@@ -1088,8 +1293,8 @@
       [data-theme="nord"] {
         --color-background: #2e3440;
         --color-text: #eceff4;
-        --color-text-subtle: #d8dee9;
-        --accent-color: #88c0d0;
+        --color-text-subtle: #7c7f87;
+        --accent-color: #464e62;
         --hover-color: #3b4252;
         --input-color: #434c5e;
         --modal-background-color: rgba(46, 52, 64, 0.9);
@@ -1100,7 +1305,7 @@
         --color-background: #0d1117;
         --color-text: #c9d1d9;
         --color-text-subtle: #555;
-        --accent-color: #15181E;
+        --accent-color: #15181e;
         --hover-color: #161b22;
         --input-color: #21262d;
         --modal-background-color: rgba(13, 17, 23, 0.9);
