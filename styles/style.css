@@ -3,8 +3,8 @@
 :root {
   --border-radius: 16px;
   /* Old value #21272A */
-  --color-background: #000;
-  --color-text-subtle: #555;
+  --color-background: #0d0d0d;
+  --color-text-subtle: #5e5e5e;
   --color-text: #fff;
   --font-family: "Poppins", sans-serif;
   --font-size: clamp(16px, 1.6vw, 18px);
@@ -13,13 +13,13 @@
   --space: 1rem;
   --transition-speed: 200ms;
   --accent-color: #090909;
-  --hover-color: #121212;
+  --hover-color: #222222;
   --button-color: #dadada;
   --input-color: #1f1f1f;
   --border-color: #55555500;
   --modal-background-color: rgba(0, 0, 0, 0.5);
   --plus-icon-color: #dadada;
-  --plus-button-color: #1f1f1f;
+  --plus-button-color: #111111;
   --confirm-border-color: #333;
 }
 

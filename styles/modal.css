@@ -33,12 +33,13 @@
 .modal-content {
   background-color: var(--color-background);
   color: var(--color-text);
-  padding: 20px;
   border-radius: var(--border-radius);
-  max-width: 500px;
-  width: 90%;
+  max-width: 80%;
+  width: 70%;
   position: relative;
   text-align: center;
+  border: 1px solid var(--confirm-border-color);
+  padding:20px;
 }
 
 .close-button {
@@ -220,6 +221,7 @@ label {
 .shortcut-list {
   background-color: transparent;
   border: none;
+  padding: 0;
 }
 
 .shortcut-item {

@@ -6,12 +6,12 @@
   --color-text: #000000;
   --color-text-subtle: #555;
   --accent-color: #dadada;
-  --hover-color: #cfcfcf;
+  --hover-color: #cdcdcd;
   --input-color: #ffffff;
   --modal-background-color: rgba(0, 0, 0, 0.5);
   --border-color: #00000033;
   --plus-icon-color: #555 !important;
-  --plus-button-color: #ffffff;
+  --plus-button-color: #e1e1e1;
   --confirm-border-color: #aaaaaa;
 }
 
@@ -44,11 +44,11 @@
   --color-text: #abb2bf;
   --color-text-subtle: #68707d;
   --accent-color: #3e4551;
-  --hover-color: #2b2f39;
+  --hover-color: #424956;
   --input-color: #1a1d23;
   --modal-background-color: rgba(40, 44, 52, 0.9);
   --plus-icon-color: #abb2bf;
-  --plus-button-color: #ffffff0f;
+  --plus-button-color: #282d35;
   --confirm-border-color: #4e5563;
 }
 
@@ -58,11 +58,11 @@
   --color-text: #c6d0f5;
   --color-text-subtle: #6b7188;
   --accent-color: #494d63;
-  --hover-color: #414559;
+  --hover-color: #4d5067;
   --input-color: #232634;
   --modal-background-color: rgba(48, 52, 70, 0.9);
   --plus-icon-color: #c6d0f5;
-  --plus-button-color: #232634;
+  --plus-button-color: #333749;
   --confirm-border-color: #51576d;
 }
 
@@ -72,11 +72,11 @@
   --color-text: #cad3f5;
   --color-text-subtle: #5c637b;
   --accent-color: #3e425b;
-  --hover-color: #363a4f;
+  --hover-color: #41455e;
   --input-color: #181926;
   --modal-background-color: rgba(36, 39, 58, 0.9);
   --plus-icon-color: #cad3f5;
-  --plus-button-color: #181926;
+  --plus-button-color: #272a3d;
   --confirm-border-color: #494d64;
 }
 
@@ -86,11 +86,11 @@
   --color-text: #cdd6f4;
   --color-text-subtle: #505772;
   --accent-color: #38394e;
-  --hover-color: #313244;
+  --hover-color: #3a3c51;
   --input-color: #11111b;
   --modal-background-color: rgba(30, 30, 46, 0.9);
   --plus-icon-color: #cdd6f4;
-  --plus-button-color: #11111b;
+  --plus-button-color: #202032;
   --confirm-border-color: #45475a;
 }
 
@@ -100,11 +100,11 @@
   --color-text: #eceff4;
   --color-text-subtle: #7c7f87;
   --accent-color: #464e62;
-  --hover-color: #3b4252;
+  --hover-color: #4b5366;
   --input-color: #242933;
   --modal-background-color: rgba(46, 52, 64, 0.9);
   --plus-icon-color: #eceff4;
-  --plus-button-color: #242933;
+  --plus-button-color: #323744;
   --confirm-border-color: #4c566a;
 }
 
@@ -114,10 +114,10 @@
   --color-text: #c9d1d9;
   --color-text-subtle: #555;
   --accent-color: #15181e;
-  --hover-color: #161b22;
+  --hover-color: #1c1f24;
   --input-color: #010409;
   --modal-background-color: rgba(13, 17, 23, 0.9);
   --plus-icon-color: #c9d1d9;
-  --plus-button-color: #010409;
+  --plus-button-color: #10141a;
   --confirm-border-color: #30363d;
 }
