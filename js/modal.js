@@ -259,6 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
             message: `The shortcut key "${newKey}" already exists. Are you sure you want to override it?`,
             confirmText: "Override",
             cancelText: "Cancel",
+            confirmClass: "confirm-override",
           });
 
           if (!confirmed) {
@@ -404,12 +405,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (newKeyInput.value && newNameInput.value && newValueInput.value) {
         // If the shortcut key already exists, show the custom confirmation modal.
         if (COMMANDS.has(newKeyInput.value)) {
-          const confirmed = await customConfirm({
+          const shouldOverride = await customConfirm({
             message: `The shortcut key "${newKeyInput.value}" already exists. Are you sure you want to override it?`,
             confirmText: "Override",
             cancelText: "Cancel",
+            confirmClass: "confirm-override",
           });
-          if (!confirmed) {
+          if (!shouldOverride) {
             return false; // Do not override if the user cancels.
           }
         }

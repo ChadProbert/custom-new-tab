@@ -39,7 +39,7 @@
   position: relative;
   text-align: center;
   border: 1px solid var(--confirm-border-color);
-  padding:20px;
+  padding: 20px;
 }
 
 .close-button {
@@ -83,7 +83,7 @@
 }
 
 .reset-button:hover {
-  background-color: #ff3b30;
+  background-color: var(--hover-color);
   color: white;
 }
 
@@ -261,34 +261,35 @@ label {
 
 .confirm-modal-content {
   background: var(--color-background);
-  padding: 30px 30px;
+  padding: 25px 25px;
   border-radius: 8px;
   border: 1px solid var(--confirm-border-color);
   text-align: center;
-  max-width: 400px;
+  max-width: 380px;
   width: 90%;
   transition: border-color 0.3s ease, background 0.3s ease;
 }
 
 .confirm-message {
-  font-size: 16px;
-  margin-bottom: 30px;
+  font-size: 15px;
+  margin-bottom: 25px;
   color: var(--color-text);
 }
 
 .confirm-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .confirm-buttons button {
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .confirm-cancel {
@@ -322,6 +323,21 @@ label {
 .confirm-ok.confirm-warning:hover {
   background: #ff1f1f;
   color: white;
+}
+
+/* Override state for confirm button */
+.confirm-ok.confirm-override {
+  background: #ff9800; /* Sunset yellow/orange */
+  color: #333;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-ok.confirm-override:hover {
+  background: #ffa726; /* Slightly lighter sunset yellow on hover */
+  color: #222;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 /* Action buttons for shortcuts */
