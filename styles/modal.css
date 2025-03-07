@@ -61,6 +61,35 @@
   text-align: left;
 }
 
+/* Reset Section */
+.reset-section {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  color: var(--color-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.reset-button:hover {
+  background-color: #ff3b30;
+  color: white;
+}
+
+.reset-button i {
+  font-size: 14px;
+}
+
 label {
   display: block;
   margin-bottom: 5px;
@@ -237,4 +266,15 @@ label {
 .confirm-ok:hover {
   background: #bbb;
   color: #000000;
-} 
+}
+
+/* Warning state for confirm button */
+.confirm-ok.confirm-warning {
+  background: #ff3b30;
+  color: white;
+}
+
+.confirm-ok.confirm-warning:hover {
+  background: #ff1f1f;
+  color: white;
+}

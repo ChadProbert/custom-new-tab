@@ -7,6 +7,115 @@ document.addEventListener("DOMContentLoaded", () => {
   const shortcutList = document.getElementById("shortcutList");
   const modalContent = document.querySelector(".modal-content");
   const commandsComponent = document.querySelector("commands-component");
+  const resetButton = document.getElementById("resetSettings");
+
+  // Default settings
+  const DEFAULT_SETTINGS = {
+    theme: "dark",
+    commands: new Map([
+      ["g", { name: "Gmail", url: "https://mail.google.com/mail/u/0/#inbox" }],
+      [
+        "y",
+        {
+          name: "YouTube",
+          searchTemplate: "/results?search_query={}",
+          suggestions: ["y/feed/subscriptions"],
+          url: "https://youtube.com/",
+        },
+      ],
+      [
+        "m",
+        {
+          name: "Metabase",
+          url: "https://metabase.hyperiondev.com/dashboard/157-my-dashboard",
+        },
+      ],
+      ["d", { name: "Dropbox", url: "https://www.dropbox.com/work" }],
+      [
+        "a",
+        {
+          name: "Chat",
+          searchTemplate: "/?q={}",
+          url: "https://chat.openai.com/chat",
+        },
+      ],
+      ["n", { name: "Netflix", url: "https://www.netflix.com/browse" }],
+      [
+        "c",
+        {
+          name: "Cogrammer",
+          suggestions: [
+            "c/reviewer/completed/",
+            "c/reviewer/returned_reviews/",
+          ],
+          url: "https://hyperiondev.cogrammar.com/",
+        },
+      ],
+      ["l", { name: "Localhost", url: "http://localhost:3000" }],
+      ["gh", { name: "GitHub", url: "https://github.com/" }],
+      [
+        "k",
+        {
+          name: "Knowledge",
+          url: "https://sites.google.com/hyperiondev.com/hyperiondev-kb/home?authuser=0",
+        },
+      ],
+      [
+        "r",
+        {
+          name: "Reddit",
+          suggestions: [
+            "r/r/webdev",
+            "r/r/learnprogramming",
+            "r/r/gamedev",
+            "r/r/LifeProTips/",
+          ],
+          url: "https://reddit.com",
+        },
+      ],
+      [
+        "s",
+        {
+          name: "Spotify",
+          searchTemplate: "/search/{}",
+          url: "https://open.spotify.com",
+        },
+      ],
+    ]),
+  };
+
+  // Reset settings function
+  async function resetSettings() {
+    const confirmed = await customConfirm({
+      message:
+        "Are you sure you want to reset all settings to default? This cannot be undone.",
+      confirmText: "Reset",
+      cancelText: "Cancel",
+      confirmClass: "confirm-warning",
+    });
+
+    if (confirmed) {
+      // Reset theme
+      localStorage.setItem("selectedTheme", DEFAULT_SETTINGS.theme);
+      document.documentElement.setAttribute(
+        "data-theme",
+        DEFAULT_SETTINGS.theme
+      );
+      document.getElementById("themeSelect").value = DEFAULT_SETTINGS.theme;
+
+      // Reset commands
+      COMMANDS.clear();
+      DEFAULT_SETTINGS.commands.forEach((value, key) => {
+        COMMANDS.set(key, value);
+      });
+      saveCommands();
+      renderShortcuts();
+      commandsComponent.render();
+    }
+  }
+
+  // Reset button click handler
+  resetButton.addEventListener("click", resetSettings);
 
   // Open Modal
   openModalBtn.addEventListener("click", () => {
@@ -87,16 +196,14 @@ document.addEventListener("DOMContentLoaded", () => {
     addButton.innerHTML = '<i class="fa-solid fa-plus"></i>';
 
     addButton.addEventListener("click", async () => {
-      if (
-        newKeyInput.value &&
-        newNameInput.value &&
-        newValueInput.value
-      ) {
+      if (newKeyInput.value && newNameInput.value && newValueInput.value) {
         // If the shortcut key already exists, show the custom confirmation modal.
         if (COMMANDS.has(newKeyInput.value)) {
-          const confirmed = await customConfirm(
-            `The shortcut key "${newKeyInput.value}" already exists. Are you sure you want to override it?`
-          );
+          const confirmed = await customConfirm({
+            message: `The shortcut key "${newKeyInput.value}" already exists. Are you sure you want to override it?`,
+            confirmText: "Override",
+            cancelText: "Cancel",
+          });
           if (!confirmed) {
             return; // Do not override if the user cancels.
           }
@@ -134,8 +241,13 @@ document.addEventListener("DOMContentLoaded", () => {
   commandsComponent.render();
 });
 
-// Custom confirmation modal
-function customConfirm(message) {
+// Enhanced custom confirmation modal
+function customConfirm({
+  message,
+  confirmText = "Yes",
+  cancelText = "Cancel",
+  confirmClass = "",
+}) {
   return new Promise((resolve) => {
     const modal = document.getElementById("confirmModal");
     const confirmMessage = modal.querySelector(".confirm-message");
@@ -143,6 +255,13 @@ function customConfirm(message) {
     const cancelButton = modal.querySelector(".confirm-cancel");
 
     confirmMessage.innerText = message;
+    okButton.innerText = confirmText;
+    cancelButton.innerText = cancelText;
+
+    if (confirmClass) {
+      okButton.classList.add(confirmClass);
+    }
+
     modal.style.display = "flex";
 
     // Cleanup function to hide modal and remove listeners
@@ -150,6 +269,9 @@ function customConfirm(message) {
       okButton.removeEventListener("click", onOk);
       cancelButton.removeEventListener("click", onCancel);
       modal.style.display = "none";
+      if (confirmClass) {
+        okButton.classList.remove(confirmClass);
+      }
     }
 
     function onOk() {
@@ -164,4 +286,4 @@ function customConfirm(message) {
     okButton.addEventListener("click", onOk);
     cancelButton.addEventListener("click", onCancel);
   });
-} 
+}
