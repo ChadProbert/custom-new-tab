@@ -7,15 +7,34 @@
   --color-text-subtle: #555;
   --accent-color: #dadada;
   --hover-color: #cfcfcf;
-  --input-color: #e4e3e3;
+  --input-color: #ffffff;
   --modal-background-color: rgba(0, 0, 0, 0.5);
+  --border-color: #00000033;
+  --plus-icon-color: #555 !important;
+  --plus-button-color: #ffffff;
 }
+
+/* Light theme input focus styles */
 [data-theme="light"] input:focus,
-[data-theme="light"] select:focus {
-  /* Creates the inner border effect */
+[data-theme="light"] select:focus,
+[data-theme="light"] .custom-select:focus {
   border: 1px solid black;
   outline: none;
   box-shadow: inset 0 0 0 2px black;
+}
+
+/* Light theme specific styles for new shortcut inputs */
+[data-theme="light"] .shortcut-item:last-child input:focus {
+  border: 1px solid black;
+  outline: none;
+  box-shadow: inset 0 0 0 2px black;
+}
+
+/* Light theme input hover styles */
+[data-theme="light"] input:hover:not([readonly]),
+[data-theme="light"] select:hover,
+[data-theme="light"] .custom-select:hover {
+  border-color: black;
 }
 
 /* One Dark Pro Theme */
@@ -25,8 +44,10 @@
   --color-text-subtle: #68707d;
   --accent-color: #3e4551;
   --hover-color: #2b2f39;
-  --input-color: #2c313c;
+  --input-color: #1a1d23;
   --modal-background-color: rgba(40, 44, 52, 0.9);
+  --plus-icon-color: #abb2bf;
+  --plus-button-color: #ffffff0f;
 }
 
 /* Catppuccin Frappe */
@@ -36,8 +57,10 @@
   --color-text-subtle: #6b7188;
   --accent-color: #494d63;
   --hover-color: #414559;
-  --input-color: #292c3c;
+  --input-color: #232634;
   --modal-background-color: rgba(48, 52, 70, 0.9);
+  --plus-icon-color: #c6d0f5;
+  --plus-button-color: #232634;
 }
 
 /* Catppuccin Macchiato */
@@ -47,8 +70,10 @@
   --color-text-subtle: #5c637b;
   --accent-color: #3e425b;
   --hover-color: #363a4f;
-  --input-color: #1e2030;
+  --input-color: #181926;
   --modal-background-color: rgba(36, 39, 58, 0.9);
+  --plus-icon-color: #cad3f5;
+  --plus-button-color: #181926;
 }
 
 /* Catppuccin Mocha */
@@ -58,8 +83,10 @@
   --color-text-subtle: #505772;
   --accent-color: #38394e;
   --hover-color: #313244;
-  --input-color: #181825;
+  --input-color: #11111b;
   --modal-background-color: rgba(30, 30, 46, 0.9);
+  --plus-icon-color: #cdd6f4;
+  --plus-button-color: #11111b;
 }
 
 /* Nord */
@@ -69,8 +96,10 @@
   --color-text-subtle: #7c7f87;
   --accent-color: #464e62;
   --hover-color: #3b4252;
-  --input-color: #434c5e;
+  --input-color: #242933;
   --modal-background-color: rgba(46, 52, 64, 0.9);
+  --plus-icon-color: #eceff4;
+  --plus-button-color: #242933;
 }
 
 /* GitHub Dark */
@@ -80,6 +109,8 @@
   --color-text-subtle: #555;
   --accent-color: #15181e;
   --hover-color: #161b22;
-  --input-color: #21262d;
+  --input-color: #010409;
   --modal-background-color: rgba(13, 17, 23, 0.9);
-} 
+  --plus-icon-color: #c9d1d9;
+  --plus-button-color: #010409;
+}

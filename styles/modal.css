@@ -170,8 +170,8 @@ label {
 .shortcut-item:last-child .key-input:focus,
 .shortcut-item:last-child .name-input:focus,
 .shortcut-item:last-child .value-input:focus {
-  border-color: white;
-  box-shadow: 0 0 0 1px white;
+  border-color: var(--color-text);
+  box-shadow: 0 0 0 1px var(--color-text);
 }
 
 .key-input {
@@ -186,6 +186,7 @@ label {
   flex: 1;
 }
 
+/* Plus button styles */
 .add-button {
   background-color: var(--accent-color);
   color: var(--color-text);
@@ -193,7 +194,12 @@ label {
   padding: 8px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
 }
 
 .add-button:hover {
@@ -202,12 +208,12 @@ label {
 
 .fa-plus {
   font-size: 15px;
-  color: var(--color-text-subtle);
+  color: var(--plus-icon-color);
+  transition: color 0.3s ease;
 }
 
 .add-button:hover .fa-plus {
   color: var(--color-text);
-  transition: color 0.3s ease;
 }
 
 /* Shortcut List */
@@ -245,14 +251,14 @@ label {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--modal-background-color);
   justify-content: center;
   align-items: center;
   z-index: 2000;
 }
 
 .confirm-modal-content {
-  background: #000000;
+  background: var(--color-background);
   padding: 30px 30px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -264,7 +270,7 @@ label {
 .confirm-message {
   font-size: 16px;
   margin-bottom: 30px;
-  color: #ccc;
+  color: var(--color-text);
 }
 
 .confirm-buttons {
@@ -283,25 +289,25 @@ label {
 }
 
 .confirm-cancel {
-  background: #111;
+  background: var(--input-color);
   color: var(--color-text-subtle);
   font-weight: bold;
 }
 
 .confirm-cancel:hover {
-  background: var(--input-color);
+  background: var(--hover-color);
   color: var(--color-text);
 }
 
 .confirm-ok {
-  background: #ccc;
-  color: #111;
+  background: var(--accent-color);
+  color: var(--color-text);
   font-weight: bold;
 }
 
 .confirm-ok:hover {
-  background: #bbb;
-  color: #000000;
+  background: var(--hover-color);
+  color: var(--color-text);
 }
 
 /* Warning state for confirm button */

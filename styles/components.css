@@ -94,11 +94,16 @@
   align-items: center;
   font-size: 2rem;
   border: none;
-  background-color: #040404;
-  color: var(--color-text-subtle);
+  background-color: var(--plus-button-color);
+  color: var(--plus-icon-color);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   margin: 1px;
+  padding: var(--space);
+  border-radius: var(--border-radius);
+  aspect-ratio: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .dynamic-button:hover {
@@ -264,4 +269,4 @@ button {
 
 .fa-sliders {
   font-size: 20px;
-} 
+}
