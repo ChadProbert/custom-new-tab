@@ -248,7 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
     addButton.innerHTML = '<i class="fa-solid fa-plus"></i>';
     addButton.addEventListener("mousedown", (e) => e.stopPropagation());
 
-    addButton.addEventListener("click", async () => {
+    // Function to handle shortcut creation
+    async function createNewShortcut() {
       if (newKeyInput.value && newNameInput.value && newValueInput.value) {
         // If the shortcut key already exists, show the custom confirmation modal.
         if (COMMANDS.has(newKeyInput.value)) {
@@ -258,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cancelText: "Cancel",
           });
           if (!confirmed) {
-            return; // Do not override if the user cancels.
+            return false; // Do not override if the user cancels.
           }
         }
         COMMANDS.set(newKeyInput.value, {
@@ -268,8 +269,29 @@ document.addEventListener("DOMContentLoaded", () => {
         saveCommands();
         renderShortcuts();
         commandsComponent.render(); // Re-render the commands component
+        return true;
       }
+      return false;
+    }
+
+    // Add Enter key handler to all new shortcut inputs
+    [newKeyInput, newNameInput, newValueInput].forEach((input) => {
+      input.addEventListener("keydown", async (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const success = await createNewShortcut();
+          if (!success) {
+            // If creation failed, focus the first empty input
+            if (!newKeyInput.value) newKeyInput.focus();
+            else if (!newNameInput.value) newNameInput.focus();
+            else if (!newValueInput.value) newValueInput.focus();
+          }
+        }
+      });
     });
+
+    // Add button click handler
+    addButton.addEventListener("click", createNewShortcut);
 
     newShortcutItem.appendChild(newKeyInput);
     newShortcutItem.appendChild(newNameInput);
