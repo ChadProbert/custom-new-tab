@@ -265,6 +265,23 @@
           max-height: 80vh;
           overflow-y: auto;
         }
+        .dynamic-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 2rem;
+          border: none;
+          background-color: #040404;
+          color: var(--color-text-subtle);
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          margin: 1px;
+        }
+
+        .dynamic-button:hover {
+          background-color: var(--hover-color);
+          color: var(--color-text);
+        }
       </style>
       <nav>
         <menu class="commands"></menu>
@@ -286,6 +303,8 @@
           super();
           this.attachShadow({ mode: "open" });
           this.render();
+          // Re-render on resize so column count updates
+          window.addEventListener("resize", () => this.render());
         }
 
         render() {
@@ -295,6 +314,10 @@
           const commands = clone.querySelector(".commands");
           const commandTemplate = document.getElementById("command-template");
 
+          let count = 0;
+          const columns = this.getColumns();
+
+          // Render each shortcut
           for (const [key, { name, url }] of COMMANDS.entries()) {
             if (!name || !url) continue;
             const commandClone = commandTemplate.content.cloneNode(true);
@@ -304,9 +327,48 @@
             commandClone.querySelector(".key").innerText = key;
             commandClone.querySelector(".name").innerText = name;
             commands.append(commandClone);
+            count++;
+          }
+
+          // Add the dynamic button if the last row isn’t completely full.
+          if (this.shouldAddButton(count, columns)) {
+            this.addDynamicButton(commands, count, columns);
           }
 
           this.shadowRoot.append(clone);
+        }
+
+        // Determine the number of columns based on screen width.
+        getColumns() {
+          if (window.innerWidth >= 900) return 4;
+          if (window.innerWidth >= 500) return 2;
+          return 1;
+        }
+
+        // Check if the last row is partially filled.
+        shouldAddButton(count, columns) {
+          const lastRowItems = count % columns;
+          return lastRowItems !== 0; // Only add button if there’s space in the last row.
+        }
+
+        // Append the dynamic button and set its height to fill the empty cells.
+        addDynamicButton(commands, count, columns) {
+          const CELL_HEIGHT = 60; // Base height per cell (adjust as needed)
+          const lastRowItems = count % columns;
+          const remainingCells = columns - lastRowItems;
+
+          const button = document.createElement("button");
+          button.classList.add("dynamic-button");
+          button.innerHTML = "+";
+          button.addEventListener("click", () => {
+            // Open the modal to add a new shortcut
+            document.getElementById("openModal").click();
+          });
+          // Extend the button to fill all empty cells in the row.
+          button.style.height = `${remainingCells * CELL_HEIGHT + 2}px`;
+          button.style.width = "99%";
+
+          commands.append(button);
         }
       }
 
@@ -1157,12 +1219,21 @@
           addButton.classList.add("add-button");
           addButton.innerHTML = '<i class="fa-solid fa-plus"></i>';
 
-          addButton.addEventListener("click", () => {
+          addButton.addEventListener("click", async () => {
             if (
               newKeyInput.value &&
               newNameInput.value &&
               newValueInput.value
             ) {
+              // If the shortcut key already exists, show the custom confirmation modal.
+              if (COMMANDS.has(newKeyInput.value)) {
+                const confirmed = await customConfirm(
+                  `The shortcut key "${newKeyInput.value}" already exists. Are you sure you want to override it?`
+                );
+                if (!confirmed) {
+                  return; // Do not override if the user cancels.
+                }
+              }
               COMMANDS.set(newKeyInput.value, {
                 name: newNameInput.value,
                 url: newValueInput.value,
@@ -1311,5 +1382,117 @@
         --modal-background-color: rgba(13, 17, 23, 0.9);
       }
     </style>
+
+    <!-- Custom Confirm Modal -->
+    <div id="confirmModal" class="confirm-modal">
+      <div class="confirm-modal-content">
+        <p class="confirm-message">Are you sure?</p>
+        <div class="confirm-buttons">
+          <button class="confirm-cancel">Cancel</button>
+          <button class="confirm-ok">Yes</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .confirm-modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+      }
+
+      .confirm-modal-content {
+        background: #000000;
+        padding: 30px 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+      }
+
+      .confirm-message {
+        font-size: 16px;
+        margin-bottom: 30px;
+        color: #ccc;
+      }
+
+      .confirm-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .confirm-buttons button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .confirm-cancel {
+        background: #111;
+        color: var(--color-text-subtle);
+        font-weight: bold;
+      }
+
+      .confirm-cancel:hover {
+        background: var(--input-color);
+        color: var(--color-text);
+      }
+
+      .confirm-ok {
+        background: #ccc;
+        color: #111;
+        font-weight: bold;
+      }
+
+      .confirm-ok:hover {
+        background: #bbb;
+        color: #000000;
+      }
+    </style>
+
+    <script>
+      function customConfirm(message) {
+        return new Promise((resolve) => {
+          const modal = document.getElementById("confirmModal");
+          const confirmMessage = modal.querySelector(".confirm-message");
+          const okButton = modal.querySelector(".confirm-ok");
+          const cancelButton = modal.querySelector(".confirm-cancel");
+
+          confirmMessage.innerText = message;
+          modal.style.display = "flex";
+
+          // Cleanup function to hide modal and remove listeners
+          function cleanUp() {
+            okButton.removeEventListener("click", onOk);
+            cancelButton.removeEventListener("click", onCancel);
+            modal.style.display = "none";
+          }
+
+          function onOk() {
+            cleanUp();
+            resolve(true);
+          }
+          function onCancel() {
+            cleanUp();
+            resolve(false);
+          }
+
+          okButton.addEventListener("click", onOk);
+          cancelButton.addEventListener("click", onCancel);
+        });
+      }
+    </script>
   </body>
 </html>
