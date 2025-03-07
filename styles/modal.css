@@ -314,3 +314,49 @@ label {
   background: #ff1f1f;
   color: white;
 }
+
+/* Action buttons for shortcuts */
+.edit-button,
+.delete-button,
+.save-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--accent-color);
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: var(--hover-color);
+  color: var(--color-text);
+}
+
+.save-button {
+  background-color: #34c759;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #ff3b30;
+  color: white;
+}
+
+/* Input style toggle for editing */
+.shortcut-item input[readonly] {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: default;
+}
+
+.shortcut-item input:not([readonly]) {
+  background-color: var(--input-color);
+  border-color: var(--border-color);
+}

@@ -182,28 +182,179 @@ document.addEventListener("DOMContentLoaded", () => {
     COMMANDS.forEach((value, key) => {
       const shortcutItem = document.createElement("div");
       shortcutItem.classList.add("shortcut-item");
+      shortcutItem.dataset.key = key; // Store original key for reference
 
       const keyInput = document.createElement("input");
       keyInput.type = "text";
       keyInput.value = key;
       keyInput.classList.add("key-input");
+      keyInput.readOnly = true; // Initially not editable
       keyInput.addEventListener("mousedown", focusInput);
 
       const nameInput = document.createElement("input");
       nameInput.type = "text";
       nameInput.value = value.name || "";
       nameInput.classList.add("name-input");
+      nameInput.readOnly = true; // Initially not editable
       nameInput.addEventListener("mousedown", focusInput);
 
       const valueInput = document.createElement("input");
       valueInput.type = "text";
       valueInput.value = value.url || "";
       valueInput.classList.add("value-input");
+      valueInput.readOnly = true; // Initially not editable
       valueInput.addEventListener("mousedown", focusInput);
+
+      // Create action button (initially edit button)
+      const actionButton = document.createElement("button");
+      actionButton.classList.add("edit-button");
+      actionButton.innerHTML = '<i class="fa-solid fa-pen"></i>';
+      actionButton.title = "Edit shortcut";
+      actionButton.addEventListener("mousedown", (e) => e.stopPropagation());
+
+      // Create delete button
+      const deleteButton = document.createElement("button");
+      deleteButton.classList.add("delete-button");
+      deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+      deleteButton.title = "Delete shortcut";
+      deleteButton.addEventListener("mousedown", (e) => e.stopPropagation());
+
+      // Function to enable edit mode
+      function enableEditMode() {
+        // Store original values for cancel functionality
+        shortcutItem.dataset.originalKey = keyInput.value;
+        shortcutItem.dataset.originalName = nameInput.value;
+        shortcutItem.dataset.originalUrl = valueInput.value;
+
+        // Make inputs editable
+        keyInput.readOnly = false;
+        nameInput.readOnly = false;
+        valueInput.readOnly = false;
+
+        // Change action button to save button
+        actionButton.classList.remove("edit-button");
+        actionButton.classList.add("save-button");
+        actionButton.innerHTML = '<i class="fa-solid fa-check"></i>';
+        actionButton.title = "Save changes";
+
+        // Focus the name input
+        nameInput.focus();
+      }
+
+      // Function to save edited shortcut
+      async function saveEditedShortcut() {
+        const newKey = keyInput.value.trim();
+        const newName = nameInput.value.trim();
+        const newUrl = valueInput.value.trim();
+        const originalKey = shortcutItem.dataset.key;
+
+        // Validate inputs
+        if (!newKey || !newName || !newUrl) {
+          return false;
+        }
+
+        // If key changed and new key already exists (and is not the original key)
+        if (newKey !== originalKey && COMMANDS.has(newKey)) {
+          const confirmed = await customConfirm({
+            message: `The shortcut key "${newKey}" already exists. Are you sure you want to override it?`,
+            confirmText: "Override",
+            cancelText: "Cancel",
+          });
+
+          if (!confirmed) {
+            return false;
+          }
+        }
+
+        // Remove original shortcut if key changed
+        if (newKey !== originalKey) {
+          COMMANDS.delete(originalKey);
+        }
+
+        // Set the new shortcut
+        COMMANDS.set(newKey, {
+          name: newName,
+          url: newUrl,
+        });
+
+        // Save and re-render
+        saveCommands();
+        renderShortcuts();
+        commandsComponent.render();
+        return true;
+      }
+
+      // Function to cancel edit mode
+      function cancelEditMode() {
+        // Restore original values
+        keyInput.value = shortcutItem.dataset.originalKey;
+        nameInput.value = shortcutItem.dataset.originalName;
+        valueInput.value = shortcutItem.dataset.originalUrl;
+
+        // Make inputs read-only again
+        keyInput.readOnly = true;
+        nameInput.readOnly = true;
+        valueInput.readOnly = true;
+
+        // Change save button back to edit button
+        actionButton.classList.remove("save-button");
+        actionButton.classList.add("edit-button");
+        actionButton.innerHTML = '<i class="fa-solid fa-pen"></i>';
+        actionButton.title = "Edit shortcut";
+      }
+
+      // Function to delete shortcut
+      async function deleteShortcut() {
+        const confirmed = await customConfirm({
+          message: `Are you sure you want to delete the "${value.name}" shortcut?`,
+          confirmText: "Delete",
+          cancelText: "Cancel",
+          confirmClass: "confirm-warning",
+        });
+
+        if (confirmed) {
+          COMMANDS.delete(key);
+          saveCommands();
+          renderShortcuts();
+          commandsComponent.render();
+        }
+      }
+
+      // Add event listeners
+      actionButton.addEventListener("click", function () {
+        if (actionButton.classList.contains("edit-button")) {
+          enableEditMode();
+        } else {
+          saveEditedShortcut();
+        }
+      });
+
+      deleteButton.addEventListener("click", deleteShortcut);
+
+      // Add Enter key support for saving edits
+      [keyInput, nameInput, valueInput].forEach((input) => {
+        input.addEventListener("keydown", async (e) => {
+          if (e.key === "Enter" && !input.readOnly) {
+            e.preventDefault();
+            const success = await saveEditedShortcut();
+            if (!success) {
+              // Focus the first empty input
+              if (!keyInput.value.trim()) keyInput.focus();
+              else if (!nameInput.value.trim()) nameInput.focus();
+              else if (!valueInput.value.trim()) valueInput.focus();
+            }
+          } else if (e.key === "Escape" && !input.readOnly) {
+            e.preventDefault();
+            cancelEditMode();
+          }
+        });
+      });
 
       shortcutItem.appendChild(keyInput);
       shortcutItem.appendChild(nameInput);
       shortcutItem.appendChild(valueInput);
+      shortcutItem.appendChild(actionButton);
+      shortcutItem.appendChild(deleteButton);
 
       shortcutList.appendChild(shortcutItem);
     });
