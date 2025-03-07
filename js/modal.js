@@ -9,6 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const commandsComponent = document.querySelector("commands-component");
   const resetButton = document.getElementById("resetSettings");
 
+  // Track if we should focus on new shortcut inputs
+  let shouldFocusNewShortcut = false;
+
+  // Listen for the custom event
+  document.addEventListener("focusNewShortcut", () => {
+    shouldFocusNewShortcut = true;
+  });
+
   // Default settings
   const DEFAULT_SETTINGS = {
     theme: "dark",
@@ -132,11 +140,24 @@ document.addEventListener("DOMContentLoaded", () => {
     modalOverlay.classList.add("active"); // Activate background overlay
     renderShortcuts(); // Refresh shortcuts when opening modal
 
-    // Focus the theme dropdown by default
+    // Focus based on context
     setTimeout(() => {
-      const themeSelect = document.getElementById("themeSelect");
-      if (themeSelect) {
-        themeSelect.focus();
+      if (shouldFocusNewShortcut) {
+        // Focus the first input of the new shortcut section
+        const lastShortcutItem = shortcutList.lastElementChild;
+        if (lastShortcutItem) {
+          const firstInput = lastShortcutItem.querySelector(".key-input");
+          if (firstInput) {
+            firstInput.focus();
+          }
+        }
+        shouldFocusNewShortcut = false; // Reset the flag
+      } else {
+        // Default focus on theme dropdown
+        const themeSelect = document.getElementById("themeSelect");
+        if (themeSelect) {
+          themeSelect.focus();
+        }
       }
     }, 100); // A short delay to ensure the modal is fully rendered
   });

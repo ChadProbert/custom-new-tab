@@ -62,7 +62,10 @@ class Commands extends HTMLElement {
     button.innerHTML = "+";
     button.addEventListener("click", () => {
       // Open the modal to add a new shortcut
-      document.getElementById("openModal").click();
+      const openModalBtn = document.getElementById("openModal");
+      openModalBtn.click();
+      // Dispatch a custom event to indicate we want to focus on the new shortcut inputs
+      document.dispatchEvent(new CustomEvent("focusNewShortcut"));
     });
     // Extend the button to fill all empty cells in the row.
     button.style.height = `${remainingCells * CELL_HEIGHT}px`;
@@ -73,6 +76,6 @@ class Commands extends HTMLElement {
 }
 
 // Register the custom element when the document is loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   customElements.define("commands-component", Commands);
-}); 
+});

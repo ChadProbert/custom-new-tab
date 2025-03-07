@@ -109,12 +109,24 @@ label {
   padding: 8px 30px 8px 10px;
   background-color: var(--input-color);
   color: var(--color-text);
-  border: 1px solid var(--input-color);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   position: relative;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.custom-select:focus {
+  border-color: var(--color-text);
+  box-shadow: 0 0 0 1px var(--color-text);
+  outline: none;
+}
+
+.custom-select:hover {
+  background-color: var(--hover-color);
 }
 
 .custom-arrow {
@@ -125,6 +137,12 @@ label {
   transform: translateY(-50%);
   pointer-events: none;
   color: var(--color-text-subtle);
+  transition: color 0.2s ease;
+}
+
+.custom-select:focus + .custom-arrow,
+.custom-select:hover + .custom-arrow {
+  color: var(--color-text);
 }
 
 /* Form Elements */
@@ -136,6 +154,24 @@ label {
   color: var(--color-text);
   border: 1px solid var(--border-color);
   border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+/* Focus styles for input fields */
+.key-input:focus,
+.name-input:focus,
+.value-input:focus {
+  border-color: var(--color-text);
+  box-shadow: 0 0 0 1px var(--color-text);
+  outline: none;
+}
+
+/* Special focus styles for the new shortcut input fields */
+.shortcut-item:last-child .key-input:focus,
+.shortcut-item:last-child .name-input:focus,
+.shortcut-item:last-child .value-input:focus {
+  border-color: white;
+  box-shadow: 0 0 0 1px white;
 }
 
 .key-input {
