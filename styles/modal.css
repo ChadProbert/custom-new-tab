@@ -1,0 +1,240 @@
+/* Modal CSS */
+
+/* Modal Background Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--modal-background-color);
+  z-index: 999;
+  display: none; /* Hidden by default */
+}
+
+.modal-overlay.active {
+  display: block; /* Show when modal is active */
+}
+
+/* Main Modal */
+.custom-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modal-background-color);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: var(--color-text);
+}
+
+.theme-section,
+.shortcut-section {
+  margin: 10px 0;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+/* Custom Select Styling */
+.custom-select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.custom-select {
+  width: 100%;
+  padding: 8px 30px 8px 10px;
+  background-color: var(--input-color);
+  color: var(--color-text);
+  border: 1px solid var(--input-color);
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+.custom-arrow {
+  position: absolute;
+  font-size: 12px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-subtle);
+}
+
+/* Form Elements */
+.key-input,
+.name-input,
+.value-input {
+  padding: 8px;
+  background-color: var(--input-color);
+  color: var(--color-text);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.key-input {
+  width: 5%;
+}
+
+.name-input {
+  width: 14%;
+}
+
+.value-input {
+  flex: 1;
+}
+
+.add-button {
+  background-color: var(--accent-color);
+  color: var(--color-text);
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: var(--hover-color);
+}
+
+.fa-plus {
+  font-size: 15px;
+  color: var(--color-text-subtle);
+}
+
+.add-button:hover .fa-plus {
+  color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+/* Shortcut List */
+.shortcut-list {
+  background-color: transparent;
+  border: none;
+}
+
+.shortcut-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.shortcut-item .key-input {
+  width: 5%;
+}
+
+.shortcut-item .value-input {
+  width: 5%;
+}
+
+/* Scrollable Modal */
+.modal-content.scrollable {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Confirmation Modal */
+.confirm-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.confirm-modal-content {
+  background: #000000;
+  padding: 30px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.confirm-message {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.confirm-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.confirm-cancel {
+  background: #111;
+  color: var(--color-text-subtle);
+  font-weight: bold;
+}
+
+.confirm-cancel:hover {
+  background: var(--input-color);
+  color: var(--color-text);
+}
+
+.confirm-ok {
+  background: #ccc;
+  color: #111;
+  font-weight: bold;
+}
+
+.confirm-ok:hover {
+  background: #bbb;
+  color: #000000;
+} 

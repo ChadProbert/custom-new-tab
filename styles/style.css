@@ -6,10 +6,10 @@
   --color-background: #000;
   --color-text-subtle: #555;
   --color-text: #fff;
-  --font-family: Helvetica, sans-serif;
+  --font-family: "Poppins", sans-serif;
   --font-size: clamp(16px, 1.6vw, 18px);
   --font-weight-bold: 700;
-  --font-weight-normal: 400;
+  --font-weight-normal: 500;
   --space: 1rem;
   --transition-speed: 200ms;
   --accent-color: #090909;
@@ -18,14 +18,36 @@
   --input-color: #1f1f1f;
   --border-color: #55555500;
   --modal-background-color: rgba(0, 0, 0, 0.5);
-  
+}
+
+/* Base Styles */
+html {
+  background-color: var(--color-background);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size);
+  line-height: 1.4;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: calc(var(--space) * 4) var(--space);
+  position: relative;
+  width: 100vw;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     [data-theme="light"] {
-
-
       --color-background: #e9e9e9;
       --color-text: #000000;
       --color-text-subtle: #555;

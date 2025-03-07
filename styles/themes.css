@@ -1,0 +1,85 @@
+/* Theme Definitions */
+
+/* Light theme */
+[data-theme="light"] {
+  --color-background: #e9e9e9;
+  --color-text: #000000;
+  --color-text-subtle: #555;
+  --accent-color: #dadada;
+  --hover-color: #cfcfcf;
+  --input-color: #e4e3e3;
+  --modal-background-color: rgba(0, 0, 0, 0.5);
+}
+[data-theme="light"] input:focus,
+[data-theme="light"] select:focus {
+  /* Creates the inner border effect */
+  border: 1px solid black;
+  outline: none;
+  box-shadow: inset 0 0 0 2px black;
+}
+
+/* One Dark Pro Theme */
+[data-theme="one-dark-pro"] {
+  --color-background: #252931;
+  --color-text: #abb2bf;
+  --color-text-subtle: #68707d;
+  --accent-color: #3e4551;
+  --hover-color: #2b2f39;
+  --input-color: #2c313c;
+  --modal-background-color: rgba(40, 44, 52, 0.9);
+}
+
+/* Catppuccin Frappe */
+[data-theme="catppuccin-frappe"] {
+  --color-background: #303446;
+  --color-text: #c6d0f5;
+  --color-text-subtle: #6b7188;
+  --accent-color: #494d63;
+  --hover-color: #414559;
+  --input-color: #292c3c;
+  --modal-background-color: rgba(48, 52, 70, 0.9);
+}
+
+/* Catppuccin Macchiato */
+[data-theme="catppuccin-macchiato"] {
+  --color-background: #24273a;
+  --color-text: #cad3f5;
+  --color-text-subtle: #5c637b;
+  --accent-color: #3e425b;
+  --hover-color: #363a4f;
+  --input-color: #1e2030;
+  --modal-background-color: rgba(36, 39, 58, 0.9);
+}
+
+/* Catppuccin Mocha */
+[data-theme="catppuccin-mocha"] {
+  --color-background: #1e1e2e;
+  --color-text: #cdd6f4;
+  --color-text-subtle: #505772;
+  --accent-color: #38394e;
+  --hover-color: #313244;
+  --input-color: #181825;
+  --modal-background-color: rgba(30, 30, 46, 0.9);
+}
+
+/* Nord */
+[data-theme="nord"] {
+  --color-background: #2e3440;
+  --color-text: #eceff4;
+  --color-text-subtle: #7c7f87;
+  --accent-color: #464e62;
+  --hover-color: #3b4252;
+  --input-color: #434c5e;
+  --modal-background-color: rgba(46, 52, 64, 0.9);
+}
+
+/* GitHub Dark */
+[data-theme="github"] {
+  --color-background: #0d1117;
+  --color-text: #c9d1d9;
+  --color-text-subtle: #555;
+  --accent-color: #15181e;
+  --hover-color: #161b22;
+  --input-color: #21262d;
+  --modal-background-color: rgba(13, 17, 23, 0.9);
+} 
