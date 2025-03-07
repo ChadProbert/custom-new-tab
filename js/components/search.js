@@ -62,9 +62,7 @@ class Search extends HTMLElement {
   }
 
   static #isUrl(s) {
-    return /^((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)$/i.test(
-      s
-    );
+    return /^((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)$/i.test(s);
   }
 
   static #parseQuery = (raw) => {
@@ -81,9 +79,7 @@ class Search extends HTMLElement {
     }
 
     let splitBy = CONFIG.commandSearchDelimiter;
-    const [searchKey, rawSearch] = query.split(
-      new RegExp(`${splitBy}(.*)`)
-    );
+    const [searchKey, rawSearch] = query.split(new RegExp(`${splitBy}(.*)`));
 
     if (COMMANDS.has(searchKey)) {
       const { searchTemplate, url: base } = COMMANDS.get(searchKey);
@@ -102,9 +98,7 @@ class Search extends HTMLElement {
       return { key: pathKey, path, query, splitBy, url };
     }
 
-    const [baseUrl, rest] = Search.#splitUrl(
-      CONFIG.defaultSearchTemplate
-    );
+    const [baseUrl, rest] = Search.#splitUrl(CONFIG.defaultSearchTemplate);
     const url = Search.#formatSearchUrl(baseUrl, rest, query);
     return { query, search: query, url };
   };
@@ -169,6 +163,21 @@ class Search extends HTMLElement {
   };
 
   #onKeydown = (e) => {
+    // Check if settings modal is open - if it is, don't process keyboard events
+    const settingsModal = document.getElementById("settingsModal");
+    if (settingsModal && settingsModal.style.display === "flex") {
+      return;
+    }
+
+    // Check if we're already inside an input field
+    if (
+      e.target.tagName === "INPUT" ||
+      e.target.tagName === "TEXTAREA" ||
+      e.target.isContentEditable
+    ) {
+      return;
+    }
+
     if (!this.#dialog.open) {
       this.#dialog.show();
       this.#input.focus();
@@ -248,6 +257,6 @@ class Search extends HTMLElement {
 }
 
 // Register the custom element when the document is loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   customElements.define("search-component", Search);
-}); 
+});

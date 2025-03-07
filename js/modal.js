@@ -119,9 +119,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Open Modal
   openModalBtn.addEventListener("click", () => {
+    // Close search dialog if it's open
+    const searchComponent = document.querySelector("search-component");
+    if (searchComponent) {
+      const dialog = searchComponent.shadowRoot.querySelector(".dialog");
+      if (dialog && dialog.open) {
+        dialog.close();
+      }
+    }
+
     modal.style.display = "flex";
     modalOverlay.classList.add("active"); // Activate background overlay
     renderShortcuts(); // Refresh shortcuts when opening modal
+
+    // Focus the theme dropdown by default
+    setTimeout(() => {
+      const themeSelect = document.getElementById("themeSelect");
+      if (themeSelect) {
+        themeSelect.focus();
+      }
+    }, 100); // A short delay to ensure the modal is fully rendered
   });
 
   // Close Modal (clicking the X)
@@ -149,16 +166,19 @@ document.addEventListener("DOMContentLoaded", () => {
       keyInput.type = "text";
       keyInput.value = key;
       keyInput.classList.add("key-input");
+      keyInput.addEventListener("mousedown", focusInput);
 
       const nameInput = document.createElement("input");
       nameInput.type = "text";
       nameInput.value = value.name || "";
       nameInput.classList.add("name-input");
+      nameInput.addEventListener("mousedown", focusInput);
 
       const valueInput = document.createElement("input");
       valueInput.type = "text";
       valueInput.value = value.url || "";
       valueInput.classList.add("value-input");
+      valueInput.addEventListener("mousedown", focusInput);
 
       shortcutItem.appendChild(keyInput);
       shortcutItem.appendChild(nameInput);
@@ -171,6 +191,14 @@ document.addEventListener("DOMContentLoaded", () => {
     checkModalScrollability();
   }
 
+  // Focus helper for input fields
+  function focusInput(e) {
+    e.stopPropagation();
+    setTimeout(() => {
+      e.target.focus();
+    }, 0);
+  }
+
   // Add a field for adding a new shortcut
   function addNewShortcutField() {
     const newShortcutItem = document.createElement("div");
@@ -180,20 +208,24 @@ document.addEventListener("DOMContentLoaded", () => {
     newKeyInput.type = "text";
     newKeyInput.placeholder = "Key";
     newKeyInput.classList.add("key-input");
+    newKeyInput.addEventListener("mousedown", focusInput);
 
     const newNameInput = document.createElement("input");
     newNameInput.type = "text";
     newNameInput.placeholder = "Name";
     newNameInput.classList.add("name-input");
+    newNameInput.addEventListener("mousedown", focusInput);
 
     const newValueInput = document.createElement("input");
     newValueInput.type = "text";
     newValueInput.placeholder = "Value";
     newValueInput.classList.add("value-input");
+    newValueInput.addEventListener("mousedown", focusInput);
 
     const addButton = document.createElement("button");
     addButton.classList.add("add-button");
     addButton.innerHTML = '<i class="fa-solid fa-plus"></i>';
+    addButton.addEventListener("mousedown", (e) => e.stopPropagation());
 
     addButton.addEventListener("click", async () => {
       if (newKeyInput.value && newNameInput.value && newValueInput.value) {
