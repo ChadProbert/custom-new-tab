@@ -12,6 +12,7 @@
   --border-color: #00000033;
   --plus-icon-color: #555 !important;
   --plus-button-color: #ffffff;
+  --confirm-border-color: #aaaaaa;
 }
 
 /* Light theme input focus styles */
@@ -48,6 +49,7 @@
   --modal-background-color: rgba(40, 44, 52, 0.9);
   --plus-icon-color: #abb2bf;
   --plus-button-color: #ffffff0f;
+  --confirm-border-color: #4e5563;
 }
 
 /* Catppuccin Frappe */
@@ -61,6 +63,7 @@
   --modal-background-color: rgba(48, 52, 70, 0.9);
   --plus-icon-color: #c6d0f5;
   --plus-button-color: #232634;
+  --confirm-border-color: #51576d;
 }
 
 /* Catppuccin Macchiato */
@@ -74,6 +77,7 @@
   --modal-background-color: rgba(36, 39, 58, 0.9);
   --plus-icon-color: #cad3f5;
   --plus-button-color: #181926;
+  --confirm-border-color: #494d64;
 }
 
 /* Catppuccin Mocha */
@@ -87,6 +91,7 @@
   --modal-background-color: rgba(30, 30, 46, 0.9);
   --plus-icon-color: #cdd6f4;
   --plus-button-color: #11111b;
+  --confirm-border-color: #45475a;
 }
 
 /* Nord */
@@ -100,6 +105,7 @@
   --modal-background-color: rgba(46, 52, 64, 0.9);
   --plus-icon-color: #eceff4;
   --plus-button-color: #242933;
+  --confirm-border-color: #4c566a;
 }
 
 /* GitHub Dark */
@@ -113,4 +119,5 @@
   --modal-background-color: rgba(13, 17, 23, 0.9);
   --plus-icon-color: #c9d1d9;
   --plus-button-color: #010409;
+  --confirm-border-color: #30363d;
 }

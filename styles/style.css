@@ -14,12 +14,13 @@
   --transition-speed: 200ms;
   --accent-color: #090909;
   --hover-color: #121212;
-  --button-color: #DADADA;
+  --button-color: #dadada;
   --input-color: #1f1f1f;
   --border-color: #55555500;
   --modal-background-color: rgba(0, 0, 0, 0.5);
-  --plus-icon-color: #DADADA;
+  --plus-icon-color: #dadada;
   --plus-button-color: #1f1f1f;
+  --confirm-border-color: #333;
 }
 
 /* Base Styles */
