@@ -121,6 +121,25 @@
           color: var(--color-text);
         }
 
+        .help-button {
+          position: fixed;
+          bottom: var(--space);
+          right: calc(var(--space) + 90px);
+          background-color: var(--accent-color);
+          color: var(--color-text-subtle);
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          padding: 8px 16px;
+          transition: background-color 0.2s ease, color 0.2s ease;
+          font-size: 16px;
+        }
+
+        .help-button:hover {
+          background-color: var(--hover-color);
+          color: var(--color-text);
+        }
+
         .dynamic-button {
           display: flex;
           justify-content: center;
@@ -282,6 +301,11 @@
         <i class="fa-solid fa-sliders"></i>
       </button>
 
+      <!-- Help Button -->
+      <button class="help-button" id="openHelp">
+        <i class="fa-solid fa-circle-question"></i>
+      </button>
+
       <commands-component></commands-component>
       <search-component></search-component>
       <a
@@ -348,6 +372,44 @@
         <div class="confirm-buttons">
           <button class="confirm-cancel">Cancel</button>
           <button class="confirm-ok">Yes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="help-modal">
+      <div class="help-modal-content">
+        <button class="close-button" id="closeHelpModal">&times;</button>
+        <h2>Help Guide</h2>
+
+        <!-- Help Content -->
+        <div class="help-section">
+          <h3>Keyboard Shortcuts</h3>
+          <p>
+            Press any key displayed on the home screen to quickly access your
+            favorite websites.
+          </p>
+
+          <h3>Managing Shortcuts</h3>
+          <p>Click the settings icon to customize your shortcuts and themes.</p>
+
+          <h3>Adding New Shortcuts</h3>
+          <p>
+            In the settings panel, you can add new shortcuts by specifying a
+            key, name, and URL.
+          </p>
+
+          <h3>Searching</h3>
+          <p>
+            Start typing to search your shortcuts or enter a URL to navigate
+            directly.
+          </p>
+
+          <h3>Themes</h3>
+          <p>
+            Change the look of your new tab page by selecting a different theme
+            in the settings.
+          </p>
         </div>
       </div>
     </div>

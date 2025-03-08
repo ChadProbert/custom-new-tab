@@ -1,13 +1,17 @@
 // Modal functionality
 document.addEventListener("DOMContentLoaded", () => {
   const openModalBtn = document.getElementById("openModal");
+  const openHelpBtn = document.getElementById("openHelp");
   const closeModalBtn = document.getElementById("closeModal");
-  const modal = document.getElementById("settingsModal");
+  const closeHelpModalBtn = document.getElementById("closeHelpModal");
+  const settingsModal = document.getElementById("settingsModal");
+  const helpModal = document.getElementById("helpModal");
   const modalOverlay = document.getElementById("modalOverlay");
   const shortcutList = document.getElementById("shortcutList");
+  const themeSelect = document.getElementById("themeSelect");
+  const resetButton = document.getElementById("resetSettings");
   const modalContent = document.querySelector(".modal-content");
   const commandsComponent = document.querySelector("commands-component");
-  const resetButton = document.getElementById("resetSettings");
 
   // Track if we should focus on new shortcut inputs
   let shouldFocusNewShortcut = false;
@@ -125,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Reset button click handler
   resetButton.addEventListener("click", resetSettings);
 
-  // Open Modal
+  // Open the settings modal when the settings button is clicked
   openModalBtn.addEventListener("click", () => {
     // Close search dialog if it's open
     const searchComponent = document.querySelector("search-component");
@@ -136,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    modal.style.display = "flex";
+    settingsModal.style.display = "flex";
     modalOverlay.classList.add("active"); // Activate background overlay
     renderShortcuts(); // Refresh shortcuts when opening modal
 
@@ -154,25 +158,62 @@ document.addEventListener("DOMContentLoaded", () => {
         shouldFocusNewShortcut = false; // Reset the flag
       } else {
         // Default focus on theme dropdown
-        const themeSelect = document.getElementById("themeSelect");
         if (themeSelect) {
           themeSelect.focus();
         }
       }
     }, 100); // A short delay to ensure the modal is fully rendered
+
+    checkModalScrollability();
   });
 
-  // Close Modal (clicking the X)
+  // Open the help modal when the help button is clicked
+  openHelpBtn.addEventListener("click", () => {
+    // Close search dialog if it's open
+    const searchComponent = document.querySelector("search-component");
+    if (searchComponent) {
+      const dialog = searchComponent.shadowRoot.querySelector(".dialog");
+      if (dialog && dialog.open) {
+        dialog.close();
+      }
+    }
+
+    helpModal.style.display = "flex";
+    modalOverlay.classList.add("active");
+  });
+
+  // Close the settings modal when the close button is clicked
   closeModalBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-    modalOverlay.classList.remove("active"); // Deactivate background overlay
+    settingsModal.style.display = "none";
+    modalOverlay.classList.remove("active");
   });
 
-  // Close Modal (clicking outside the modal content)
+  // Close the help modal when the close button is clicked
+  closeHelpModalBtn.addEventListener("click", () => {
+    helpModal.style.display = "none";
+    modalOverlay.classList.remove("active");
+  });
+
+  // Close modals (clicking outside the modal content)
   window.addEventListener("click", (event) => {
-    if (event.target === modal || event.target === modalOverlay) {
-      modal.style.display = "none";
+    if (event.target === settingsModal || event.target === modalOverlay) {
+      settingsModal.style.display = "none";
+      helpModal.style.display = "none";
       modalOverlay.classList.remove("active"); // Deactivate background overlay
+    }
+
+    if (event.target === helpModal) {
+      helpModal.style.display = "none";
+      modalOverlay.classList.remove("active");
+    }
+  });
+
+  // Close Modal with escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      settingsModal.style.display = "none";
+      helpModal.style.display = "none";
+      modalOverlay.classList.remove("active");
     }
   });
 

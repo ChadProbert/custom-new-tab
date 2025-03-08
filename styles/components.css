@@ -71,20 +71,31 @@
 
 .settings-button {
   position: fixed;
-  bottom: var(--space);
-  right: var(--space);
-  background-color: var(--hover-color);
-  color: var(--color-text-subtle);
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--background-color);
+  color: #ffffff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  padding: 8px 16px;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-button i {
+  color: var(--color-text-subtle);
+  transition: color 0.3s ease;
 }
 
 .settings-button:hover {
   background-color: var(--hover-color);
+}
+
+.settings-button:hover i {
   color: var(--color-text);
 }
 
@@ -235,14 +246,15 @@ button {
   color: var(--color-text);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-/* Settings Button */
-.settings-button {
+
+/* Help Button */
+.help-button {
   position: fixed;
   top: 10px;
-  right: 10px;
+  right: 70px; /* Positioned to the left of the settings button */
   width: 50px;
   height: 50px;
-  background-color: var(--color-background);
+  background-color: var(--background-color);
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -253,16 +265,17 @@ button {
   justify-content: center;
 }
 
-.settings-button i {
+.help-button i {
   color: var(--color-text-subtle);
   transition: color 0.3s ease;
+  font-size: 20px;
 }
 
-.settings-button:hover {
+.help-button:hover {
   background-color: var(--hover-color);
 }
 
-.settings-button:hover i {
+.help-button:hover i {
   color: var(--color-text);
 }
 
