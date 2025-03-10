@@ -27,6 +27,7 @@
   --plus-icon-color: #555 !important;
   --plus-button-color: #e1e1e1;
   --confirm-border-color: #aaaaaa;
+  --help-card-bg-color: rgba(0, 0, 0, 0.03);
 }
 
 /* 
@@ -73,8 +74,9 @@
   --input-color: #1a1d23;
   --modal-background-color: rgba(40, 44, 52, 0.9);
   --plus-icon-color: #abb2bf;
-  --plus-button-color: #282d35;
-  --confirm-border-color: #4e5563;
+  --plus-button-color: #282D35;
+  --confirm-border-color: #5c6370;
+  --help-card-bg-color: rgba(171, 178, 191, 0.05);
 }
 
 /**
@@ -96,7 +98,8 @@
   --modal-background-color: rgba(48, 52, 70, 0.9);
   --plus-icon-color: #c6d0f5;
   --plus-button-color: #333749;
-  --confirm-border-color: #51576d;
+  --confirm-border-color: #737994;
+  --help-card-bg-color: rgba(198, 208, 245, 0.05);
 }
 
 /* Catppuccin Macchiato - Higher contrast, rich colors */
@@ -111,7 +114,8 @@
   --modal-background-color: rgba(36, 39, 58, 0.9);
   --plus-icon-color: #cad3f5;
   --plus-button-color: #272a3d;
-  --confirm-border-color: #494d64;
+  --confirm-border-color: #6e738d;
+  --help-card-bg-color: rgba(202, 211, 245, 0.05);
 }
 
 /* Catppuccin Mocha - Highest contrast, deepest colors */
@@ -126,7 +130,8 @@
   --modal-background-color: rgba(30, 30, 46, 0.9);
   --plus-icon-color: #cdd6f4;
   --plus-button-color: #202032;
-  --confirm-border-color: #45475a;
+  --confirm-border-color: #6c7086;
+  --help-card-bg-color: rgba(205, 214, 244, 0.05);
 }
 
 /**
@@ -147,6 +152,7 @@
   --plus-icon-color: #eceff4;
   --plus-button-color: #323744;
   --confirm-border-color: #4c566a;
+  --help-card-bg-color: rgba(236, 239, 244, 0.05);
 }
 
 /**
@@ -160,11 +166,19 @@
   --color-text: #c9d1d9;
   --color-text-rgb: 201, 209, 217;
   --color-text-subtle: #555;
-  --accent-color: #15181e;
-  --hover-color: #1c1f24;
-  --input-color: #010409;
+  --accent-color: #161b22;
+  --hover-color: rgba(201, 209, 217, 0.068);
+  --input-color: #161b22;
   --modal-background-color: rgba(13, 17, 23, 0.9);
   --plus-icon-color: #c9d1d9;
   --plus-button-color: #10141a;
   --confirm-border-color: #30363d;
+  --help-card-bg-color: rgba(201, 209, 217, 0.05);
+  --border-color: #30363d;
+}
+
+/* Custom select styling for GitHub theme */
+[data-theme="github"] .custom-select {
+  background-color: #161b22;
+  color: #c9d1d9;
 }

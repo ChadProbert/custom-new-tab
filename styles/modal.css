@@ -506,26 +506,6 @@ label {
   position: relative;
 }
 
-/* Scrollbar styling for the help modal */
-.help-modal-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.help-modal-content::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 10px 0;
-}
-
-.help-modal-content::-webkit-scrollbar-thumb {
-  background-color: var(--color-text-subtle);
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.help-modal-content::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-text);
-}
-
 .help-modal-content .close-button {
   position: absolute;
   top: 20px;
@@ -654,7 +634,7 @@ label {
 }
 
 .help-section .feature-box {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 0, 0, 0.03);
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
@@ -676,7 +656,7 @@ label {
 }
 
 .help-card {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: var(--help-card-bg-color);
   border-radius: 8px;
   padding: 18px;
   margin-bottom: 20px;
@@ -685,7 +665,7 @@ label {
 }
 
 .help-card:hover {
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: var(--hover-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -738,12 +718,13 @@ label {
 /* New feature callout */
 .feature-callout {
   display: flex;
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: var(--help-card-bg-color);
   border-radius: 10px;
-  padding: 20px;
-  margin: 30px 0;
-  border-left: 4px solid var(--color-text);
+  padding: 15px;
+  margin-bottom: 25px;
   align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .callout-icon {

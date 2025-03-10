@@ -43,6 +43,9 @@
   --plus-icon-color: #dadada;
   --plus-button-color: #111111;
   --confirm-border-color: #333;
+
+  /* Help Card Background Color */
+  --help-card-bg-color: rgba(255, 255, 255, 0.02);
 }
 
 /* 
