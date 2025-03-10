@@ -19,6 +19,7 @@ class ModalManager {
     this.shortcutList = document.getElementById("shortcutList");
     this.themeSelect = document.getElementById("themeSelect");
     this.resetButton = document.getElementById("resetSettings");
+    this.addButton = document.getElementById("addShortcut");
     this.modalContent = document.querySelector(".modal-content");
     this.commandsComponent = document.querySelector("commands-component");
 
@@ -170,9 +171,7 @@ class ModalManager {
   }
 
   /**
-   * Opens the settings modal and handles focus management.
-   * Closes any open search dialog, renders shortcuts, and sets focus
-   * on the appropriate element based on context.
+   * Opens the settings modal, initializes shortcuts, and handles focus management.
    */
   openSettingsModal() {
     // Close search dialog if it's open
@@ -187,6 +186,12 @@ class ModalManager {
     this.settingsModal.style.display = "flex";
     this.modalOverlay.classList.add("active"); // Activate background overlay
     this.renderShortcuts(); // Refresh shortcuts when opening modal
+
+    // Reset scroll position to top
+    this.modalContent = document.querySelector(".modal-content");
+    if (this.modalContent) {
+      this.modalContent.scrollTop = 0;
+    }
 
     // Focus based on context
     setTimeout(() => {
@@ -206,14 +211,14 @@ class ModalManager {
           this.themeSelect.focus();
         }
       }
-    }, 100); // A short delay to ensure the modal is fully rendered
 
-    this.checkModalScrollability();
+      // Initialize scrollability and shadow
+      this.checkModalScrollability();
+    }, 100); // A short delay to ensure the modal is fully rendered
   }
 
   /**
-   * Opens the help modal and handles any necessary cleanup.
-   * Closes any open search dialog before displaying the help modal.
+   * Opens the help modal and initializes its content.
    */
   openHelpModalHandler() {
     // Close search dialog if it's open
@@ -227,6 +232,24 @@ class ModalManager {
 
     this.helpModal.style.display = "flex";
     this.modalOverlay.classList.add("active");
+
+    // Reset scroll position in help modal
+    const helpModalContent = this.helpModal.querySelector(
+      ".help-modal-content"
+    );
+    if (helpModalContent) {
+      helpModalContent.scrollTop = 0;
+
+      // Always add scrollable class to get consistent styling
+      helpModalContent.classList.add("scrollable");
+    }
+
+    // Focus on close button for accessibility
+    if (this.closeHelpModalBtn) {
+      setTimeout(() => {
+        this.closeHelpModalBtn.focus();
+      }, 100);
+    }
   }
 
   /**
@@ -599,14 +622,21 @@ class ModalManager {
   }
 
   /**
-   * Checks if the modal should be scrollable based on the number of commands.
-   * Adds or removes the 'scrollable' class from the modal content.
+   * Checks if the modal content needs to be scrollable and adds the scrollable class.
    */
   checkModalScrollability() {
-    if (COMMANDS.size >= 8) {
-      this.modalContent.classList.add("scrollable");
-    } else {
-      this.modalContent.classList.remove("scrollable");
+    // Ensure we have the modal content reference
+    this.modalContent = document.querySelector(".modal-content");
+    if (this.modalContent) {
+      // Add scrollable class for tall content or many commands
+      if (
+        this.modalContent.scrollHeight > window.innerHeight * 0.8 ||
+        COMMANDS.size >= 8
+      ) {
+        this.modalContent.classList.add("scrollable");
+      } else {
+        this.modalContent.classList.remove("scrollable");
+      }
     }
   }
 }

@@ -23,7 +23,7 @@
 
   /* Typography */
   --font-family: "Poppins", sans-serif;
-  --font-size: clamp(16px, 1.6vw, 18px); /* Responsive font size */
+  --font-size: 18px; /* Fixed font size for desktop */
   --font-weight-bold: 700;
   --font-weight-normal: 500;
 
@@ -52,15 +52,21 @@
  * They establish the base appearance for the entire application.
  */
 html {
-  background-color: var(--color-background);
+  box-sizing: border-box;
   font-family: var(--font-family);
-  font-weight: var(--font-weight-normal);
   font-size: var(--font-size);
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
   line-height: 1.4;
 }
 
 body {
+  background-color: var(--color-background);
+  color: var(--color-text);
   margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
 }
 
 /**
@@ -75,10 +81,12 @@ main {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  overflow: hidden;
+  max-height: 100vh; /* Prevent vertical scrolling */
+  max-width: 100vw; /* Prevent horizontal scrolling */
+  overflow: hidden; /* Hide any overflow */
   padding: calc(var(--space) * 4) var(--space);
   position: relative;
-  width: 100vw;
+  width: 100%;
 }
 
 /**

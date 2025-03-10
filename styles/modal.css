@@ -9,8 +9,8 @@
 /**
  * MODAL OVERLAY
  * 
- * Semi-transparent background that covers the entire viewport when a modal is open.
- * Provides visual separation between the modal and the underlying content.
+ * The semi-transparent background that appears behind modals.
+ * Covers the entire viewport and helps focus attention on the modal content.
  */
 .modal-overlay {
   position: fixed;
@@ -18,13 +18,19 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--modal-background-color);
-  z-index: 999;
-  display: none; /* Hidden by default */
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1000;
+  display: none;
 }
 
+/**
+ * ACTIVE MODAL OVERLAY
+ * 
+ * When a modal is open, the overlay becomes visible with a subtle
+ * transparency to slightly dim the content underneath.
+ */
 .modal-overlay.active {
-  display: block; /* Show when modal is active */
+  display: block;
 }
 
 /**
@@ -58,6 +64,7 @@
   border-radius: var(--border-radius);
   max-width: 80%;
   width: 70%;
+  min-width: 600px; /* Set minimum width for desktop displays */
   position: relative;
   text-align: center;
   border: 1px solid var(--confirm-border-color);
@@ -109,12 +116,13 @@
   gap: 8px;
   font-size: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
 /* Warning hover effect for reset button */
 .reset-button:hover {
-  background-color: #ff3b30; /* Red warning color */
-  color: white;
+  background-color: var(--hover-color); /* Red warning color */
+  color: var(--color-text);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -291,63 +299,42 @@ label {
  * 
  * When a modal has a lot of content, it becomes scrollable while
  * maintaining a reasonable maximum height. This ensures the modal
- * doesn't exceed the viewport height on smaller screens.
+ * doesn't exceed the viewport height when resizing the window.
+ * 
+ * The scrollbar is hidden for a cleaner interface.
  */
 .modal-content.scrollable {
   max-height: 80vh;
+  min-height: 400px; /* Minimum height for desktop */
   overflow-y: auto;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: rgba(127, 127, 127, 0.2) transparent; /* Firefox - using a subtle color */
-  padding-right: 20px; /* Prevent content shift when scrollbar appears */
+  scrollbar-width: none; /* Hide scrollbar */
+  padding-right: 20px; /* Padding to prevent content from touching the edge */
+  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
-/**
- * CUSTOM SCROLLBAR (WebKit browsers)
- * 
- * Provides a minimal, elegant scrollbar design for Chrome, Safari, and Edge.
- * Replaces the default browser scrollbar with a thinner, more modern version.
- */
-
-/* Scrollbar width and basic appearance */
+/* Hide scrollbar in WebKit browsers (Chrome, Safari, Edge) */
 .modal-content.scrollable::-webkit-scrollbar {
-  width: 5px; /* Slightly narrower for a cleaner look */
-}
-
-/* Scrollbar track (the background) */
-.modal-content.scrollable::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 15px 0;
-}
-
-/* Scrollbar thumb (the draggable part) */
-.modal-content.scrollable::-webkit-scrollbar-thumb {
-  background-color: rgba(
-    var(--color-text-rgb, 127, 127, 127),
-    0.2
-  ); /* Using opacity for a subtler look */
-  border-radius: 10px;
-  transition: background-color 0.3s ease;
-}
-
-/* Scrollbar thumb hover state */
-.modal-content.scrollable::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(
-    var(--color-text-rgb, 127, 127, 127),
-    0.5
-  ); /* More visible on hover but still subtle */
-}
-
-/* Hide scrollbar arrows/buttons */
-.modal-content.scrollable::-webkit-scrollbar-button {
   display: none;
 }
 
-/* Hide scrollbar corner */
-.modal-content.scrollable::-webkit-scrollbar-corner {
-  background: transparent;
+/* Apply the same styles to help modal content when scrollable */
+.help-modal-content.scrollable {
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
-/* Confirmation Modal */
+.help-modal-content.scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+/**
+ * CONFIRMATION MODAL
+ * 
+ * A smaller, focused modal for confirming user actions like deletion or reset.
+ * Features a simple layout with a message and two buttons (cancel/confirm).
+ */
 .confirm-modal {
   display: none; /* Hidden by default */
   position: fixed;
@@ -368,6 +355,7 @@ label {
   border: 1px solid var(--confirm-border-color);
   text-align: center;
   max-width: 380px;
+  min-width: 300px; /* Set minimum width for desktop */
   width: 90%;
   transition: border-color 0.3s ease, background 0.3s ease;
 }
@@ -471,11 +459,6 @@ label {
   color: white;
 }
 
-.delete-button:hover {
-  background-color: #ff3b30;
-  color: white;
-}
-
 /* Input style toggle for editing */
 .shortcut-item input[readonly] {
   background-color: transparent;
@@ -509,6 +492,7 @@ label {
   border: 1px solid var(--confirm-border-color);
   text-align: left;
   max-width: 550px;
+  min-width: 500px; /* Set minimum width for desktop */
   width: 85%;
   transition: border-color 0.3s ease, background 0.3s ease;
   box-sizing: border-box;

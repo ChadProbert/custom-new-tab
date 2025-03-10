@@ -53,12 +53,11 @@ class Commands extends HTMLElement {
 
   /**
    * Determines the number of columns based on screen width.
-   * @returns {number} The number of columns to display (1, 2, or 4)
+   * @returns {number} The number of columns to display (2 or 4)
    */
   getColumns() {
     if (window.innerWidth >= 900) return 4;
-    if (window.innerWidth >= 500) return 2;
-    return 1;
+    return 2; // Default to 2 columns for all desktop widths below 900px
   }
 
   /**
@@ -75,13 +74,13 @@ class Commands extends HTMLElement {
 
   /**
    * Appends the dynamic "+" button to the commands grid.
-   * Sizes the button to fill the remaining space in the last row.
+   * Sizes the button appropriately based on column layout.
    * @param {HTMLElement} commands - The commands container element
    * @param {number} count - The number of commands
    * @param {number} columns - The number of columns
    */
   addDynamicButton(commands, count, columns) {
-    const CELL_HEIGHT = 60; // Base height per cell (adjust as needed)
+    const CELL_HEIGHT = 60; // Base height per cell
     const lastRowItems = count % columns;
     const remainingCells = columns - lastRowItems;
 
@@ -95,9 +94,19 @@ class Commands extends HTMLElement {
       // Dispatch a custom event to indicate we want to focus on the new shortcut inputs
       document.dispatchEvent(new CustomEvent("focusNewShortcut"));
     });
-    // Extend the button to fill all empty cells in the row.
-    button.style.height = `${remainingCells * CELL_HEIGHT}px`;
-    button.style.width = "99%";
+
+    // Adjust height based on column layout
+    // For 4-column layout, allow the button to fill remaining cells
+    // For 2-column layout, keep the height fixed to match command items
+    if (columns === 4) {
+      // In 4-column layout, allow the button to fill remaining cells (original behavior)
+      button.style.height = `${remainingCells * CELL_HEIGHT + 1}px`;
+    } else {
+      // In 2-column layout, keep height fixed to match command items
+      button.style.height = `${CELL_HEIGHT - 1}px`;
+    }
+
+    button.style.width = "99.5%";
 
     commands.append(button);
   }

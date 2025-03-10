@@ -10,26 +10,21 @@
  * COMMANDS COMPONENT STYLES
  * 
  * The commands component displays shortcut keys in a responsive grid layout
- * that adapts from 1 to 4 columns based on the viewport width.
+ * that adapts from 2 to 4 columns based on the viewport width.
+ * Optimized for desktop use with a minimum width.
  */
 .commands {
   border-radius: var(--border-radius);
   column-gap: 0;
-  columns: 1; /* Default to single column on small screens */
+  columns: 2; /* Start with 2 columns by default */
   list-style: none;
   margin: 0 auto;
-  max-width: 10rem;
+  max-width: 25rem;
+  min-width: 20rem; /* Set minimum width for desktop */
   overflow: hidden;
   padding: 0;
-  width: 100vw;
-}
-
-/* Medium screens: 2 columns of commands */
-@media (min-width: 500px) {
-  .commands {
-    columns: 2;
-    max-width: 25rem;
-  }
+  width: 100%; /* Use percentage instead of viewport width */
+  max-height: 80vh; /* Ensure it doesn't exceed viewport height */
 }
 
 /* Large screens: 4 columns of commands */
@@ -154,10 +149,12 @@
   transition: all 0.3s ease;
   margin: 1px;
   padding: var(--space);
-  border-radius: var(--border-radius);
-  aspect-ratio: 1;
+  border-radius: 0; /* Remove border radius */
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-width: 80px; /* Set minimum width for desktop */
+  min-height: 0; /* Allow height to be controlled by JS */
+  box-sizing: border-box;
 }
 
 .dynamic-button:hover {
@@ -208,7 +205,7 @@ button {
 .suggestions {
   align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Default to row layout for desktop */
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
@@ -258,12 +255,6 @@ button {
   color: var(--color-background);
 }
 
-@media (min-width: 700px) {
-  .suggestions {
-    flex-direction: row;
-  }
-}
-
 /* Footer */
 .footer-container {
   position: absolute;
@@ -277,6 +268,7 @@ button {
   color: var(--color-text-subtle);
   padding: 8px 16px;
   border-radius: 4px;
+  min-width: 200px; /* Ensure a minimum width on desktop */
 }
 
 .footer-text {
