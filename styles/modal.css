@@ -485,31 +485,62 @@ label {
   z-index: 2000;
 }
 
+/**
+ * HELP MODAL CONTENT
+ * 
+ * Special styling for the help documentation inside the modal.
+ */
 .help-modal-content {
   background: var(--color-background);
-  padding: 40px 50px;
+  padding: 40px;
   border-radius: var(--border-radius);
   border: 1px solid var(--confirm-border-color);
   text-align: left;
-  max-width: 550px;
-  min-width: 500px; /* Set minimum width for desktop */
-  width: 85%;
+  max-width: 70%; /* Reduced from original width */
+  width: 70%;
+  min-width: 500px;
+  max-height: 80vh; /* Limit height to 80% of viewport height */
+  overflow-y: auto; /* Add scrolling for overflow content */
   transition: border-color 0.3s ease, background 0.3s ease;
   box-sizing: border-box;
   position: relative;
 }
 
+/* Scrollbar styling for the help modal */
+.help-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.help-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 10px 0;
+}
+
+.help-modal-content::-webkit-scrollbar-thumb {
+  background-color: var(--color-text-subtle);
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.help-modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text);
+}
+
 .help-modal-content .close-button {
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 20px;
+  right: 25px;
   font-size: 24px;
   color: var(--color-text-subtle);
   cursor: pointer;
-  transition: color 0.3s ease;
-  background: transparent;
-  border: none;
-  padding: 0;
+  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: transparent;
 }
 
 .help-modal-content .close-button:hover {
@@ -517,33 +548,224 @@ label {
 }
 
 .help-modal-content h2 {
-  margin-top: 0;
-  margin-bottom: 25px;
   font-size: 28px;
-  font-weight: 600;
-  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
   color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.help-modal-content h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 60px;
+  background-color: var(--color-text-subtle);
 }
 
 .help-section {
-  margin: 10px 0;
+  padding-right: 15px;
 }
 
 .help-section h3 {
-  font-size: 18px;
-  margin-top: 25px;
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 18px;
   color: var(--color-text);
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.3em;
+}
+
+.help-section h4 {
+  margin-top: 22px;
+  margin-bottom: 12px;
+  color: var(--color-text);
+  font-weight: var(--font-weight-normal);
+  font-size: 1.15em;
+  position: relative;
+  padding-left: 16px;
+}
+
+.help-section h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 12px;
+  width: 3px;
+  background-color: var(--color-text-subtle);
+  border-radius: 3px;
 }
 
 .help-section p {
-  font-size: 15px;
-  line-height: 1.6;
   margin-bottom: 15px;
+  line-height: 1.6;
   color: var(--color-text-subtle);
 }
 
-.help-section i {
+.help-section ul,
+.help-section ol {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  padding-left: 20px;
+  color: var(--color-text-subtle);
+}
+
+.help-section li {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.help-section li strong {
   color: var(--color-text);
+}
+
+.help-section a {
+  color: var(--color-text);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+  border-bottom: 1px dotted var(--color-text-subtle);
+}
+
+.help-section a:hover {
+  border-bottom: 1px solid var(--color-text);
+}
+
+.help-section code {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.help-section strong {
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+}
+
+.help-section .feature-box {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 3px solid var(--color-text-subtle);
+  box-shadow: none;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  font-size: 0.8em;
+}
+
+.help-card {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.help-card:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.help-card h4 {
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.help-card h4::before {
+  display: none;
+}
+
+.help-card p:last-child {
+  margin-bottom: 0;
+}
+
+.shortcut-example {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.shortcut-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.07);
+  color: var(--color-text);
+  border-radius: 6px;
+  padding: 8px;
+  margin-right: 10px;
+  min-width: 20px;
+  min-height: 20px;
+  font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.shortcut-description {
+  color: var(--color-text-subtle);
+}
+
+.help-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.05);
+  margin: 30px 0;
+}
+
+/* New feature callout */
+.feature-callout {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px 0;
+  border-left: 4px solid var(--color-text);
+  align-items: center;
+}
+
+.callout-icon {
+  margin-right: 16px;
+  font-size: 2em;
+  color: var(--color-text);
+}
+
+.callout-content {
+  flex: 1;
+}
+
+.callout-content h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  padding-left: 0;
+}
+
+.callout-content h4::before {
+  display: none;
+}
+
+.callout-content p {
+  margin-bottom: 0;
 }
