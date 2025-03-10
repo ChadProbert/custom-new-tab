@@ -1,20 +1,44 @@
 // Configuration for the new tab page
+
+/**
+ * Global configuration object for the new tab page.
+ * Contains settings for command delimiters, search templates, and display options.
+ * @type {Object}
+ */
 const CONFIG = {
+  /** Delimiter character for path-based commands (e.g., r/subreddit) */
   commandPathDelimiter: "/",
+
+  /** Delimiter character for search commands (e.g., g search term) */
   commandSearchDelimiter: " ",
-  // Controls search engine.
-  // DuckDuckGo: https://duckduckgo.com/?q={}
+
+  /**
+   * Default search engine template.
+   * The {} placeholder will be replaced with the search query.
+   * Options:
+   * - DuckDuckGo: https://duckduckgo.com/?q={}
+   * - Google: https://www.google.com/search?q={}
+   */
   defaultSearchTemplate: "https://www.google.com/search?q={}",
+
+  /** Whether links should open in new tabs */
   openLinksInNewTab: true,
+
+  /** Maximum number of search suggestions to display */
   suggestionLimit: 4,
 };
 
-// Command definitions for keyboard shortcuts
+/**
+ * Command definitions for keyboard shortcuts.
+ * Each command is defined with a key (shortcut) and an object containing:
+ * - name: The display name for the shortcut
+ * - url: The URL to navigate to
+ * - searchTemplate (optional): The search path template with {} placeholder
+ * - suggestions (optional): Array of search suggestions related to this command
+ * @type {Map<string, Object>}
+ */
 const COMMANDS = new Map([
-  [
-    "g",
-    { name: "Gmail", url: "https://mail.google.com/mail/u/0/#inbox" },
-  ],
+  ["g", { name: "Gmail", url: "https://mail.google.com/mail/u/0/#inbox" }],
   // Column 1
   [
     "y",
@@ -48,10 +72,7 @@ const COMMANDS = new Map([
     "c",
     {
       name: "Cogrammer",
-      suggestions: [
-        "c/reviewer/completed/",
-        "c/reviewer/returned_reviews/",
-      ],
+      suggestions: ["c/reviewer/completed/", "c/reviewer/returned_reviews/"],
       url: "https://hyperiondev.cogrammar.com/",
     },
   ],
@@ -88,13 +109,19 @@ const COMMANDS = new Map([
   ],
 ]);
 
-// Function to save commands to localStorage
+/**
+ * Saves the current commands to localStorage for persistence.
+ * Converts the Map to a JSON object for storage.
+ */
 function saveCommands() {
   const commandsObj = Object.fromEntries(COMMANDS);
   localStorage.setItem("commands", JSON.stringify(commandsObj));
 }
 
-// Function to load commands from localStorage
+/**
+ * Loads saved commands from localStorage.
+ * Restores the commands Map from the saved JSON.
+ */
 function loadCommands() {
   const commandsStr = localStorage.getItem("commands");
   if (commandsStr) {
@@ -103,4 +130,4 @@ function loadCommands() {
       COMMANDS.set(key, value);
     }
   }
-} 
+}

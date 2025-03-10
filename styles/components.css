@@ -1,10 +1,21 @@
-/* Components CSS */
+/**
+ * Components CSS
+ * 
+ * This file contains styling for all reusable UI components in the application.
+ * It defines the visual appearance, layout, and interactive states for elements
+ * such as commands, buttons, inputs, and other interface components.
+ */
 
-/* Commands Component */
+/**
+ * COMMANDS COMPONENT STYLES
+ * 
+ * The commands component displays shortcut keys in a responsive grid layout
+ * that adapts from 1 to 4 columns based on the viewport width.
+ */
 .commands {
   border-radius: var(--border-radius);
   column-gap: 0;
-  columns: 1;
+  columns: 1; /* Default to single column on small screens */
   list-style: none;
   margin: 0 auto;
   max-width: 10rem;
@@ -13,6 +24,7 @@
   width: 100vw;
 }
 
+/* Medium screens: 2 columns of commands */
 @media (min-width: 500px) {
   .commands {
     columns: 2;
@@ -20,6 +32,7 @@
   }
 }
 
+/* Large screens: 4 columns of commands */
 @media (min-width: 900px) {
   .commands {
     columns: 4;
@@ -27,6 +40,12 @@
   }
 }
 
+/**
+ * COMMAND ITEM STYLES
+ * 
+ * Individual command items display a keyboard shortcut and its associated name.
+ * They feature interactive hover and focus states for better user feedback.
+ */
 .command {
   display: flex;
   gap: var(--space);
@@ -34,12 +53,18 @@
   padding: var(--space);
   position: relative;
   text-decoration: none;
+  transition: background 0.2s ease;
 }
 
+/* Hover state for command items */
 .command:hover {
   background: var(--hover-color);
 }
 
+/* 
+ * Subtle visual effect for command items
+ * Adds a faint background layer that becomes more visible on hover/focus
+ */
 .command::after {
   background: var(--color-text-subtle);
   content: " ";
@@ -49,26 +74,43 @@
   transition: opacity var(--transition-speed);
 }
 
+/* Increase opacity of the effect on hover/focus */
 .command:where(:focus, :hover)::after {
   opacity: 0.1;
 }
 
+/**
+ * COMMAND COMPONENTS
+ * 
+ * Each command has two parts: a key (shortcut) and a name (description).
+ * These are styled differently to distinguish between them.
+ */
+
+/* The keyboard shortcut key */
 .key {
   color: var(--color-text);
   display: inline-block;
   text-align: center;
-  width: 3ch;
+  width: 3ch; /* Fixed width for alignment */
 }
 
+/* The command name/description */
 .name {
   color: var(--color-text-subtle);
   transition: color var(--transition-speed);
 }
 
+/* Highlight the name on hover/focus for better readability */
 .command:where(:focus, :hover) .name {
   color: var(--color-text);
 }
 
+/**
+ * SETTINGS BUTTON
+ * 
+ * The settings button opens the settings modal when clicked.
+ * It's fixed at the top-right corner of the viewport for easy access.
+ */
 .settings-button {
   position: fixed;
   top: 10px;
@@ -86,6 +128,7 @@
   justify-content: center;
 }
 
+/* Icon inside the settings button */
 .settings-button i {
   color: var(--color-text-subtle);
   transition: color 0.3s ease;

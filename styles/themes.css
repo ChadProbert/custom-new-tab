@@ -1,9 +1,23 @@
-/* Theme Definitions */
+/**
+ * Theme Definitions 
+ * 
+ * This file defines all available themes for the application using CSS variables.
+ * Each theme is implemented using the [data-theme="theme-name"] attribute selector
+ * which gets applied to the document root element when the theme is selected.
+ * 
+ * The themes override the default variables defined in style.css.
+ */
 
-/* Light theme */
+/**
+ * Light Theme
+ * 
+ * A clean, bright theme with high contrast and subtle shadows.
+ * Features a light gray background with black text and light blue accents.
+ */
 [data-theme="light"] {
   --color-background: #e9e9e9;
   --color-text: #000000;
+  --color-text-rgb: 0, 0, 0;
   --color-text-subtle: #555;
   --accent-color: #dadada;
   --hover-color: #cdcdcd;
@@ -15,7 +29,12 @@
   --confirm-border-color: #aaaaaa;
 }
 
-/* Light theme input focus styles */
+/* 
+ * Light Theme Form Element Styles
+ * 
+ * Special focus styles for the light theme to ensure good contrast
+ * and visual feedback when interacting with form elements.
+ */
 [data-theme="light"] input:focus,
 [data-theme="light"] select:focus,
 [data-theme="light"] .custom-select:focus {
@@ -24,24 +43,30 @@
   box-shadow: inset 0 0 0 2px black;
 }
 
-/* Light theme specific styles for new shortcut inputs */
+/* Special focus styles for new shortcut inputs in light theme */
 [data-theme="light"] .shortcut-item:last-child input:focus {
   border: 1px solid black;
   outline: none;
   box-shadow: inset 0 0 0 2px black;
 }
 
-/* Light theme input hover styles */
+/* Light theme hover styles for interactive form elements */
 [data-theme="light"] input:hover:not([readonly]),
 [data-theme="light"] select:hover,
 [data-theme="light"] .custom-select:hover {
   border-color: black;
 }
 
-/* One Dark Pro Theme */
+/**
+ * One Dark Pro Theme
+ * 
+ * Inspired by the popular code editor theme.
+ * Features a dark blue-gray color scheme with subtle blue accents.
+ */
 [data-theme="one-dark-pro"] {
   --color-background: #252931;
   --color-text: #abb2bf;
+  --color-text-rgb: 171, 178, 191;
   --color-text-subtle: #68707d;
   --accent-color: #3e4551;
   --hover-color: #424956;
@@ -52,10 +77,18 @@
   --confirm-border-color: #4e5563;
 }
 
-/* Catppuccin Frappe */
+/**
+ * Catppuccin Themes
+ * 
+ * A collection of pastel themes inspired by the popular Catppuccin color scheme.
+ * Available in multiple variants with different color intensities.
+ */
+
+/* Catppuccin Frappe - Medium contrast, softer colors */
 [data-theme="catppuccin-frappe"] {
   --color-background: #303446;
   --color-text: #c6d0f5;
+  --color-text-rgb: 198, 208, 245;
   --color-text-subtle: #6b7188;
   --accent-color: #494d63;
   --hover-color: #4d5067;
@@ -66,10 +99,11 @@
   --confirm-border-color: #51576d;
 }
 
-/* Catppuccin Macchiato */
+/* Catppuccin Macchiato - Higher contrast, rich colors */
 [data-theme="catppuccin-macchiato"] {
   --color-background: #24273a;
   --color-text: #cad3f5;
+  --color-text-rgb: 202, 211, 245;
   --color-text-subtle: #5c637b;
   --accent-color: #3e425b;
   --hover-color: #41455e;
@@ -80,10 +114,11 @@
   --confirm-border-color: #494d64;
 }
 
-/* Catppuccin Mocha */
+/* Catppuccin Mocha - Highest contrast, deepest colors */
 [data-theme="catppuccin-mocha"] {
   --color-background: #1e1e2e;
   --color-text: #cdd6f4;
+  --color-text-rgb: 205, 214, 244;
   --color-text-subtle: #505772;
   --accent-color: #38394e;
   --hover-color: #3a3c51;
@@ -94,10 +129,16 @@
   --confirm-border-color: #45475a;
 }
 
-/* Nord */
+/**
+ * Nord Theme
+ * 
+ * Based on the Nord color palette, featuring arctic-inspired colors.
+ * A blue-tinted dark theme with cool accents and good contrast.
+ */
 [data-theme="nord"] {
   --color-background: #2e3440;
   --color-text: #eceff4;
+  --color-text-rgb: 236, 239, 244;
   --color-text-subtle: #7c7f87;
   --accent-color: #464e62;
   --hover-color: #4b5366;
@@ -108,10 +149,16 @@
   --confirm-border-color: #4c566a;
 }
 
-/* GitHub Dark */
+/**
+ * GitHub Dark Theme
+ * 
+ * Inspired by GitHub's dark mode interface.
+ * Features a deep, almost black background with high contrast text.
+ */
 [data-theme="github"] {
   --color-background: #0d1117;
   --color-text: #c9d1d9;
+  --color-text-rgb: 201, 209, 217;
   --color-text-subtle: #555;
   --accent-color: #15181e;
   --hover-color: #1c1f24;

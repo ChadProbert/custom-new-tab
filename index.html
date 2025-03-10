@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<!-- 
+  Celerity - New Tab Page
+  
+  This document creates a customisable new tab page with keyboard shortcuts,
+  search functionality, and theme customisation. The interface features:
+  
+  1. A grid of keyboard shortcuts for quick navigation to websites
+  2. Search functionality that works with custom shortcuts or direct URLs
+  3. Theme customisation with multiple design options
+  4. Settings management through a modal interface
+  5. Help documentation for new users
+-->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -7,30 +19,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>New tab</title>
 
+    <!-- 
+      External Font Resources
+      - Poppins: Primary UI font with only essential weights (500 normal, 700 bold)
+      
+      Optimised to include only the weights actually used in the application.
+      The preconnect links improve performance by establishing early connections
+      to the font providers.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,500;1,700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Font Awesome 5 -->
+    <!-- 
+      Font Awesome Icons
+      Provides the icon set used throughout the UI for buttons and visual elements.
+    -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="icon" href="images/main.svg" type="image/x-icon" />
 
-    <!-- CSS Styles -->
+    <!-- 
+      CSS Stylesheets
+      - style.css: Core styles, variables, and layout
+      - components.css: UI component styles
+      - modal.css: Modal dialogs and forms
+      - themes.css: Theme definitions and customisations
+    -->
     <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./styles/components.css" />
     <link rel="stylesheet" href="./styles/modal.css" />
     <link rel="stylesheet" href="./styles/themes.css" />
 
-    <!-- JavaScript Files -->
+    <!-- 
+      Core Configuration Script
+      Loaded early to define global configuration and command settings
+      before the DOM is fully loaded.
+    -->
     <script src="./js/config.js"></script>
   </head>
   <body>
+    <!-- 
+      Template: Commands Grid
+      
+      This template defines the layout and styling for the grid of keyboard shortcuts.
+      The grid is responsive and adapts from 1 column on small screens to 4 columns
+      on large screens. Each command item features a key and name with hover effects.
+      
+      The template also includes styles for the settings and help buttons.
+    -->
     <template id="commands-template">
       <style>
         .commands {
@@ -163,6 +205,13 @@
       </nav>
     </template>
 
+    <!-- 
+      Template: Command Item
+      
+      This template defines the structure of each individual command shortcut item.
+      Each item contains a key (the keyboard shortcut) and a name (the destination).
+      These items are generated dynamically from the user's saved shortcuts.
+    -->
     <template id="command-template">
       <li>
         <a class="command" rel="noopener noreferrer">
@@ -172,6 +221,14 @@
       </li>
     </template>
 
+    <!-- 
+      Template: Search Interface
+      
+      This template defines the search dialog that appears when users start typing.
+      It includes an input field for queries and a suggestions list that displays
+      matching shortcuts or search suggestions. The search interface supports
+      keyboard navigation and provides visual feedback for selected items.
+    -->
     <template id="search-template">
       <style>
         input,
@@ -285,6 +342,14 @@
       </dialog>
     </template>
 
+    <!-- 
+      Templates: Search Suggestion and Match Highlighting
+      
+      These templates define the structure of search suggestions and how
+      matching text is highlighted within suggestions. The suggestion-template
+      creates a button for each suggestion, while the match-template defines
+      how matched text is styled differently.
+    -->
     <template id="suggestion-template">
       <li>
         <button class="suggestion" type="button"></button>
@@ -295,19 +360,36 @@
       <span class="match"></span>
     </template>
 
+    <!-- 
+      Main Content Area
+      
+      This section contains the primary UI components:
+      1. Settings button - Opens the settings modal
+      2. Help button - Opens the help documentation
+      3. Commands component - Displays the grid of shortcuts
+      4. Search component - Handles search functionality
+      5. Footer with branding link
+    -->
     <main>
-      <!-- Settings Button -->
+      <!-- Settings Button - Opens the settings modal -->
       <button class="settings-button" id="openModal">
         <i class="fa-solid fa-sliders"></i>
       </button>
 
-      <!-- Help Button -->
+      <!-- Help Button - Opens the help documentation -->
       <button class="help-button" id="openHelp">
         <i class="fa-solid fa-circle-question"></i>
       </button>
 
+      <!-- 
+        Custom Web Components 
+        These components are defined in separate JavaScript files
+        and provide the core functionality of the application.
+      -->
       <commands-component></commands-component>
       <search-component></search-component>
+
+      <!-- Footer with branding link -->
       <a
         href="https://chadprobert.github.io/"
         target="_blank"
@@ -319,14 +401,29 @@
       </a>
     </main>
 
-    <!-- Custom Modal -->
+    <!-- 
+      Settings Modal System
+      
+      This section defines the settings modal that allows users to:
+      1. Change the visual theme
+      2. Reset settings to defaults
+      3. Manage keyboard shortcuts
+      
+      The modal appears when the settings button is clicked and
+      disappears when the close button is clicked or when clicking
+      outside the modal.
+    -->
     <div class="modal-overlay" id="modalOverlay"></div>
     <div class="custom-modal" id="settingsModal">
       <div class="modal-content">
         <span class="close-button" id="closeModal">&times;</span>
         <h2>Settings</h2>
 
-        <!-- Theme Selection -->
+        <!-- 
+          Theme Selection Section
+          Allows users to choose from various visual themes
+          using a custom styled select dropdown.
+        -->
         <div class="theme-section">
           <label for="themeSelect">Choose Theme:</label>
           <div class="custom-select-wrapper">
@@ -346,7 +443,11 @@
           </div>
         </div>
 
-        <!-- Reset Button -->
+        <!-- 
+          Reset Button Section
+          Allows users to reset all settings and shortcuts to default values.
+          Displays a confirmation dialog before resetting.
+        -->
         <div class="reset-section">
           <button id="resetSettings" class="reset-button">
             <i class="fa-solid fa-rotate-left"></i>
@@ -354,7 +455,12 @@
           </button>
         </div>
 
-        <!-- Shortcut Manager -->
+        <!-- 
+          Shortcut Manager Section
+          Displays a dynamic list of keyboard shortcuts that users can
+          edit, delete, or add to. Each shortcut has a key (the keyboard
+          shortcut) and a value (the URL to navigate to).
+        -->
         <div class="shortcut-section">
           <h3>Keyboard Shortcuts</h3>
 
@@ -365,7 +471,14 @@
       </div>
     </div>
 
-    <!-- Custom Confirm Modal -->
+    <!-- 
+      Confirmation Modal
+      
+      This modal appears when a user action requires confirmation,
+      such as resetting settings or deleting a shortcut. It displays
+      a message and offers Cancel and OK buttons. The appearance of
+      the OK button changes based on the action type.
+    -->
     <div id="confirmModal" class="confirm-modal">
       <div class="confirm-modal-content">
         <p class="confirm-message">Are you sure?</p>
@@ -376,13 +489,20 @@
       </div>
     </div>
 
-    <!-- Help Modal -->
+    <!-- 
+      Help Modal
+      
+      This modal provides documentation and instructions for using
+      the application. It includes sections on keyboard shortcuts,
+      managing settings, adding new shortcuts, searching, and themes.
+      The modal appears when the help button is clicked.
+    -->
     <div id="helpModal" class="help-modal">
       <div class="help-modal-content">
         <button class="close-button" id="closeHelpModal">&times;</button>
         <h2>Help Guide</h2>
 
-        <!-- Help Content -->
+        <!-- Help sections with feature explanations -->
         <div class="help-section">
           <h3>Keyboard Shortcuts</h3>
           <p>
@@ -414,7 +534,15 @@
       </div>
     </div>
 
-    <!-- JavaScript Components -->
+    <!-- 
+      JavaScript Components and Core Functionality
+      
+      These scripts implement the application's behavior:
+      - commands.js: Handles the keyboard shortcut grid
+      - search.js: Implements the search functionality
+      - modal.js: Manages modal dialogs and settings
+      - theme.js: Handles theme switching and persistence
+    -->
     <script src="./js/components/commands.js"></script>
     <script src="./js/components/search.js"></script>
     <script src="./js/modal.js"></script>

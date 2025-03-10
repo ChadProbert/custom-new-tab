@@ -1,4 +1,12 @@
+/**
+ * Commands component for displaying and managing keyboard shortcuts.
+ * Handles the rendering and layout of command shortcuts in a responsive grid.
+ */
 class Commands extends HTMLElement {
+  /**
+   * Initializes the Commands component and sets up event listeners.
+   * Creates a shadow DOM and renders the initial commands layout.
+   */
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -7,6 +15,11 @@ class Commands extends HTMLElement {
     window.addEventListener("resize", () => this.render());
   }
 
+  /**
+   * Renders the commands grid with all shortcuts.
+   * Creates a column layout based on screen width and populates with command shortcuts.
+   * Also adds a dynamic "+" button when appropriate.
+   */
   render() {
     this.shadowRoot.innerHTML = "";
     const template = document.getElementById("commands-template");
@@ -38,20 +51,35 @@ class Commands extends HTMLElement {
     this.shadowRoot.append(clone);
   }
 
-  // Determine the number of columns based on screen width.
+  /**
+   * Determines the number of columns based on screen width.
+   * @returns {number} The number of columns to display (1, 2, or 4)
+   */
   getColumns() {
     if (window.innerWidth >= 900) return 4;
     if (window.innerWidth >= 500) return 2;
     return 1;
   }
 
-  // Check if the last row is partially filled.
+  /**
+   * Checks if the dynamic "+" button should be added.
+   * Only adds the button if the last row has space.
+   * @param {number} count - The number of commands
+   * @param {number} columns - The number of columns
+   * @returns {boolean} True if the button should be added
+   */
   shouldAddButton(count, columns) {
     const lastRowItems = count % columns;
     return lastRowItems !== 0; // Only add button if there's space in the last row.
   }
 
-  // Append the dynamic button and set its height to fill the empty cells.
+  /**
+   * Appends the dynamic "+" button to the commands grid.
+   * Sizes the button to fill the remaining space in the last row.
+   * @param {HTMLElement} commands - The commands container element
+   * @param {number} count - The number of commands
+   * @param {number} columns - The number of columns
+   */
   addDynamicButton(commands, count, columns) {
     const CELL_HEIGHT = 60; // Base height per cell (adjust as needed)
     const lastRowItems = count % columns;

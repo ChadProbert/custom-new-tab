@@ -1,29 +1,56 @@
-/* VARIABLES */
+/**
+ * Main stylesheet for the new tab page
+ * 
+ * This file contains the base styles, CSS custom properties (variables)
+ * and core layout structure for the application.
+ */
 
+/* 
+ * GLOBAL CSS VARIABLES
+ * 
+ * These variables define the theme colors, spacing, typography, and other
+ * design tokens used throughout the application. They are referenced by 
+ * all other CSS files and allow for an easier implementation of dynamic 
+ * theming.
+ */
 :root {
+  /* Layout & Appearance */
   --border-radius: 16px;
-  /* Old value #21272A */
   --color-background: #0d0d0d;
   --color-text-subtle: #5e5e5e;
   --color-text: #fff;
+  --color-text-rgb: 255, 255, 255; /* RGB values for rgba functions */
+
+  /* Typography */
   --font-family: "Poppins", sans-serif;
-  --font-size: clamp(16px, 1.6vw, 18px);
+  --font-size: clamp(16px, 1.6vw, 18px); /* Responsive font size */
   --font-weight-bold: 700;
   --font-weight-normal: 500;
-  --space: 1rem;
+
+  /* Spacing & Animation */
+  --space: 1rem; /* Base spacing unit */
   --transition-speed: 200ms;
+
+  /* Interactive Element Colors */
   --accent-color: #090909;
   --hover-color: #222222;
   --button-color: #dadada;
   --input-color: #1f1f1f;
   --border-color: #55555500;
-  --modal-background-color: rgba(0, 0, 0, 0.5);
+
+  /* Modal & Overlay */
+  --modal-background-color: rgba(0, 0, 0, 0.9);
   --plus-icon-color: #dadada;
   --plus-button-color: #111111;
   --confirm-border-color: #333;
 }
 
-/* Base Styles */
+/* 
+ * BASE ELEMENT STYLES
+ * 
+ * These are the foundational styles for HTML elements.
+ * They establish the base appearance for the entire application.
+ */
 html {
   background-color: var(--color-background);
   font-family: var(--font-family);
@@ -36,6 +63,12 @@ body {
   margin: 0;
 }
 
+/**
+ * LAYOUT STRUCTURE
+ * 
+ * The main container is set up as a centered flex layout
+ * that takes up the full viewport height.
+ */
 main {
   align-items: center;
   box-sizing: border-box;
@@ -48,8 +81,20 @@ main {
   width: 100vw;
 }
 
+/**
+ * MEDIA QUERIES & SYSTEM PREFERENCES
+ * 
+ * Support for light mode using the prefers-color-scheme media query.
+ * This automatically switches to light theme if the system is using light mode.
+ */
 @media (prefers-color-scheme: light) {
   :root {
+    /* 
+     * Light Theme Variables
+     * 
+     * These values override the default dark theme when the user's
+     * system is set to light mode and the theme is set to "light".
+     */
     [data-theme="light"] {
       --color-background: #e9e9e9;
       --color-text: #000000;
@@ -59,6 +104,13 @@ main {
       --input-color: #e4e3e3;
       --modal-background-color: rgba(0, 0, 0, 0.5);
     }
+
+    /* 
+     * Light Theme Focus Styles
+     * 
+     * Special focus styles for form elements in light mode.
+     * This creates a distinct focus effect for better accessibility.
+     */
     [data-theme="light"] input:focus,
     [data-theme="light"] select:focus {
       /* Creates the inner border effect */
