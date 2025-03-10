@@ -619,13 +619,15 @@ label {
 }
 
 .help-section code {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--code-bg-color);
   padding: 3px 6px;
   border-radius: 4px;
   font-family: monospace;
   font-size: 0.9em;
-  color: var(--color-text);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--code-text-color);
+  border: 1px solid var(--code-border-color);
+  display: inline-block;
+  margin: 2px 0;
 }
 
 .help-section strong {
@@ -693,8 +695,8 @@ label {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.07);
-  color: var(--color-text);
+  background-color: var(--code-bg-color);
+  color: var(--code-text-color);
   border-radius: 6px;
   padding: 8px;
   margin-right: 10px;
@@ -703,10 +705,43 @@ label {
   font-weight: var(--font-weight-bold);
   font-size: 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--code-border-color);
 }
 
 .shortcut-description {
   color: var(--color-text-subtle);
+}
+
+.shortcut-description strong {
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+}
+
+.shortcut-description code,
+p.shortcut-description code {
+  background-color: var(--code-bg-color);
+  color: var(--code-text-color);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--code-border-color);
+  display: inline-block;
+  margin: 2px 1px;
+  line-height: 1.2;
+}
+
+.customize-experience-title, .customize-experience-icon {
+  font-size: 48px;
+}
+
+.customize-experience-icon {
+ padding-right: 20px;
+}
+
+.customize-experience-title {
+  margin-top: 70px;
+  margin-bottom: 10px;
 }
 
 .help-divider {
@@ -731,6 +766,9 @@ label {
   margin-right: 16px;
   font-size: 2em;
   color: var(--color-text);
+
+  padding: 0 20px;
+  margin-right: 15px;
 }
 
 .callout-content {
@@ -749,4 +787,8 @@ label {
 
 .callout-content p {
   margin-bottom: 0;
+}
+
+.fa-bolt {
+  margin-right: 20px;
 }

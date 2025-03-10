@@ -28,6 +28,9 @@
   --plus-button-color: #e1e1e1;
   --confirm-border-color: #aaaaaa;
   --help-card-bg-color: rgba(0, 0, 0, 0.03);
+  --code-bg-color: #f0f0f0;
+  --code-text-color: #0a0a0a;
+  --code-border-color: #cccccc;
 }
 
 /* 
@@ -74,7 +77,7 @@
   --input-color: #1a1d23;
   --modal-background-color: rgba(40, 44, 52, 0.9);
   --plus-icon-color: #abb2bf;
-  --plus-button-color: #282D35;
+  --plus-button-color: #282d35;
   --confirm-border-color: #5c6370;
   --help-card-bg-color: rgba(171, 178, 191, 0.05);
 }
