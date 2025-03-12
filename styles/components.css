@@ -258,7 +258,7 @@ button {
 /* Footer */
 .footer-container {
   position: absolute;
-  bottom: var(--space);
+  bottom: 16px; /* Reset to a specific value instead of var(--space) */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -285,8 +285,8 @@ button {
 /* Help Button */
 .help-button {
   position: fixed;
-  top: 10px;
-  right: 70px; /* Positioned to the left of the settings button */
+  top: 70px; /* Positioned just below the settings button (10px + 50px + 10px spacing) */
+  right: 10px; /* Aligned with the settings button */
   width: 50px;
   height: 50px;
   background-color: var(--background-color);
@@ -313,7 +313,6 @@ button {
 .help-button:hover i {
   color: var(--color-text);
 }
-
 .fa-sliders {
   font-size: 20px;
 }

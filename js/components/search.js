@@ -11,7 +11,7 @@ class Search extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
 
-    // Initialize instance properties
+    // Get the search template from the main document and clone it with all its children
     const template = document.getElementById("search-template");
     const clone = template.content.cloneNode(true);
 
@@ -32,7 +32,7 @@ class Search extends HTMLElement {
     this.suggestions.addEventListener("click", this.onSuggestionClick);
     document.addEventListener("keydown", this.onKeydown);
 
-    // Append the template clone to shadow root
+    // Append the populated template clone to the shadow DOM, making it visible
     this.shadowRoot.append(clone);
   }
 
