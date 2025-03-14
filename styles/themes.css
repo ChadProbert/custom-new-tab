@@ -187,6 +187,37 @@
 }
 
 /**
+ * GitHub High Contrast Theme
+ * 
+ * An accessibility-focused high contrast variant of the GitHub dark theme.
+ * Features stronger contrasts between text and backgrounds for better readability.
+ */
+[data-theme="github-high-contrast"] {
+  --color-background: #010409;
+  --color-text: #f0f6fc;
+  --color-text-rgb: 240, 246, 252;
+  --color-text-subtle: #b1bac4;
+  --accent-color: #0d1117;
+  --hover-color: rgba(177, 186, 196, 0.12);
+  --input-color: #0d1117;
+  --modal-background-color: rgba(1, 4, 9, 0.95);
+  --plus-icon-color: #f0f6fc;
+  --plus-button-color: #0d1117;
+  --confirm-border-color: #30363d;
+  --help-card-bg-color: rgba(240, 246, 252, 0.07);
+  --code-bg-color: #161b22;
+  --code-text-color: #f0f6fc;
+  --code-border-color: #30363d;
+  --border-color: #30363d;
+}
+
+/* Custom select styling for GitHub High Contrast theme */
+[data-theme="github-high-contrast"] .custom-select {
+  background-color: #131922;
+  color: #f0f6fc;
+}
+
+/**
  * Dark Abyss Theme
  * 
  * An extremely dark variant of the standard dark theme.
