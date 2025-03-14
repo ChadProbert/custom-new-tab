@@ -31,7 +31,6 @@
   --code-bg-color: #f0f0f0;
   --code-text-color: #0a0a0a;
   --code-border-color: #cccccc;
-  --color-tertiary: #000000;
 }
 
 /* 
@@ -81,7 +80,6 @@
   --plus-button-color: #282d35;
   --confirm-border-color: #5c6370;
   --help-card-bg-color: rgba(171, 178, 191, 0.05);
-  --color-tertiary: #68707d;
 }
 
 /**
@@ -105,7 +103,6 @@
   --plus-button-color: #333749;
   --confirm-border-color: #737994;
   --help-card-bg-color: rgba(198, 208, 245, 0.05);
-  --color-tertiary: #6b7188;
 }
 
 /* Catppuccin Macchiato - Higher contrast, rich colors */
@@ -122,7 +119,6 @@
   --plus-button-color: #272a3d;
   --confirm-border-color: #6e738d;
   --help-card-bg-color: rgba(202, 211, 245, 0.05);
-  --color-tertiary: #5c637b;
 }
 
 /* Catppuccin Mocha - Highest contrast, deepest colors */
@@ -139,7 +135,6 @@
   --plus-button-color: #202032;
   --confirm-border-color: #6c7086;
   --help-card-bg-color: rgba(205, 214, 244, 0.05);
-  --color-tertiary: #505772;
 }
 
 /**
@@ -161,7 +156,6 @@
   --plus-button-color: #323744;
   --confirm-border-color: #4c566a;
   --help-card-bg-color: rgba(236, 239, 244, 0.05);
-  --color-tertiary: #7c7f87;
 }
 
 /**
@@ -184,11 +178,35 @@
   --confirm-border-color: #30363d;
   --help-card-bg-color: rgba(201, 209, 217, 0.05);
   --border-color: #30363d;
-  --color-tertiary: #555;
 }
 
 /* Custom select styling for GitHub theme */
 [data-theme="github"] .custom-select {
   background-color: #161b22;
   color: #c9d1d9;
+}
+
+/**
+ * Dark Abyss Theme
+ * 
+ * An extremely dark variant of the standard dark theme.
+ * Features true black backgrounds and deeper accents for OLED displays and night use.
+ */
+[data-theme="dark-abyss"] {
+  --color-background: #000000;
+  --color-text: #ffffff;
+  --color-text-rgb: 255, 255, 255;
+  --color-text-subtle: #444444;
+  --accent-color: #050505;
+  --hover-color: #101010;
+  --input-color: #0a0a0a;
+  --modal-background-color: rgba(0, 0, 0, 0.95);
+  --plus-icon-color: #ffffff;
+  --plus-button-color: #080808;
+  --confirm-border-color: #222222;
+  --help-card-bg-color: rgba(255, 255, 255, 0.03);
+  --code-bg-color: rgba(255, 255, 255, 0.04);
+  --code-text-color: #f0f0f0;
+  --code-border-color: rgba(255, 255, 255, 0.05);
+  --border-color: #111111;
 }
