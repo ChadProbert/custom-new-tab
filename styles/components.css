@@ -133,27 +133,6 @@
   visibility: visible;
 }
 
-/* Top tooltip (for buttons at the bottom of the screen) */
-[data-tooltip].tooltip-top::after {
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-}
-
-/* Bottom tooltip (for buttons at the top of the screen) */
-[data-tooltip].tooltip-bottom::after {
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(8px);
-}
-
-/* Right tooltip */
-[data-tooltip].tooltip-right::after {
-  left: 100%;
-  top: 50%;
-  transform: translateY(-50%) translateX(8px);
-}
-
 /* Left tooltip (for buttons with tooltips on their left side) */
 [data-tooltip].tooltip-left::after {
   right: 100%;
@@ -346,7 +325,7 @@ button {
 /* Help Button */
 .help-button {
   position: fixed;
-  top: 70px; /* Positioned just below the settings button (10px + 50px + 10px spacing) */
+  top: 70px; /* Positioned just below the settings button */
   right: 10px; /* Aligned with the settings button */
   width: 50px;
   height: 50px;
@@ -374,6 +353,8 @@ button {
 .help-button:hover i {
   color: var(--color-text);
 }
+
+/* Icon styling */
 .fa-sliders {
   font-size: 20px;
 }

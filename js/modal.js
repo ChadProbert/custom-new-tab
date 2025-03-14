@@ -22,9 +22,13 @@ class ModalManager {
     this.addButton = document.getElementById("addShortcut");
     this.modalContent = document.querySelector(".modal-content");
     this.commandsComponent = document.querySelector("commands-component");
+    this.scrollBottomHelpBtn = document.getElementById("scrollBottomHelp");
 
     // Track if we should focus on new shortcut inputs
     this.shouldFocusNewShortcut = false;
+
+    // Store bound event handlers
+    this.boundUpdateScrollButtonState = this.updateScrollButtonState.bind(this);
 
     // Default settings
     this.DEFAULT_SETTINGS = {
@@ -116,6 +120,8 @@ class ModalManager {
     this.resetSettings = this.resetSettings.bind(this);
     this.addNewShortcutField = this.addNewShortcutField.bind(this);
     this.checkModalScrollability = this.checkModalScrollability.bind(this);
+    this.scrollToBottomOfHelp = this.scrollToBottomOfHelp.bind(this);
+    this.updateScrollButtonState = this.updateScrollButtonState.bind(this);
 
     this.initializeEventListeners();
     this.initializeSettings();
@@ -149,6 +155,14 @@ class ModalManager {
 
     // Reset settings button
     this.resetButton.addEventListener("click", this.resetSettings);
+
+    // Scroll to bottom button in help modal
+    if (this.scrollBottomHelpBtn) {
+      this.scrollBottomHelpBtn.addEventListener(
+        "click",
+        this.scrollToBottomOfHelp
+      );
+    }
   }
 
   /**
@@ -242,6 +256,23 @@ class ModalManager {
 
       // Always add scrollable class to get consistent styling
       helpModalContent.classList.add("scrollable");
+
+      // Reset animation by removing and re-adding class
+      if (this.scrollBottomHelpBtn) {
+        this.scrollBottomHelpBtn.classList.remove("animate-pulse");
+        // Force reflow
+        void this.scrollBottomHelpBtn.offsetWidth;
+        this.scrollBottomHelpBtn.classList.add("animate-pulse");
+      }
+
+      // Initialize scroll button state
+      this.updateScrollButtonState();
+
+      // Add scroll event listener to monitor position
+      helpModalContent.addEventListener(
+        "scroll",
+        this.boundUpdateScrollButtonState
+      );
     }
 
     // Focus on close button for accessibility
@@ -264,6 +295,17 @@ class ModalManager {
    * Closes the help modal and removes the overlay.
    */
   closeHelpModal() {
+    // Remove scroll event listener
+    const helpModalContent = this.helpModal.querySelector(
+      ".help-modal-content"
+    );
+    if (helpModalContent) {
+      helpModalContent.removeEventListener(
+        "scroll",
+        this.boundUpdateScrollButtonState
+      );
+    }
+
     this.helpModal.style.display = "none";
     this.modalOverlay.classList.remove("active");
   }
@@ -637,6 +679,65 @@ class ModalManager {
       } else {
         this.modalContent.classList.remove("scrollable");
       }
+    }
+  }
+
+  /**
+   * Updates the scroll button state based on current scroll position.
+   * Changes between scroll-to-bottom and scroll-to-top functionality.
+   */
+  updateScrollButtonState() {
+    if (!this.scrollBottomHelpBtn) return;
+
+    const helpModalContent = this.helpModal.querySelector(
+      ".help-modal-content"
+    );
+    if (!helpModalContent) return;
+
+    const scrollPosition = helpModalContent.scrollTop;
+    const scrollHeight = helpModalContent.scrollHeight;
+    const clientHeight = helpModalContent.clientHeight;
+
+    // Check if we're near the bottom (within 100px)
+    const isNearBottom = scrollPosition + clientHeight >= scrollHeight - 100;
+
+    if (isNearBottom) {
+      // Change to scroll-to-top mode
+      this.scrollBottomHelpBtn.classList.add("scroll-top-mode");
+      this.scrollBottomHelpBtn.setAttribute("data-tooltip", "Scroll to Top");
+    } else {
+      // Change to scroll-to-bottom mode
+      this.scrollBottomHelpBtn.classList.remove("scroll-top-mode");
+      this.scrollBottomHelpBtn.setAttribute("data-tooltip", "Scroll to Bottom");
+    }
+  }
+
+  /**
+   * Handles scrolling in the help modal.
+   * Scrolls to bottom or top depending on current position.
+   */
+  scrollToBottomOfHelp() {
+    const helpModalContent = this.helpModal.querySelector(
+      ".help-modal-content"
+    );
+    if (!helpModalContent) return;
+
+    // Get current button state
+    const isInTopMode =
+      this.scrollBottomHelpBtn.classList.contains("scroll-top-mode");
+
+    if (isInTopMode) {
+      // Scroll to top
+      helpModalContent.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      // Scroll to bottom
+      helpModalContent.scrollTo({
+        top: helpModalContent.scrollHeight,
+        behavior: "smooth",
+      });
     }
   }
 }

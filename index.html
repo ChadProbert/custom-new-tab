@@ -145,44 +145,6 @@
           color: var(--color-text);
         }
 
-        .settings-button {
-          position: fixed;
-          bottom: var(--space);
-          right: var(--space);
-          background-color: var(--hover-color);
-          color: var(--color-text-subtle);
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          padding: 8px 16px;
-          transition: background-color 0.2s ease, color 0.2s ease;
-          font-size: 16px;
-        }
-
-        .settings-button:hover {
-          background-color: var(--hover-color);
-          color: var(--color-text);
-        }
-
-        .help-button {
-          position: fixed;
-          bottom: var(--space);
-          right: calc(var(--space) + 90px);
-          background-color: var(--accent-color);
-          color: var(--color-text-subtle);
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          padding: 8px 16px;
-          transition: background-color 0.2s ease, color 0.2s ease;
-          font-size: 16px;
-        }
-
-        .help-button:hover {
-          background-color: var(--hover-color);
-          color: var(--color-text);
-        }
-
         .dynamic-button {
           display: flex;
           justify-content: center;
@@ -508,6 +470,9 @@
     <div id="helpModal" class="help-modal">
       <div class="help-modal-content">
         <button class="close-button" id="closeHelpModal">&times;</button>
+        <button class="scroll-bottom-button tooltip-left" id="scrollBottomHelp" data-tooltip="Scroll to Bottom">
+          <i class="fa-solid fa-arrow-down" style="color: var(--color-text-subtle);"></i>
+        </button>
 
         <!-- Help documentation -->
         <div class="help-section">
