@@ -8,6 +8,11 @@ class ModalManager {
    * Sets up the modal overlay, settings modal, help modal, and form controls.
    */
   constructor() {
+    // Check if this is a first-time visitor - do this first before other initialization
+    this.isFirstTimeVisitor = localStorage.getItem("hasVisitedBefore") === null;
+    // Check if user has seen help but not settings yet
+    this.hasSeenHelpOnly = localStorage.getItem("hasSeenHelpOnly") === "true";
+
     // DOM elements
     this.openModalBtn = document.getElementById("openModal");
     this.openHelpBtn = document.getElementById("openHelp");
@@ -135,6 +140,12 @@ class ModalManager {
     // Listen for the custom event
     document.addEventListener("focusNewShortcut", this.handleFocusNewShortcut);
 
+    // Add listener for resetting first-time visitor status (for testing)
+    document.addEventListener(
+      "resetFirstTimeVisitor",
+      this.resetFirstTimeVisitor.bind(this)
+    );
+
     // Open Settings Modal
     this.openModalBtn.addEventListener("click", this.openSettingsModal);
 
@@ -174,6 +185,52 @@ class ModalManager {
     loadCommands();
     this.renderShortcuts();
     this.commandsComponent.render();
+
+    // Debug first-time visitor status
+    console.log("First time visitor:", this.isFirstTimeVisitor);
+    console.log("Has seen help only:", this.hasSeenHelpOnly);
+
+    // Add animation for first-time visitors (to compass button)
+    if (this.isFirstTimeVisitor && this.openHelpBtn) {
+      console.log("Applying animation to help button");
+
+      // Apply animation with a slight delay
+      setTimeout(() => {
+        this.openHelpBtn.classList.add("pulse-border");
+      }, 1000);
+    }
+    // Add animation for users who have seen help but not settings
+    else if (this.hasSeenHelpOnly && this.openModalBtn) {
+      console.log("Applying animation to settings button");
+
+      // Apply animation with a slight delay
+      setTimeout(() => {
+        this.openModalBtn.classList.add("pulse-border");
+      }, 1000);
+    }
+  }
+
+  /**
+   * FOR TESTING: Resets the first-time visitor flag
+   * This can be called from the console: document.dispatchEvent(new CustomEvent('resetFirstTimeVisitor'))
+   */
+  resetFirstTimeVisitor() {
+    localStorage.removeItem("hasVisitedBefore");
+    localStorage.removeItem("hasSeenHelpOnly");
+    this.isFirstTimeVisitor = true;
+    this.hasSeenHelpOnly = false;
+
+    // Remove animation classes from both buttons
+    if (this.openHelpBtn) {
+      this.openHelpBtn.classList.remove("pulse-border");
+    }
+    if (this.openModalBtn) {
+      this.openModalBtn.classList.remove("pulse-border");
+    }
+
+    console.log(
+      "First-time visitor status reset. Reload the page to see the animation."
+    );
   }
 
   /**
@@ -188,6 +245,17 @@ class ModalManager {
    * Opens the settings modal, initializes shortcuts, and handles focus management.
    */
   openSettingsModal() {
+    // If user has seen help only, mark as having seen settings too
+    if (this.hasSeenHelpOnly) {
+      localStorage.removeItem("hasSeenHelpOnly");
+      this.hasSeenHelpOnly = false;
+
+      // Remove animation from settings button
+      if (this.openModalBtn) {
+        this.openModalBtn.classList.remove("pulse-border");
+      }
+    }
+
     // Close search dialog if it's open
     const searchComponent = document.querySelector("search-component");
     if (searchComponent) {
@@ -235,6 +303,11 @@ class ModalManager {
    * Opens the help modal and initializes its content.
    */
   openHelpModalHandler() {
+    // Just remove the animation class from help button for first-time visitors
+    if (this.isFirstTimeVisitor && this.openHelpBtn) {
+      this.openHelpBtn.classList.remove("pulse-border");
+    }
+
     // Close search dialog if it's open
     const searchComponent = document.querySelector("search-component");
     if (searchComponent) {
@@ -306,8 +379,27 @@ class ModalManager {
       );
     }
 
+    // If this is a first-time visitor, update the localStorage flags AFTER they've seen the help content
+    if (this.isFirstTimeVisitor) {
+      localStorage.setItem("hasVisitedBefore", "true");
+      localStorage.setItem("hasSeenHelpOnly", "true");
+      this.isFirstTimeVisitor = false;
+      this.hasSeenHelpOnly = true;
+
+      console.log(
+        "First-time visitor has seen help, now showing settings pulse"
+      );
+    }
+
     this.helpModal.style.display = "none";
     this.modalOverlay.classList.remove("active");
+
+    // If user has seen help but hasn't seen settings yet, add animation to settings button
+    if (this.hasSeenHelpOnly && this.openModalBtn) {
+      setTimeout(() => {
+        this.openModalBtn.classList.add("pulse-border");
+      }, 500);
+    }
   }
 
   /**
@@ -315,6 +407,28 @@ class ModalManager {
    * @param {Event} event - The click event
    */
   handleWindowClick(event) {
+    // If clicking on help modal or overlay while help modal is open
+    if (
+      this.helpModal.style.display === "flex" &&
+      (event.target === this.helpModal || event.target === this.modalOverlay)
+    ) {
+      // Update first-time visitor state for help modal exit
+      if (this.isFirstTimeVisitor) {
+        localStorage.setItem("hasVisitedBefore", "true");
+        localStorage.setItem("hasSeenHelpOnly", "true");
+        this.isFirstTimeVisitor = false;
+        this.hasSeenHelpOnly = true;
+
+        // Add animation to settings button
+        setTimeout(() => {
+          if (this.openModalBtn) {
+            this.openModalBtn.classList.add("pulse-border");
+          }
+        }, 500);
+      }
+    }
+
+    // Handle settings modal clicks (no change to this part)
     if (
       event.target === this.settingsModal ||
       event.target === this.modalOverlay
@@ -324,6 +438,7 @@ class ModalManager {
       this.modalOverlay.classList.remove("active"); // Deactivate background overlay
     }
 
+    // Handle help modal clicks (already managed earlier in the function)
     if (event.target === this.helpModal) {
       this.helpModal.style.display = "none";
       this.modalOverlay.classList.remove("active");
@@ -336,6 +451,23 @@ class ModalManager {
    */
   handleKeydown(e) {
     if (e.key === "Escape") {
+      // If help modal is open and we're a first-time visitor
+      if (this.helpModal.style.display === "flex" && this.isFirstTimeVisitor) {
+        // Update first-time visitor state
+        localStorage.setItem("hasVisitedBefore", "true");
+        localStorage.setItem("hasSeenHelpOnly", "true");
+        this.isFirstTimeVisitor = false;
+        this.hasSeenHelpOnly = true;
+
+        // Add animation to settings button
+        setTimeout(() => {
+          if (this.openModalBtn) {
+            this.openModalBtn.classList.add("pulse-border");
+          }
+        }, 500);
+      }
+
+      // Close all modals
       this.settingsModal.style.display = "none";
       this.helpModal.style.display = "none";
       this.modalOverlay.classList.remove("active");

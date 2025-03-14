@@ -354,6 +354,88 @@ button {
   color: var(--color-text);
 }
 
+/* First-time visitor button animation - works for both help and settings buttons */
+.help-button.pulse-border,
+.settings-button.pulse-border {
+  position: fixed; /* Ensure it's fixed in place */
+  overflow: visible;
+  animation: button-background-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.help-button.pulse-border {
+  top: 70px; /* Keep it aligned with its original position */
+  right: 10px;
+}
+
+.settings-button.pulse-border {
+  top: 10px; /* Keep settings button in its original position */
+  right: 10px;
+}
+
+.help-button.pulse-border::before,
+.settings-button.pulse-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid var(--color-text);
+  border-radius: 5px;
+  opacity: 0;
+  box-shadow: 0 0 8px rgba(var(--color-text-rgb), 0.4);
+  animation: border-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none; /* Ensure it doesn't interfere with clicks */
+}
+
+.help-button.pulse-border i,
+.settings-button.pulse-border i {
+  animation: icon-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes border-pulse {
+  0% {
+    transform: scale(1.05);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes button-background-pulse {
+  0% {
+    background-color: var(--background-color);
+  }
+  50% {
+    background-color: var(--hover-color);
+  }
+  100% {
+    background-color: var(--background-color);
+  }
+}
+
+@keyframes icon-pulse {
+  0% {
+    color: var(--color-text-subtle);
+  }
+  50% {
+    color: var(--color-text);
+  }
+  100% {
+    color: var(--color-text-subtle);
+  }
+}
+
 /* Icon styling */
 .fa-sliders {
   font-size: 20px;

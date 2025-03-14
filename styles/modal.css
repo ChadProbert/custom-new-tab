@@ -808,8 +808,6 @@ p.shortcut-description code {
   width: 36px;
   height: 36px;
   background-color: var(--color-background);
-  /* backdrop-filter: blur(8px); */
-  /* -webkit-backdrop-filter: blur(8px); */
   color: var(--color-text-subtle);
   border: 1px solid var(--confirm-border-color);
   border-radius: 18px;
@@ -819,7 +817,6 @@ p.shortcut-description code {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  
 }
 
 .scroll-bottom-button i {
