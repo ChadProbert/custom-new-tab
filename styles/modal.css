@@ -909,19 +909,7 @@ p.shortcut-description code {
   background-color: var(--input-color);
   border: 1px solid var(--border-color);
   border-radius: 50%;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.radio-option:hover .radio-checkmark {
-  background-color: rgba(52, 199, 89, 0.05);
-  border-color: #34c759;
-}
-
-.radio-option input:checked ~ .radio-checkmark {
-  background-color: transparent;
-  border: 1px solid #34c759;
-  box-shadow: 0 0 0 1px rgba(52, 199, 89, 0.2);
-  transition: all 0.2s ease;
+  /* transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
 }
 
 .radio-checkmark:after {

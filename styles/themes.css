@@ -138,27 +138,6 @@
 }
 
 /**
- * Nord Theme
- * 
- * Based on the Nord color palette, featuring arctic-inspired colors.
- * A blue-tinted dark theme with cool accents and good contrast.
- */
-[data-theme="nord"] {
-  --color-background: #2e3440;
-  --color-text: #eceff4;
-  --color-text-rgb: 236, 239, 244;
-  --color-text-subtle: #7c7f87;
-  --accent-color: #464e62;
-  --hover-color: #4b5366;
-  --input-color: #242933;
-  --modal-background-color: rgba(46, 52, 64, 0.9);
-  --plus-icon-color: #eceff4;
-  --plus-button-color: #323744;
-  --confirm-border-color: #4c566a;
-  --help-card-bg-color: rgba(236, 239, 244, 0.05);
-}
-
-/**
  * GitHub Dark Theme
  * 
  * Inspired by GitHub's dark mode interface.
