@@ -342,20 +342,12 @@
     -->
     <main>
       <!-- Settings Button - Opens the settings modal -->
-      <button
-        class="settings-button tooltip-left"
-        id="openModal"
-        data-tooltip="Settings"
-      >
+      <button class="settings-button tooltip-left" id="openModal" data-tooltip="Settings">
         <i class="fa-solid fa-sliders"></i>
       </button>
 
       <!-- Help Button - Opens the help documentation -->
-      <button
-        class="help-button tooltip-left"
-        id="openHelp"
-        data-tooltip="Quick Guide"
-      >
+      <button class="help-button tooltip-left" id="openHelp" data-tooltip="Quick Guide">
         <i class="fas fa-compass"></i>
       </button>
 
@@ -417,20 +409,10 @@
               <option value="catppuccin-mocha">Catppuccin (Mocha)</option>
               <option value="nord">Nord</option>
               <option value="github">GitHub (Dark)</option>
-              <option value="github-high-contrast">
-                GitHub (High Contrast)
-              </option>
+              <option value="github-high-contrast">GitHub (High Contrast)</option>
             </select>
             <span class="custom-arrow">▼</span>
           </div>
-        </div>
-
-        <!-- Reset Button Section - Centered between theme and shortcuts -->
-        <div class="reset-section">
-          <button id="resetSettings" class="reset-button">
-            <i class="fa-solid fa-rotate-left"></i>
-            Reset to Default
-          </button>
         </div>
 
         <!-- 
@@ -452,9 +434,10 @@
           Contains radio button groups for tab behavior and search engine preferences
         -->
         <div class="options-section">
-          <!-- Preferences header with title and reset button -->
-          <div class="preferences-header">
-            <h3 class="search-preferences-title">Search Preferences</h3>
+          <h3 class="search-preferences-title">Search Preferences</h3>
+              <i class="fa-solid fa-rotate-left"></i>
+              Reset to Default
+            </button>
           </div>
 
           <!-- Options Row Container -->
@@ -464,55 +447,37 @@
               <label>Open Links:</label>
               <div class="radio-group" id="tabBehaviorOptions">
                 <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="tabBehavior"
-                    value="new"
-                    id="tabBehaviorNew"
-                  />
+                  <input type="radio" name="tabBehavior" value="new" id="tabBehaviorNew">
                   <span class="radio-checkmark"></span>
                   <span class="radio-label">New Tab</span>
                 </label>
                 <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="tabBehavior"
-                    value="current"
-                    id="tabBehaviorCurrent"
-                  />
+                  <input type="radio" name="tabBehavior" value="current" id="tabBehaviorCurrent">
                   <span class="radio-checkmark"></span>
                   <span class="radio-label">Current Tab</span>
                 </label>
               </div>
             </div>
-
+            
             <!-- Search Engine Options -->
             <div class="option-group">
               <label>Search Engine:</label>
               <div class="radio-group" id="searchEngineOptions">
                 <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="searchEngine"
-                    value="google"
-                    id="searchEngineGoogle"
-                  />
+                  <input type="radio" name="searchEngine" value="google" id="searchEngineGoogle">
                   <span class="radio-checkmark"></span>
                   <span class="radio-label">Google</span>
                 </label>
                 <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="searchEngine"
-                    value="duckduckgo"
-                    id="searchEngineDuckDuckGo"
-                  />
+                  <input type="radio" name="searchEngine" value="duckduckgo" id="searchEngineDuckDuckGo">
                   <span class="radio-checkmark"></span>
                   <span class="radio-label">DuckDuckGo</span>
                 </label>
               </div>
             </div>
           </div>
+        </div>
+
         </div>
       </div>
     </div>
@@ -546,25 +511,21 @@
     <div id="helpModal" class="help-modal">
       <div class="help-modal-content">
         <button class="close-button" id="closeHelpModal">&times;</button>
-        <button
-          class="scroll-bottom-button tooltip-left"
-          id="scrollBottomHelp"
-          data-tooltip="Scroll to Bottom"
-        >
-          <i
-            class="fa-solid fa-arrow-down"
-            style="color: var(--color-text-subtle)"
-          ></i>
+        <button class="scroll-bottom-button tooltip-left" id="scrollBottomHelp" data-tooltip="Scroll to Bottom">
+          <i class="fa-solid fa-arrow-down" style="color: var(--color-text-subtle);"></i>
         </button>
 
         <!-- Help documentation -->
         <div class="help-section">
           <!-- Introduction -->
-          <div class="callout-icon">
-            <h3><i class="fa-solid fa-bolt"></i>Using Keyboard Shortcuts</h3>
-          </div>
-          <!-- Keyboard Shortcuts Section -->
-
+            <div class="callout-icon">
+              <h3>
+                <i class="fa-solid fa-bolt"></i>Using Keyboard Shortcuts
+              </h3>
+            </div>
+             <!-- Keyboard Shortcuts Section -->
+            
+        </div>
           <div class="help-card">
             <div class="shortcut-example">
               <span class="shortcut-description"
@@ -607,20 +568,22 @@
             </p>
           </div>
 
+          
+
           <!-- Settings Section -->
           <h3 class="customize-experience-title">
-            <i class="customize-experience-icon fa-solid fa-gear"></i
-            >Customizing Your Experience
+            <i class="customize-experience-icon fa-solid fa-gear"></i>Customizing Your
+            Experience
           </h3>
 
           <div class="help-card">
             <h4>Themes</h4>
-            <p style="color: var(--color-text-subtle)">
-              Click the settings icon (<i
-                class="fa-solid fa-sliders"
-                style="color: var(--color-text); padding: 5px; font-size: 16px"
-              ></i
-              >) to access settings and choose from multiple visual themes.
+            <p style="color: var(--color-text-subtle);">
+              Click the settings
+              icon (<i
+              class="fa-solid fa-sliders"
+              style="color: var(--color-text); padding: 5px; font-size: 16px;"
+            ></i>) to access settings and choose from multiple visual themes.
             </p>
           </div>
 
@@ -658,11 +621,11 @@
                 href="https://github.com/ChadProbert/new-page-app"
                 target="_blank"
                 rel="noopener noreferrer"
-                style="color: #0492ce"
+                style="color: #0492CE"
                 >GitHub repository
                 <i
                   class="fa-solid fa-external-link-alt"
-                  style="font-size: 0.8em"
+                  style="font-size: 0.8em;"
                 ></i
               ></a>
               for additional documentation.</em

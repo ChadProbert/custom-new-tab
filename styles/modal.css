@@ -73,7 +73,7 @@
 
 .modal-content h2 {
   font-size: 32px;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
 /**
@@ -98,12 +98,7 @@
 
 .theme-section,
 .shortcut-section {
-  margin: 10px 0;
   text-align: left;
-}
-
-.shortcut-section {
-  margin-top: 65px;
 }
 
 /**
@@ -120,10 +115,9 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  gap: 8px;
   font-size: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 /* Warning hover effect for reset button */
@@ -137,6 +131,14 @@
 /* Icon inside reset button */
 .reset-button i {
   font-size: 14px;
+  margin-right: 4px;
+}
+
+/* Styling for the reset section between theme and shortcuts */
+.reset-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 /**
@@ -940,11 +942,6 @@ p.shortcut-description code {
   transform: translate(-50%, -50%) scale(1);
 }
 
-.options-section {
-  margin: 15px 0;
-  text-align: left;
-}
-
 .options-section h4 {
   font-size: 16px;
   margin-bottom: 8px;
@@ -958,7 +955,6 @@ p.shortcut-description code {
 }
 
 .options-section {
-  margin: 20px 0 15px;
   text-align: left;
 }
 
@@ -997,12 +993,6 @@ p.shortcut-description code {
     0 0 4px 0 rgba(var(--color-text-rgb), 0.15);
 }
 
-/* Styling for option groups */
-.option-group {
-  margin-bottom: 15px;
-  padding-bottom: 5px;
-}
-
 .option-group:last-child {
   margin-bottom: 0;
 }
@@ -1015,19 +1005,14 @@ p.shortcut-description code {
   color: var(--color-text);
 }
 
-/* Make radio buttons more prominent */
-.radio-option {
-  padding: 4px 0;
-}
-
 .radio-label {
   font-size: 13px;
   padding-left: 30px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .search-preferences-title {
-  margin-top: 65px;
+  margin-top: 40px;
 }
 
 /* Add styles for horizontal layout of option groups */
