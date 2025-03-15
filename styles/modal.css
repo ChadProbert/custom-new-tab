@@ -71,6 +71,11 @@
   padding: 20px;
 }
 
+.modal-content h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
 /**
  * CLOSE BUTTON
  * 
@@ -860,4 +865,160 @@ p.shortcut-description code {
 
 .scroll-bottom-button.animate-pulse {
   animation: pulse 2s ease-out 1;
+}
+
+/* Radio button styling for settings */
+.radio-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.radio-label {
+  padding-left: 28px;
+  font-size: 14px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.radio-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: var(--input-color);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.radio-option:hover .radio-checkmark {
+  background-color: var(--hover-color);
+}
+
+.radio-option input:checked ~ .radio-checkmark {
+  background-color: var(--input-color);
+  border: 2px solid var(--color-text);
+  box-shadow: 0 0 0 1px rgba(var(--color-text-rgb), 0.1);
+}
+
+.radio-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-text);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 2px rgba(var(--color-text-rgb), 0.3);
+}
+
+.radio-option input:checked ~ .radio-checkmark:after {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.options-section {
+  margin: 15px 0;
+  text-align: left;
+}
+
+.options-section h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.radio-option input:checked ~ .radio-checkmark:after {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  animation: radioPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.options-section {
+  margin: 20px 0 15px;
+  text-align: left;
+}
+
+@keyframes radioPopIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Improve contrast for dark themes */
+[data-theme="dark"] .radio-option input:checked ~ .radio-checkmark,
+[data-theme="dark-abyss"] .radio-option input:checked ~ .radio-checkmark,
+[data-theme="one-dark-pro"] .radio-option input:checked ~ .radio-checkmark,
+[data-theme="github"] .radio-option input:checked ~ .radio-checkmark,
+[data-theme="nord"] .radio-option input:checked ~ .radio-checkmark,
+[data-theme="github-high-contrast"]
+  .radio-option
+  input:checked
+  ~ .radio-checkmark,
+[data-theme="catppuccin-frappe"] .radio-option input:checked ~ .radio-checkmark,
+[data-theme="catppuccin-macchiato"]
+  .radio-option
+  input:checked
+  ~ .radio-checkmark,
+[data-theme="catppuccin-mocha"] .radio-option input:checked ~ .radio-checkmark {
+  box-shadow: 0 0 0 1px rgba(var(--color-text-rgb), 0.2),
+    0 0 4px 0 rgba(var(--color-text-rgb), 0.15);
+}
+
+/* Styling for option groups */
+.option-group {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}
+
+.option-group:last-child {
+  margin-bottom: 0;
+}
+
+.option-group label {
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 8px;
+  display: block;
+  color: var(--color-text);
+}
+
+/* Make radio buttons more prominent */
+.radio-option {
+  padding: 4px 0;
+}
+
+.radio-label {
+  font-size: 15px;
+  padding-left: 30px;
 }

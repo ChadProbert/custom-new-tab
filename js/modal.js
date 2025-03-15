@@ -784,6 +784,19 @@ class ModalManager {
       document.getElementById("themeSelect").value =
         this.DEFAULT_SETTINGS.theme;
 
+      // Reset tab behavior
+      localStorage.setItem("tabBehavior", "current"); // Default to current tab
+      CONFIG.openLinksInNewTab = false;
+      document.getElementById("tabBehaviorCurrent").checked = true;
+      document.getElementById("tabBehaviorNew").checked = false;
+
+      // Reset search engine
+      localStorage.setItem("searchEngine", "google"); // Default to Google
+      CONFIG.defaultSearchEngine = "google";
+      CONFIG.defaultSearchTemplate = CONFIG.searchEngineTemplates.google;
+      document.getElementById("searchEngineGoogle").checked = true;
+      document.getElementById("searchEngineDuckDuckGo").checked = false;
+
       // Reset commands
       COMMANDS.clear();
       this.DEFAULT_SETTINGS.commands.forEach((value, key) => {

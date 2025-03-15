@@ -13,20 +13,45 @@ const CONFIG = {
   commandSearchDelimiter: " ",
 
   /**
-   * Default search engine template.
+   * Search engine templates.
    * The {} placeholder will be replaced with the search query.
-   * Options:
-   * - DuckDuckGo: https://duckduckgo.com/?q={}
-   * - Google: https://www.google.com/search?q={}
    */
-  defaultSearchTemplate: "https://www.google.com/search?q={}",
+  searchEngineTemplates: {
+    google: "https://www.google.com/search?q={}",
+    duckduckgo: "https://duckduckgo.com/?q={}",
+  },
 
-  /** Whether links should open in new tabs */
+  /** Default search engine (can be 'google' or 'duckduckgo') */
+  defaultSearchEngine: "google",
+
+  /** Whether links should open in new tabs (default is true - open in new tab) */
   openLinksInNewTab: true,
 
   /** Maximum number of search suggestions to display */
   suggestionLimit: 4,
+
+  /** Initialize settings from localStorage */
+  init: function () {
+    // Load tab behavior setting
+    const tabBehavior = localStorage.getItem("tabBehavior");
+    if (tabBehavior !== null) {
+      this.openLinksInNewTab = tabBehavior === "new";
+    }
+
+    // Load search engine setting
+    const searchEngine = localStorage.getItem("searchEngine");
+    if (searchEngine !== null && this.searchEngineTemplates[searchEngine]) {
+      this.defaultSearchEngine = searchEngine;
+    }
+
+    // Set the defaultSearchTemplate based on the engine
+    this.defaultSearchTemplate =
+      this.searchEngineTemplates[this.defaultSearchEngine];
+  },
 };
+
+// Initialize settings when the script loads
+CONFIG.init();
 
 /**
  * Command definitions for keyboard shortcuts.
