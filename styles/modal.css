@@ -116,7 +116,6 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 16px;
 }
 
@@ -328,7 +327,7 @@ label {
 
 /* Apply the same styles to help modal content when scrollable */
 .help-modal-content.scrollable {
-  max-height: 80vh;
+  max-height: 83.5vh;
   overflow-y: auto;
   scrollbar-width: none;
   scroll-behavior: smooth;
@@ -508,7 +507,8 @@ label {
   max-width: 70%; /* Reduced from original width */
   width: 70%;
   min-width: 500px;
-  max-height: 80vh; /* Limit height to 80% of viewport height */
+  max-height: 85vh; /* Increased from 80vh to 85vh */
+  min-height: 500px; /* Added minimum height */
   overflow-y: auto; /* Add scrolling for overflow content */
   transition: border-color 0.3s ease, background 0.3s ease;
   box-sizing: border-box;
@@ -554,10 +554,6 @@ label {
   height: 3px;
   width: 60px;
   background-color: var(--color-text-subtle);
-}
-
-.help-section {
-  padding-right: 15px;
 }
 
 .help-section h3 {
@@ -675,6 +671,11 @@ label {
   border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
+/* Add extra margin to the keyboard shortcuts section card */
+.help-card {
+  margin-bottom: 45px;
+}
+
 .help-card:hover {
   background-color: var(--hover-color);
   transform: translateY(-2px);
@@ -740,20 +741,6 @@ p.shortcut-description code {
   line-height: 1.2;
 }
 
-.customize-experience-title,
-.customize-experience-icon {
-  font-size: 48px;
-}
-
-.customize-experience-icon {
-  padding-right: 20px;
-}
-
-.customize-experience-title {
-  margin-top: 70px;
-  margin-bottom: 10px;
-}
-
 .help-divider {
   height: 1px;
   background-color: rgba(255, 255, 255, 0.05);
@@ -776,9 +763,16 @@ p.shortcut-description code {
   margin-right: 16px;
   font-size: 2em;
   color: var(--color-text);
-
   padding: 0 20px;
-  margin-right: 15px;
+}
+
+.callout-icon h3 {
+  display: flex;
+  align-items: center;
+}
+
+.callout-icon h3 i {
+  margin-right: 20px;
 }
 
 .callout-content {
@@ -799,9 +793,15 @@ p.shortcut-description code {
   margin-bottom: 0;
 }
 
+/* Remove these individual icon rules
 .fa-bolt {
   margin-right: 20px;
 }
+
+.fa-gear {
+  margin-right: 20px;
+}
+*/
 
 /**
  * SCROLL BUTTON
@@ -811,7 +811,7 @@ p.shortcut-description code {
  */
 .scroll-bottom-button {
   position: fixed;
-  bottom: 75px;
+  bottom: 62px;
   left: 50%;
   transform: translateX(-50%);
   width: 36px;
@@ -894,8 +894,8 @@ p.shortcut-description code {
 }
 
 .radio-label {
-  padding-left: 28px;
-  font-size: 14px;
+  padding-left: 24px;
+  font-size: 13px;
   color: var(--color-text);
   cursor: pointer;
 }
@@ -904,8 +904,8 @@ p.shortcut-description code {
   position: absolute;
   top: 0;
   left: 0;
-  height: 18px;
-  width: 18px;
+  height: 16px;
+  width: 16px;
   background-color: var(--input-color);
   border: 1px solid var(--border-color);
   border-radius: 50%;
@@ -913,13 +913,15 @@ p.shortcut-description code {
 }
 
 .radio-option:hover .radio-checkmark {
-  background-color: var(--hover-color);
+  background-color: rgba(52, 199, 89, 0.05);
+  border-color: #34c759;
 }
 
 .radio-option input:checked ~ .radio-checkmark {
-  background-color: var(--input-color);
-  border: 2px solid var(--color-text);
-  box-shadow: 0 0 0 1px rgba(var(--color-text-rgb), 0.1);
+  background-color: transparent;
+  border: 1px solid #34c759;
+  box-shadow: 0 0 0 1px rgba(52, 199, 89, 0.2);
+  transition: all 0.2s ease;
 }
 
 .radio-checkmark:after {
@@ -928,18 +930,18 @@ p.shortcut-description code {
   display: none;
   top: 50%;
   left: 50%;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
+  background: #34c759;
   border-radius: 50%;
-  background: var(--color-text);
   transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 0 2px rgba(var(--color-text-rgb), 0.3);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .radio-option input:checked ~ .radio-checkmark:after {
   display: block;
   transform: translate(-50%, -50%) scale(1);
+  animation: dotPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .options-section h4 {
@@ -978,7 +980,6 @@ p.shortcut-description code {
 [data-theme="dark-abyss"] .radio-option input:checked ~ .radio-checkmark,
 [data-theme="one-dark-pro"] .radio-option input:checked ~ .radio-checkmark,
 [data-theme="github"] .radio-option input:checked ~ .radio-checkmark,
-[data-theme="nord"] .radio-option input:checked ~ .radio-checkmark,
 [data-theme="github-high-contrast"]
   .radio-option
   input:checked
@@ -989,8 +990,22 @@ p.shortcut-description code {
   input:checked
   ~ .radio-checkmark,
 [data-theme="catppuccin-mocha"] .radio-option input:checked ~ .radio-checkmark {
-  box-shadow: 0 0 0 1px rgba(var(--color-text-rgb), 0.2),
-    0 0 4px 0 rgba(var(--color-text-rgb), 0.15);
+  background-color: transparent;
+  box-shadow: 0 0 0 1px rgba(52, 199, 89, 0.3), 0 0 4px 0 rgba(52, 199, 89, 0.2);
+  border-color: #34c759;
+}
+
+/* Dark theme hover state */
+[data-theme="dark"] .radio-option:hover .radio-checkmark,
+[data-theme="dark-abyss"] .radio-option:hover .radio-checkmark,
+[data-theme="one-dark-pro"] .radio-option:hover .radio-checkmark,
+[data-theme="github"] .radio-option:hover .radio-checkmark,
+[data-theme="github-high-contrast"] .radio-option:hover .radio-checkmark,
+[data-theme="catppuccin-frappe"] .radio-option:hover .radio-checkmark,
+[data-theme="catppuccin-macchiato"] .radio-option:hover .radio-checkmark,
+[data-theme="catppuccin-mocha"] .radio-option:hover .radio-checkmark {
+  background-color: rgba(52, 199, 89, 0.05);
+  border-color: #34c759;
 }
 
 .option-group:last-child {
@@ -1025,4 +1040,23 @@ p.shortcut-description code {
 .options-row .option-group {
   flex: 1;
   min-width: 0;
+}
+
+@keyframes dotPopIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0.5;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }

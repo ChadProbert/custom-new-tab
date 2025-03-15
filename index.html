@@ -415,7 +415,6 @@
                 Catppuccin (Macchiato)
               </option>
               <option value="catppuccin-mocha">Catppuccin (Mocha)</option>
-              <option value="nord">Nord</option>
               <option value="github">GitHub (Dark)</option>
               <option value="github-high-contrast">
                 GitHub (High Contrast)
@@ -460,31 +459,6 @@
           <!-- Options Row Container -->
           <div class="options-row">
             <!-- Tab Behavior Options -->
-            <div class="option-group">
-              <label>Open Links:</label>
-              <div class="radio-group" id="tabBehaviorOptions">
-                <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="tabBehavior"
-                    value="new"
-                    id="tabBehaviorNew"
-                  />
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">New Tab</span>
-                </label>
-                <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="tabBehavior"
-                    value="current"
-                    id="tabBehaviorCurrent"
-                  />
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">Current Tab</span>
-                </label>
-              </div>
-            </div>
 
             <!-- Search Engine Options -->
             <div class="option-group">
@@ -509,6 +483,32 @@
                   />
                   <span class="radio-checkmark"></span>
                   <span class="radio-label">DuckDuckGo</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <label>Open Links:</label>
+              <div class="radio-group" id="tabBehaviorOptions">
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="tabBehavior"
+                    value="new"
+                    id="tabBehaviorNew"
+                  />
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">New Tab</span>
+                </label>
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="tabBehavior"
+                    value="current"
+                    id="tabBehaviorCurrent"
+                  />
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Current Tab</span>
                 </label>
               </div>
             </div>
@@ -608,10 +608,9 @@
           </div>
 
           <!-- Settings Section -->
-          <h3 class="customize-experience-title">
-            <i class="customize-experience-icon fa-solid fa-gear"></i
-            >Customizing Your Experience
-          </h3>
+          <div class="callout-icon">
+            <h3><i class="fa-solid fa-gear"></i>Customizing Your Experience</h3>
+          </div>
 
           <div class="help-card">
             <h4>Themes</h4>
