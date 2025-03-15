@@ -127,6 +127,7 @@ class ModalManager {
     this.checkModalScrollability = this.checkModalScrollability.bind(this);
     this.scrollToBottomOfHelp = this.scrollToBottomOfHelp.bind(this);
     this.updateScrollButtonState = this.updateScrollButtonState.bind(this);
+    this.forceModalScrollToTop = this.forceModalScrollToTop.bind(this);
 
     this.initializeEventListeners();
     this.initializeSettings();
@@ -269,12 +270,6 @@ class ModalManager {
     this.modalOverlay.classList.add("active"); // Activate background overlay
     this.renderShortcuts(); // Refresh shortcuts when opening modal
 
-    // Reset scroll position to top
-    this.modalContent = document.querySelector(".modal-content");
-    if (this.modalContent) {
-      this.modalContent.scrollTop = 0;
-    }
-
     // Focus based on context
     setTimeout(() => {
       if (this.shouldFocusNewShortcut) {
@@ -296,6 +291,9 @@ class ModalManager {
 
       // Initialize scrollability and shadow
       this.checkModalScrollability();
+
+      // Force scroll to top after all other operations
+      this.forceModalScrollToTop();
     }, 100); // A short delay to ensure the modal is fully rendered
   }
 
@@ -813,16 +811,16 @@ class ModalManager {
    */
   checkModalScrollability() {
     // Ensure we have the modal content reference
-    this.modalContent = document.querySelector(".modal-content");
-    if (this.modalContent) {
+    const modalContent = this.settingsModal.querySelector(".modal-content");
+    if (modalContent) {
       // Add scrollable class for tall content or many commands
       if (
-        this.modalContent.scrollHeight > window.innerHeight * 0.8 ||
+        modalContent.scrollHeight > window.innerHeight * 0.8 ||
         COMMANDS.size >= 8
       ) {
-        this.modalContent.classList.add("scrollable");
+        modalContent.classList.add("scrollable");
       } else {
-        this.modalContent.classList.remove("scrollable");
+        modalContent.classList.remove("scrollable");
       }
     }
   }
@@ -884,6 +882,31 @@ class ModalManager {
         behavior: "smooth",
       });
     }
+  }
+
+  /**
+   * Forces the modal to scroll to the top and prevents any automatic scrolling.
+   * This is used to ensure the modal always starts at the top when opened.
+   * It's applied after focus operations to override browser's automatic scroll behavior.
+   */
+  forceModalScrollToTop() {
+    // Get a direct reference to the modal content for the settings modal
+    const modalContent = this.settingsModal.querySelector(".modal-content");
+    if (!modalContent) return;
+
+    // Apply the scroll reset multiple times with increasing delays
+    // This ensures it overrides any automatic scrolling due to focus or rendering
+    const applyScrollReset = (delay) => {
+      setTimeout(() => {
+        modalContent.scrollTop = 0;
+      }, delay);
+    };
+
+    // Apply multiple times with different delays to ensure it works
+    applyScrollReset(10);
+    applyScrollReset(50);
+    applyScrollReset(100);
+    applyScrollReset(200);
   }
 }
 
