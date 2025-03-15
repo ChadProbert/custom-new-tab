@@ -884,10 +884,11 @@ p.shortcut-description code {
 }
 
 .radio-label {
-  padding-left: 24px;
+  padding-left: 28px;
   font-size: 13px;
   color: var(--color-text);
   cursor: pointer;
+  font-weight: 500;
 }
 
 .radio-checkmark {
@@ -921,14 +922,36 @@ p.shortcut-description code {
   animation: radioPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.options-section h4 {
-  font-size: 16px;
+/* Radio button styling for all themes */
+.radio-option input:checked ~ .radio-checkmark {
+  background-color: transparent;
+  border-color: var(--green-color);
+}
+
+/* Light theme specific version */
+[data-theme="light"] .radio-option input:checked ~ .radio-checkmark {
+  border-color: var(--green-color);
+}
+
+/* Dark theme hover state */
+.radio-option:hover .radio-checkmark {
+  border-color: var(--green-color);
+}
+
+.option-group:last-child {
+  margin-bottom: 0;
+}
+
+.option-group label {
+  font-weight: 700;
+  font-size: 15px;
   margin-bottom: 8px;
+  display: block;
   color: var(--color-text);
 }
 
-.options-section {
-  text-align: left;
+.search-preferences-title {
+  margin-top: 40px;
 }
 
 @keyframes radioPopIn {
@@ -946,59 +969,14 @@ p.shortcut-description code {
   }
 }
 
-/* Improve contrast for dark themes */
-[data-theme="dark"] .radio-option input:checked ~ .radio-checkmark,
-[data-theme="dark-abyss"] .radio-option input:checked ~ .radio-checkmark,
-[data-theme="one-dark-pro"] .radio-option input:checked ~ .radio-checkmark,
-[data-theme="github"] .radio-option input:checked ~ .radio-checkmark,
-[data-theme="github-high-contrast"]
-  .radio-option
-  input:checked
-  ~ .radio-checkmark,
-[data-theme="catppuccin-frappe"] .radio-option input:checked ~ .radio-checkmark,
-[data-theme="catppuccin-macchiato"]
-  .radio-option
-  input:checked
-  ~ .radio-checkmark,
-[data-theme="catppuccin-mocha"] .radio-option input:checked ~ .radio-checkmark {
-  background-color: transparent;
-
-  border-color: var(--green-color);
-}
-
-/* Dark theme hover state */
-[data-theme="dark"] .radio-option:hover .radio-checkmark,
-[data-theme="dark-abyss"] .radio-option:hover .radio-checkmark,
-[data-theme="one-dark-pro"] .radio-option:hover .radio-checkmark,
-[data-theme="github"] .radio-option:hover .radio-checkmark,
-[data-theme="github-high-contrast"] .radio-option:hover .radio-checkmark,
-[data-theme="catppuccin-frappe"] .radio-option:hover .radio-checkmark,
-[data-theme="catppuccin-macchiato"] .radio-option:hover .radio-checkmark,
-[data-theme="catppuccin-mocha"] .radio-option:hover .radio-checkmark {
-  /* background-color: rgba(var(--color-text-rgb), 0.05); */
-  border-color: var(--green-color);
-}
-
-.option-group:last-child {
-  margin-bottom: 0;
-}
-
-.option-group label {
-  font-weight: 700;
-  font-size: 15px;
+.options-section h4 {
+  font-size: 16px;
   margin-bottom: 8px;
-  display: block;
   color: var(--color-text);
 }
 
-.radio-label {
-  font-size: 13px;
-  padding-left: 30px;
-  font-weight: 500;
-}
-
-.search-preferences-title {
-  margin-top: 40px;
+.options-section {
+  text-align: left;
 }
 
 /* Add styles for horizontal layout of option groups */
