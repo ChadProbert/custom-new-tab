@@ -198,11 +198,11 @@
   --color-text-rgb: 240, 246, 252;
   --color-text-subtle: #b1bac4;
   --accent-color: #0d1117;
-  --hover-color: rgba(177, 186, 196, 0.12);
+  --hover-color: #272b31;
   --input-color: #0d1117;
   --modal-background-color: rgba(1, 4, 9, 0.95);
   --plus-icon-color: #f0f6fc;
-  --plus-button-color: #0d1117;
+  --plus-button-color: #0a0d13;
   --confirm-border-color: #30363d;
   --help-card-bg-color: rgba(240, 246, 252, 0.07);
   --code-bg-color: #161b22;
@@ -217,6 +217,33 @@
   color: #f0f6fc;
 }
 
+/* Custom pulse animation for GitHub High Contrast theme */
+[data-theme="github-high-contrast"] .scroll-bottom-button.animate-pulse {
+  animation: pulse-high-contrast 2s ease-out 1;
+}
+
+@keyframes pulse-high-contrast {
+  0% {
+    box-shadow: 0 0 0 0 rgb(255, 255, 255);
+  }
+  40% {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.85);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+  }
+}
+
+/* Custom border pulse for GitHub High Contrast theme */
+[data-theme="github-high-contrast"] .help-button.pulse-border::before,
+[data-theme="github-high-contrast"] .settings-button.pulse-border::before {
+  border-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
 /**
  * Dark Abyss Theme
  * 
@@ -229,15 +256,42 @@
   --color-text-rgb: 255, 255, 255;
   --color-text-subtle: #444444;
   --accent-color: #050505;
-  --hover-color: #101010;
+  --hover-color: #222222;
   --input-color: #0a0a0a;
   --modal-background-color: rgba(0, 0, 0, 0.95);
   --plus-icon-color: #ffffff;
-  --plus-button-color: #080808;
+  --plus-button-color: #030303;
   --confirm-border-color: #222222;
   --help-card-bg-color: rgba(255, 255, 255, 0.03);
   --code-bg-color: rgba(255, 255, 255, 0.04);
   --code-text-color: #f0f0f0;
   --code-border-color: rgba(255, 255, 255, 0.05);
   --border-color: #111111;
+}
+
+/* Custom pulse animation for Dark Abyss theme */
+[data-theme="dark-abyss"] .scroll-bottom-button.animate-pulse {
+  animation: pulse-dark-abyss 2s ease-out 1;
+}
+
+@keyframes pulse-dark-abyss {
+  0% {
+    box-shadow: 0 0 0 0 rgb(255, 255, 255);
+  }
+  40% {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.95);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+  }
+}
+
+/* Custom border pulse for Dark Abyss theme */
+[data-theme="dark-abyss"] .help-button.pulse-border::before,
+[data-theme="dark-abyss"] .settings-button.pulse-border::before {
+  border-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px rgb(255, 255, 255);
 }
