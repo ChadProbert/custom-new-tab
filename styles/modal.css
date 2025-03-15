@@ -463,7 +463,7 @@ label {
 }
 
 .save-button {
-  background-color: #34c759;
+  background-color: var(--green-color);
   color: white;
 }
 
@@ -793,16 +793,6 @@ p.shortcut-description code {
   margin-bottom: 0;
 }
 
-/* Remove these individual icon rules
-.fa-bolt {
-  margin-right: 20px;
-}
-
-.fa-gear {
-  margin-right: 20px;
-}
-*/
-
 /**
  * SCROLL BUTTON
  * 
@@ -909,7 +899,6 @@ p.shortcut-description code {
   background-color: var(--input-color);
   border: 1px solid var(--border-color);
   border-radius: 50%;
-  /* transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
 }
 
 .radio-checkmark:after {
@@ -920,7 +909,7 @@ p.shortcut-description code {
   left: 50%;
   width: 8px;
   height: 8px;
-  background: #34c759;
+  background: var(--green-color);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -929,19 +918,13 @@ p.shortcut-description code {
 .radio-option input:checked ~ .radio-checkmark:after {
   display: block;
   transform: translate(-50%, -50%) scale(1);
-  animation: dotPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: radioPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .options-section h4 {
   font-size: 16px;
   margin-bottom: 8px;
   color: var(--color-text);
-}
-
-.radio-option input:checked ~ .radio-checkmark:after {
-  display: block;
-  transform: translate(-50%, -50%) scale(1);
-  animation: radioPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .options-section {
@@ -979,8 +962,8 @@ p.shortcut-description code {
   ~ .radio-checkmark,
 [data-theme="catppuccin-mocha"] .radio-option input:checked ~ .radio-checkmark {
   background-color: transparent;
-  box-shadow: 0 0 0 1px rgba(52, 199, 89, 0.3), 0 0 4px 0 rgba(52, 199, 89, 0.2);
-  border-color: #34c759;
+
+  border-color: var(--green-color);
 }
 
 /* Dark theme hover state */
@@ -992,8 +975,8 @@ p.shortcut-description code {
 [data-theme="catppuccin-frappe"] .radio-option:hover .radio-checkmark,
 [data-theme="catppuccin-macchiato"] .radio-option:hover .radio-checkmark,
 [data-theme="catppuccin-mocha"] .radio-option:hover .radio-checkmark {
-  background-color: rgba(52, 199, 89, 0.05);
-  border-color: #34c759;
+  /* background-color: rgba(var(--color-text-rgb), 0.05); */
+  border-color: var(--green-color);
 }
 
 .option-group:last-child {
@@ -1028,23 +1011,4 @@ p.shortcut-description code {
 .options-row .option-group {
   flex: 1;
   min-width: 0;
-}
-
-@keyframes dotPopIn {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.4);
-    opacity: 0.5;
-  }
-  70% {
-    transform: translate(-50%, -50%) scale(0.8);
-    opacity: 0.7;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
 }
