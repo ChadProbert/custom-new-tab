@@ -416,18 +416,6 @@
         </div>
 
         <!-- 
-          Reset Button Section
-          Allows users to reset all settings and shortcuts to default values.
-          Displays a confirmation dialog before resetting.
-        -->
-        <div class="reset-section">
-          <button id="resetSettings" class="reset-button">
-            <i class="fa-solid fa-rotate-left"></i>
-            Reset to Default
-          </button>
-        </div>
-
-        <!-- 
           Shortcut Manager Section
           Displays a dynamic list of keyboard shortcuts that users can
           edit, delete, or add to. Each shortcut has a key (the keyboard
@@ -446,41 +434,55 @@
           Contains radio button groups for tab behavior and search engine preferences
         -->
         <div class="options-section">
-          <h4 class="options-title">Search Preferences</h4>
+          <h3 class="search-preferences-title">Search Preferences</h3>
           
-          <!-- Tab Behavior Options -->
-          <div class="option-group">
-            <label>Open Links:</label>
-            <div class="radio-group" id="tabBehaviorOptions">
-              <label class="radio-option">
-                <input type="radio" name="tabBehavior" value="new" id="tabBehaviorNew">
-                <span class="radio-checkmark"></span>
-                <span class="radio-label">New Tab</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="tabBehavior" value="current" id="tabBehaviorCurrent">
-                <span class="radio-checkmark"></span>
-                <span class="radio-label">Current Tab</span>
-              </label>
+          <!-- Options Row Container -->
+          <div class="options-row">
+            <!-- Tab Behavior Options -->
+            <div class="option-group">
+              <label>Open Links:</label>
+              <div class="radio-group" id="tabBehaviorOptions">
+                <label class="radio-option">
+                  <input type="radio" name="tabBehavior" value="new" id="tabBehaviorNew">
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">New Tab</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tabBehavior" value="current" id="tabBehaviorCurrent">
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Current Tab</span>
+                </label>
+              </div>
+            </div>
+            
+            <!-- Search Engine Options -->
+            <div class="option-group">
+              <label>Search Engine:</label>
+              <div class="radio-group" id="searchEngineOptions">
+                <label class="radio-option">
+                  <input type="radio" name="searchEngine" value="google" id="searchEngineGoogle">
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Google</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="searchEngine" value="duckduckgo" id="searchEngineDuckDuckGo">
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">DuckDuckGo</span>
+                </label>
+              </div>
             </div>
           </div>
-          
-          <!-- Search Engine Options -->
-          <div class="option-group">
-            <label>Search Engine:</label>
-            <div class="radio-group" id="searchEngineOptions">
-              <label class="radio-option">
-                <input type="radio" name="searchEngine" value="google" id="searchEngineGoogle">
-                <span class="radio-checkmark"></span>
-                <span class="radio-label">Google</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="searchEngine" value="duckduckgo" id="searchEngineDuckDuckGo">
-                <span class="radio-checkmark"></span>
-                <span class="radio-label">DuckDuckGo</span>
-              </label>
-            </div>
-          </div>
+        </div>
+
+         <!-- 
+          Reset Button Section
+          Allows users to reset all settings and shortcuts to default values.
+          Displays a confirmation dialog before resetting.
+        -->
+        <div class="reset-section">
+          <button id="resetSettings" class="reset-button">
+            Reset to Default
+          </button>
         </div>
 
         </div>

@@ -102,6 +102,10 @@
   text-align: left;
 }
 
+.shortcut-section {
+  margin-top: 65px;
+}
+
 /**
  * RESET BUTTON
  * 
@@ -111,13 +115,11 @@
 .reset-button {
   background-color: var(--accent-color);
   color: var(--color-text);
-  border: none;
+  border: 1px solid var(--confirm-border-color);
   padding: 10px 20px;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
   gap: 8px;
   font-size: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1006,7 +1008,7 @@ p.shortcut-description code {
 }
 
 .option-group label {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 15px;
   margin-bottom: 8px;
   display: block;
@@ -1019,6 +1021,23 @@ p.shortcut-description code {
 }
 
 .radio-label {
-  font-size: 15px;
+  font-size: 13px;
   padding-left: 30px;
+  font-weight: 400;
+}
+
+.search-preferences-title {
+  margin-top: 65px;
+}
+
+/* Add styles for horizontal layout of option groups */
+.options-row {
+  display: flex;
+  justify-content: space-between;
+  width: 46%;
+}
+
+.options-row .option-group {
+  flex: 1;
+  min-width: 0;
 }
