@@ -26,9 +26,9 @@
 
   #### Built With
 
-  ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-  ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+  ![HTML](https://img.shields.io/badge/HTML5-0D0D0D?style=for-the-badge&logo=html5&logoColor=5e5e5e)
+  ![CSS](https://img.shields.io/badge/CSS3-0D0D0D?style=for-the-badge&logo=css3&logoColor=5e5e5e)
+  ![JavaScript](https://img.shields.io/badge/JavaScript-0D0D0D?style=for-the-badge&logo=javascript&logoColor=5e5e5e)
 
 </div>
 
