@@ -395,15 +395,27 @@
     <div class="custom-modal" id="settingsModal">
       <div class="modal-content">
         <span class="close-button" id="closeModal">&times;</span>
-        <h2>Settings</h2>
-
         <!-- 
+          Shortcut Manager Section
+          Displays a dynamic list of keyboard shortcuts that users can
+          edit, delete, or add to. Each shortcut has a key (the keyboard
+          shortcut) and a value (the URL to navigate to).
+        -->
+        <div class="shortcut-section">
+          <h2><i class="far fa-keyboard"></i>Keyboard Shortcuts</h2>
+
+          <div class="shortcut-list" id="shortcutList">
+            <!-- Dynamic shortcut items will go here -->
+          </div>
+        </div>
+
+         <!-- 
           Theme Selection Section
           Allows users to choose from various visual themes
           using a custom styled select dropdown.
         -->
         <div class="theme-section">
-          <label for="themeSelect">Choose Theme:</label>
+          <h2 class="theme-label"><i class="fas fa-hat-wizard"></i>Choose Your Theme</h2>
           <div class="custom-select-wrapper">
             <select id="themeSelect" class="custom-select">
               <option value="dark">Dark</option>
@@ -424,95 +436,82 @@
           </div>
         </div>
 
+        <!-- 
+          Additional Options Section
+          Contains radio button groups for tab behavior and search engine preferences
+        -->
+        <div class="options-section">
+          <!-- Options Row Container -->
+          <div class="options-row">
+            <!-- Two column layout for options -->
+            <div class="options-grid">
+              <!-- Search Engine Options -->
+              <div class="option-group">
+                <div class="radio-option-container">
+                  <label>Search Engine:</label>
+                  <div class="radio-group" id="searchEngineOptions">
+                    <label class="radio-option">
+                      <input
+                        type="radio"
+                        name="searchEngine"
+                        value="google"
+                        id="searchEngineGoogle"
+                      />
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">Google</span>
+                    </label>
+                    <label class="radio-option">
+                      <input
+                        type="radio"
+                        name="searchEngine"
+                        value="duckduckgo"
+                        id="searchEngineDuckDuckGo"
+                      />
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">DuckDuckGo</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tab Behavior Options -->
+              <div class="option-group">
+                <div class="radio-option-container">
+                  <label>Open Links:</label>
+                  <div class="radio-group" id="tabBehaviorOptions">
+                    <label class="radio-option">
+                      <input
+                        type="radio"
+                        name="tabBehavior"
+                        value="new"
+                        id="tabBehaviorNew"
+                      />
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">New Tab</span>
+                    </label>
+                    <label class="radio-option">
+                      <input
+                        type="radio"
+                        name="tabBehavior"
+                        value="current"
+                        id="tabBehaviorCurrent"
+                      />
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">Current Tab</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Reset Button Section - Centered between theme and shortcuts -->
         <div class="reset-section">
           <button id="resetSettings" class="reset-button">
             <i class="fa-solid fa-rotate-left"></i>
             Reset to Default
           </button>
-        </div>
-
-        <!-- 
-          Shortcut Manager Section
-          Displays a dynamic list of keyboard shortcuts that users can
-          edit, delete, or add to. Each shortcut has a key (the keyboard
-          shortcut) and a value (the URL to navigate to).
-        -->
-        <div class="shortcut-section">
-          <h3>Keyboard Shortcuts</h3>
-
-          <div class="shortcut-list" id="shortcutList">
-            <!-- Dynamic shortcut items will go here -->
-          </div>
-        </div>
-
-        <!-- 
-          Additional Options Section
-          Contains radio button groups for tab behavior and search engine preferences
-        -->
-        <div class="options-section">
-          <!-- Preferences header with title and reset button -->
-          <div class="preferences-header">
-            <h3 class="search-preferences-title">Search Preferences</h3>
-          </div>
-
-          <!-- Options Row Container -->
-          <div class="options-row">
-            <!-- Tab Behavior Options -->
-
-            <!-- Search Engine Options -->
-            <div class="option-group">
-              <label>Search Engine:</label>
-              <div class="radio-group" id="searchEngineOptions">
-                <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="searchEngine"
-                    value="google"
-                    id="searchEngineGoogle"
-                  />
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">Google</span>
-                </label>
-                <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="searchEngine"
-                    value="duckduckgo"
-                    id="searchEngineDuckDuckGo"
-                  />
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">DuckDuckGo</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="option-group">
-              <label>Open Links:</label>
-              <div class="radio-group" id="tabBehaviorOptions">
-                <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="tabBehavior"
-                    value="new"
-                    id="tabBehaviorNew"
-                  />
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">New Tab</span>
-                </label>
-                <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="tabBehavior"
-                    value="current"
-                    id="tabBehaviorCurrent"
-                  />
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">Current Tab</span>
-                </label>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

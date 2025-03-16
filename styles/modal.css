@@ -71,11 +71,6 @@
   padding: 20px;
 }
 
-.modal-content h2 {
-  font-size: 32px;
-  margin: 20px;
-}
-
 /**
  * CLOSE BUTTON
  * 
@@ -96,9 +91,27 @@
   color: var(--color-text);
 }
 
-.theme-section,
+.shortcut-section,
+.theme-label {
+  margin-top: 30px;
+  text-align: center;
+}
+
 .shortcut-section {
-  text-align: left;
+  font-size: 52px;
+}
+
+.theme-label {
+  margin-top: 100px;
+  font-size: 84px;
+}
+
+.fa-keyboard {
+  margin-right: 24px;
+}
+
+.fa-hat-wizard {
+  margin-right: 24px;
 }
 
 /**
@@ -137,7 +150,8 @@
 .reset-section {
   display: flex;
   justify-content: center;
-  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 /**
@@ -160,17 +174,32 @@ label {
  * Includes custom styling for the dropdown arrow and hover/focus states.
  */
 
+/* Theme section styling */
+.theme-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.theme-section label {
+  align-self: center;
+  margin-bottom: 8px;
+}
+
 /* Container for the custom select to position the arrow */
 .custom-select-wrapper {
   position: relative;
   display: block;
-  width: 100%;
-  margin-top: 10px;
+  width: 50%;
+  margin: 10px auto;
 }
 
 .custom-select {
   width: 100%;
-  padding: 8px 30px 8px 10px;
+  padding: 10px 35px 10px 12px;
   background-color: var(--input-color);
   color: var(--color-text);
   border: 1px solid var(--border-color);
@@ -181,6 +210,8 @@ label {
   position: relative;
   transition: all 0.2s ease;
   cursor: pointer;
+  text-align: left;
+  font-size: 14px;
 }
 
 .custom-select:focus {
@@ -977,16 +1008,49 @@ p.shortcut-description code {
 
 .options-section {
   text-align: left;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 /* Add styles for horizontal layout of option groups */
 .options-row {
   display: flex;
-  justify-content: space-between;
-  width: 46%;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
-.options-row .option-group {
+/* Radio option container styling */
+.radio-option-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.radio-option-container label {
+  margin-bottom: 0;
+  min-width: 100px;
+  padding-top: 2px;
+}
+
+.radio-option-container .radio-group {
+  margin-top: 0;
   flex: 1;
+}
+
+/* Shortcut section spacing */
+.shortcut-section {
+  margin-top: 10px;
+}
+
+/* Grid layout for the option groups */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 65%;
+}
+
+.option-group {
   min-width: 0;
 }
