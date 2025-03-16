@@ -2,7 +2,7 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-    <img src="images/logo/Logo-no-background.png" alt="Logo" width="200" height="200">
+    <img src="images/logo/logo6.png" alt="Logo" width="250" height="200">
 
   ### Celerity
 
