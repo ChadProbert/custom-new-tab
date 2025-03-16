@@ -2,12 +2,12 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-    <img src="images/logo/logo-no-background.png" alt="Logo" width="200" height="200">
+    <img src="images/logo/Logo-no-background.png" alt="Logo" width="200" height="200">
 
-  ### Custom New Tab
+  ### Celerity
 
   <p>
-    For those who love keyboard shortcuts and minimalism.
+    Press, enter, done.
     <br />
     <br />
     <a href="https://chadprobert.github.io/custom-new-tab/">View Demo</a>
