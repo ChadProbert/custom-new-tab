@@ -2,7 +2,7 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-    <img src="images/refined-logo4.png" alt="Logo" width="150" height="150">
+    <img src="images/logo/Logo-no-background.png" alt="Logo" width="200" height="200" style="background-color: #0D0D0D; border-radius: 24px;">
 
   ### Custom New Tab
 
