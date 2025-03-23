@@ -266,6 +266,9 @@ class ModalManager {
       }
     }
 
+    // Set focus to the last shortcut element by default
+    this.shouldFocusNewShortcut = true;
+
     this.settingsModal.style.display = "flex";
     this.modalOverlay.classList.add("active"); // Activate background overlay
     this.renderShortcuts(); // Refresh shortcuts when opening modal
