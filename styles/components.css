@@ -298,7 +298,7 @@ button {
 /* Footer */
 .footer-container {
   position: absolute;
-  bottom: 16px; /* Reset to a specific value instead of var(--space) */
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -308,7 +308,7 @@ button {
   color: var(--color-text-subtle);
   padding: 8px 16px;
   border-radius: 4px;
-  min-width: 120px; /* Reduced from 200px to make the button narrower */
+  min-width: 120px;
 }
 
 .footer-text {
