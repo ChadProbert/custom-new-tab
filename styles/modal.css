@@ -112,7 +112,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   font-size: 36px;
 }
 
@@ -191,13 +191,11 @@ label {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: 15px;
   text-align: center;
 }
 
 .theme-section label {
   align-self: center;
-  margin-bottom: 8px;
 }
 
 /* Container for the custom select to position the arrow */
@@ -1019,6 +1017,7 @@ p.shortcut-description code {
 
 .options-section {
   text-align: center;
+  margin-top: 100px;
   margin-bottom: 40px;
 }
 
@@ -1027,10 +1026,10 @@ p.shortcut-description code {
   background-color: var(--accent-color);
   border: 1px solid var(--confirm-border-color);
   border-radius: 12px;
-  padding: 25px 20px;
-  margin-top: 15px;
-  width: 40%;
-  margin: 0 auto;
+  padding: 30px 25px;
+  margin: 20px auto 30px;
+  width: 100%;
+  max-width: 45%;
 }
 
 /* Add styles for vertical layout of option groups */
@@ -1047,35 +1046,31 @@ p.shortcut-description code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   width: 100%;
 }
 
 .radio-option-container label {
-  margin-bottom: 5px;
+  margin-bottom: 5;
   font-weight: 600;
+  font-size: 15px;
   color: var(--color-text);
+  letter-spacing: 0.3px;
 }
 
 .radio-option-container .radio-group {
   margin-top: 0;
   display: flex;
   justify-content: center;
-  gap: 20px;
-}
-
-/* Shortcut section spacing */
-.shortcut-section {
-  margin-top: 10px;
+  gap: 30px;
 }
 
 /* Column layout for the option groups */
 .options-grid {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
-  max-width: 600px;
 }
 
 .option-group {
@@ -1086,10 +1081,11 @@ p.shortcut-description code {
   width: 45%;
 }
 
-/* Radio option styling */
-.radio-option {
-  display: flex;
-  align-items: center;
-  position: relative;
+/* Radio button styling */
+.radio-label {
+  padding-left: 28px;
+  font-size: 14px;
+  color: var(--color-text);
   cursor: pointer;
+  font-weight: 500;
 }
