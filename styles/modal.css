@@ -103,6 +103,7 @@
 
 .theme-label {
   margin-top: 100px;
+  margin-bottom: 10px;
   font-size: 56px;
 }
 
@@ -140,7 +141,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 14px;
-  margin-top: 16px;
+  margin-top: 30px;
 }
 
 /* Warning hover effect for reset button */
@@ -194,6 +195,17 @@ label {
   text-align: center;
 }
 
+/* Container for theme selection with accent color background */
+.theme-container {
+  background-color: var(--accent-color);
+  border: 1px solid var(--confirm-border-color);
+  border-radius: 8px;
+  padding: 50px 25px;
+  margin: 20px auto 10px;
+  width: 100%;
+  max-width: 45%;
+}
+
 .theme-section label {
   align-self: center;
 }
@@ -202,8 +214,8 @@ label {
 .custom-select-wrapper {
   position: relative;
   display: block;
-  width: 40%; /* Controls the width of the theme dropdown */
-  margin: 10px auto;
+  width: 85%; /* Controls the width of the theme dropdown */
+  margin: 0 auto;
 }
 
 .custom-select {
@@ -901,13 +913,6 @@ p.shortcut-description code {
   animation: pulse 2s ease-out 1;
 }
 
-/* Radio button styling for settings */
-.radio-group {
-  display: flex;
-  gap: 15px;
-  margin-top: 10px;
-}
-
 .radio-option {
   display: flex;
   align-items: center;
@@ -1025,7 +1030,7 @@ p.shortcut-description code {
 .options-container {
   background-color: var(--accent-color);
   border: 1px solid var(--confirm-border-color);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 30px 25px;
   margin: 20px auto 30px;
   width: 100%;
