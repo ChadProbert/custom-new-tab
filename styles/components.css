@@ -354,6 +354,38 @@ button {
   color: var(--color-text);
 }
 
+/* Feedback Button */
+.feedback-button {
+  position: fixed;
+  top: 130px; /* Positioned below the help button */
+  right: 10px; /* Aligned with the other buttons */
+  width: 50px;
+  height: 50px;
+  background-color: var(--background-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedback-button i {
+  color: var(--color-text-subtle);
+  transition: color 0.3s ease;
+  font-size: 20px;
+}
+
+.feedback-button:hover {
+  background-color: var(--hover-color);
+}
+
+.feedback-button:hover i {
+  color: var(--color-text);
+}
+
 /* First-time visitor button animation - works for both help and settings buttons */
 .help-button.pulse-border,
 .settings-button.pulse-border {

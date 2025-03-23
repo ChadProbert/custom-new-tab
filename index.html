@@ -336,9 +336,10 @@
       This section contains the primary UI components:
       1. Settings button - Opens the settings modal
       2. Help button - Opens the help documentation
-      3. Commands component - Displays the grid of shortcuts
-      4. Search component - Handles search functionality
-      5. Footer with branding link
+      3. Feedback button - Links to external feedback form
+      4. Commands component - Displays the grid of shortcuts
+      5. Search component - Handles search functionality
+      6. Footer with branding link
     -->
     <main>
       <!-- Settings Button - Opens the settings modal -->
@@ -357,6 +358,15 @@
         data-tooltip="Quick Guide"
       >
         <i class="fas fa-compass"></i>
+      </button>
+
+      <!-- Feedback Button - Links to external feedback form -->
+      <button
+        class="feedback-button tooltip-left"
+        id="feedbackButton"
+        data-tooltip="Provide Feedback"
+      >
+        <i class="fas fa-lightbulb"></i>
       </button>
 
       <!-- 
@@ -690,10 +700,12 @@
       - search.js: Implements the search functionality
       - modal.js: Manages modal dialogs and settings
       - theme.js: Handles theme switching and persistence
+      - feedback.js: Handles the feedback button
     -->
     <script src="./js/components/commands.js"></script>
     <script src="./js/components/search.js"></script>
     <script src="./js/modal.js"></script>
     <script src="./js/theme.js"></script>
+    <script src="./js/feedback.js"></script>
   </body>
 </html>
