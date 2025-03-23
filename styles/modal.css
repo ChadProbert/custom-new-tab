@@ -130,12 +130,12 @@
   font-size: 36px;
 }
 
-.fa-keyboard,
-.fa-hat-wizard {
+.fa-keyboard {
   margin-right: 24px;
 }
 
-.fa-cog {
+.fa-cog,
+.fa-fill-drip  {
   margin-right: 16px;
 }
 
