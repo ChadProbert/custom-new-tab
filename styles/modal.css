@@ -98,13 +98,15 @@
 }
 
 .shortcut-section {
-  font-size: 52px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+ 
 }
 
 .theme-label {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 10px;
-  font-size: 56px;
+ 
 }
 
 .options-label {
@@ -114,6 +116,11 @@
   justify-content: center;
   margin-top: 50px;
   margin-bottom: 30px;
+ 
+}
+
+/* Font size for headings inside settings modal */
+.shortcut-section, .theme-label, .options-label {
   font-size: 36px;
 }
 
@@ -337,6 +344,7 @@ label {
   background-color: transparent;
   border: none;
   padding-right: 10px;
+  width: 100%;
 }
 
 .shortcut-item {
@@ -1093,4 +1101,15 @@ p.shortcut-description code {
   color: var(--color-text);
   cursor: pointer;
   font-weight: 500;
+}
+
+/* Container for keyboard shortcuts with accent color background */
+.shortcuts-container {
+  background-color: var(--accent-color);
+  border: 1px solid var(--confirm-border-color);
+  border-radius: 8px;
+  padding: 30px 25px;
+  margin: 20px auto 30px;
+  width: 100%;
+  max-width: 90%;
 }
