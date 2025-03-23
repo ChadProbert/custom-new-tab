@@ -135,7 +135,7 @@
 }
 
 .fa-globe-americas,
-.fa-fill-drip  {
+.fa-fill-drip {
   margin-right: 16px;
 }
 
@@ -500,6 +500,21 @@ label {
 .confirm-ok.confirm-override:hover {
   background: #ffa726; /* Slightly lighter sunset yellow on hover */
   color: #222;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* URL validation error state for confirm button */
+.confirm-ok.confirm-url-validation {
+  background: #2196f3; /* Material blue */
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-ok.confirm-url-validation:hover {
+  background: #42a5f5; /* Lighter blue on hover */
+  color: white;
   transform: translateY(-1px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }

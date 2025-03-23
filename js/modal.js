@@ -571,6 +571,25 @@ class ModalManager {
         return false;
       }
 
+      // URL validation - check if URL starts with http:// or https://
+      if (!newValue.startsWith("http://") && !newValue.startsWith("https://")) {
+        const shouldProceed = await customConfirm({
+          message: `URL should start with "http://" or "https://". Would you like to add "https://" automatically?`,
+          confirmText: "Add https://",
+          cancelText: "Edit URL",
+          confirmClass: "confirm-url-validation",
+        });
+
+        if (shouldProceed) {
+          // Add https:// prefix automatically
+          valueInput.value = `https://${newValue}`;
+          return saveEditedShortcut(); // Call function again with updated URL
+        } else {
+          valueInput.focus();
+          return false;
+        }
+      }
+
       // Check if key changed and if new key already exists
       if (newKey !== key && COMMANDS.has(newKey)) {
         const shouldOverride = await customConfirm({
@@ -594,7 +613,7 @@ class ModalManager {
       COMMANDS.set(newKey, {
         ...value,
         name: newName,
-        url: newValue,
+        url: valueInput.value.trim(), // Use the potentially modified URL
       });
 
       // Save and refresh
@@ -702,6 +721,28 @@ class ModalManager {
 
       // Check all fields
       if (newKeyInput.value && newNameInput.value && newValueInput.value) {
+        // URL validation - check if URL starts with http:// or https://
+        if (
+          !newValue.startsWith("http://") &&
+          !newValue.startsWith("https://")
+        ) {
+          const shouldProceed = await customConfirm({
+            message: `URL should start with "http://" or "https://". Would you like to add "https://" automatically?`,
+            confirmText: "Add https://",
+            cancelText: "Edit URL",
+            confirmClass: "confirm-url-validation",
+          });
+
+          if (shouldProceed) {
+            // Add https:// prefix automatically
+            newValueInput.value = `https://${newValue}`;
+            return createNewShortcut(); // Call function again with updated URL
+          } else {
+            newValueInput.focus();
+            return false;
+          }
+        }
+
         // If the shortcut key already exists, show the custom confirmation modal.
         if (COMMANDS.has(newKeyInput.value)) {
           const shouldOverride = await customConfirm({
