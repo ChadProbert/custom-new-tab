@@ -78,17 +78,24 @@
  * Features hover effects for better user feedback.
  */
 .close-button {
+  font-family: Poppins, sans-serif;
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 15px;
   font-size: 24px;
   color: var(--color-text-subtle);
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .close-button:hover {
   color: var(--color-text);
+  transform: rotate(90deg);
 }
 
 .shortcut-section,
@@ -100,13 +107,11 @@
 .shortcut-section {
   margin-top: 10px;
   margin-bottom: 40px;
- 
 }
 
 .theme-label {
   margin-top: 50px;
   margin-bottom: 10px;
- 
 }
 
 .options-label {
@@ -116,11 +121,12 @@
   justify-content: center;
   margin-top: 50px;
   margin-bottom: 30px;
- 
 }
 
 /* Font size for headings inside settings modal */
-.shortcut-section, .theme-label, .options-label {
+.shortcut-section,
+.theme-label,
+.options-label {
   font-size: 36px;
 }
 
@@ -573,27 +579,6 @@ label {
   transition: border-color 0.3s ease, background 0.3s ease;
   box-sizing: border-box;
   position: relative;
-}
-
-.help-modal-content .close-button {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 24px;
-  color: var(--color-text-subtle);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: transparent;
-}
-
-.help-modal-content .close-button:hover {
-  color: var(--color-text);
 }
 
 .help-modal-content h2 {
@@ -1111,5 +1096,5 @@ p.shortcut-description code {
   padding: 30px 25px;
   margin: 20px auto 30px;
   width: 100%;
-  max-width: 90%;
+  max-width: 92%;
 }
