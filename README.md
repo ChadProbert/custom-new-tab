@@ -70,13 +70,13 @@ To get a local copy up and running follow these steps.
 ### Installation
 
 ```sh
-git clone https://github.com/ChadProbert/new-page-app.git
+git clone https://github.com/ChadProbert/celerity.git
 ```
 
 ### Setup
 
 1. Open the New Tab Redirect extension options
-2. Set the redirect URL to the path of the deployed app URL <br /><img src="images/redirectURL.png" alt="Logo" width="470" height="120">
+2. Set the redirect URL to the path of the deployed app URL (https://chadprobert.github.io/celerity) <br />
 3. Save the changes
 
 <br/>
