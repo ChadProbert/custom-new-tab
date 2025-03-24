@@ -8,7 +8,8 @@
 
 // Initialize EmailJS with a public key when the script loads
 emailjs.init({
-  publicKey: "YbS029vg8L512hed1",
+  // YbS029vg8L512hed1
+  publicKey: "",
   // Block headless browsers to prevent automated submissions
   blockHeadless: true,
 });
@@ -105,7 +106,10 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       console.error("Error sending feedback:", error);
       setFeedbackStatus(
-        "There was an error sending your feedback. Please try again later.",
+        "Oops! We couldn't send your feedback right now. This might be due to a temporary \
+        connection issue or our email service has used up its monthly limit. \
+        However, your thoughts are important to us. You can contact us directly at \
+        chadcprobert@gmail.com",
         "error"
       );
     } finally {
