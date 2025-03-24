@@ -755,13 +755,62 @@
 
           <div id="feedbackStatus" class="feedback-status"></div>
 
-          <div class="feedback-actions">
-            <button type="button" class="feedback-cancel" id="cancelFeedback">
-              Cancel
-            </button>
-            <button type="submit" class="feedback-submit">
-              Submit Feedback
-            </button>
+          <div class="feedback-actions-container">
+            <div class="feedback-emotions">
+              <input
+                type="radio"
+                id="emotion-sad-tear"
+                name="emotion"
+                value="angry"
+                class="emotion-input"
+              />
+              <label for="emotion-sad-tear" class="emotion-label">😠</label>
+
+              <input
+                type="radio"
+                id="emotion-frown"
+                name="emotion"
+                value="sad"
+                class="emotion-input"
+              />
+              <label for="emotion-frown" class="emotion-label">☹️</label>
+
+              <input
+                type="radio"
+                id="emotion-meh"
+                name="emotion"
+                value="neutral"
+                class="emotion-input"
+              />
+              <label for="emotion-meh" class="emotion-label">😐</label>
+
+              <input
+                type="radio"
+                id="emotion-smile-beam"
+                name="emotion"
+                value="happy"
+                class="emotion-input"
+              />
+              <label for="emotion-smile-beam" class="emotion-label">😊</label>
+
+              <input
+                type="radio"
+                id="emotion-grin-hearts"
+                name="emotion"
+                value="love"
+                class="emotion-input"
+              />
+              <label for="emotion-grin-hearts" class="emotion-label">😍</label>
+            </div>
+
+            <div class="feedback-buttons">
+              <button type="button" class="feedback-cancel" id="cancelFeedback">
+                Cancel
+              </button>
+              <button type="submit" class="feedback-submit">
+                Submit Feedback
+              </button>
+            </div>
           </div>
         </form>
       </div>

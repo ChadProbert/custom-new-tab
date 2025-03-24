@@ -8,8 +8,7 @@
 
 // Initialize EmailJS with a public key when the script loads
 emailjs.init({
-  // YbS029vg8L512hed1
-  publicKey: "",
+  publicKey: "YbS029vg8L512hed1",
   // Block headless browsers to prevent automated submissions
   blockHeadless: true,
 });
@@ -22,14 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const cancelFeedback = document.getElementById("cancelFeedback");
   const feedbackForm = document.getElementById("feedbackForm");
   const feedbackStatus = document.getElementById("feedbackStatus");
+  const emotionLabels = document.querySelectorAll(".emotion-label");
 
   /**
    * Opens the feedback modal
    */
   function openFeedbackModal() {
     feedbackModal.style.display = "flex";
-    // Reset form and status message when opening
-    feedbackForm.reset();
     feedbackStatus.className = "feedback-status";
     feedbackStatus.textContent = "";
     feedbackStatus.style.display = "none";
@@ -54,6 +52,32 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
+   * Handles hover effects for emotion icons
+   */
+  function setupEmotionIconEffects() {
+    // Handle checked state changes
+    emotionLabels.forEach((label) => {
+      const inputId = label.getAttribute("for");
+      const input = document.getElementById(inputId);
+
+      input.addEventListener("change", () => {
+        // No need to do anything - CSS will handle the selected state
+        // Just trigger the animation for a nice effect
+        label.style.animation = "none";
+        setTimeout(() => {
+          label.style.animation = "";
+        }, 10);
+      });
+    });
+
+    // Initialize the selected state for any pre-checked emotion
+    const checkedInput = document.querySelector(".emotion-input:checked");
+    if (checkedInput) {
+      // CSS will handle the selected state appearance
+    }
+  }
+
+  /**
    * Handles form submission
    * @param {Event} e - Form submission event
    */
@@ -64,6 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const feedbackType = document.getElementById("feedbackType").value;
     const feedbackMessage = document.getElementById("feedbackMessage").value;
     const feedbackContact = document.getElementById("feedbackContact").value;
+    const selectedEmotion = document.querySelector(
+      'input[name="emotion"]:checked'
+    ).value;
 
     // Validate required fields
     if (!feedbackType || !feedbackMessage) {
@@ -74,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       // Disable submit button and show loading state
       const submitButton = document.querySelector(".feedback-submit");
-      const originalButtonText = submitButton.textContent;
       submitButton.textContent = "Sending...";
       submitButton.disabled = true;
 
@@ -83,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         type: feedbackType,
         message: feedbackMessage,
         contact: feedbackContact || "Anonymous",
+        emotion: selectedEmotion,
         date: new Date().toLocaleString(),
         userAgent: navigator.userAgent,
       };
@@ -98,11 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Reset form after successful submission
       feedbackForm.reset();
-
-      // Close modal after 3 seconds
-      setTimeout(() => {
-        closeFeedbackModal();
-      }, 3000);
     } catch (error) {
       console.error("Error sending feedback:", error);
       setFeedbackStatus(
@@ -131,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
       feedbackType: formData.type,
       feedbackMessage: formData.message,
       feedbackContact: formData.contact,
+      feedbackEmotion: formData.emotion,
       feedbackDate: formData.date,
       feedbackUserAgent: formData.userAgent,
     };
@@ -164,6 +187,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (feedbackForm) {
     feedbackForm.addEventListener("submit", handleFormSubmit);
   }
+
+  // Initialize the emotion icons
+  setupEmotionIconEffects();
 
   // Close modal when clicking outside of it
   window.addEventListener("click", function (event) {
