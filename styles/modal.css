@@ -95,7 +95,6 @@
 
 .close-button:hover {
   color: var(--color-text);
-  transform: rotate(90deg);
 }
 
 .shortcut-section,
@@ -235,7 +234,6 @@ label {
   position: relative;
   display: block;
   width: 100%; /* Controls the width of the theme dropdown */
-  
 }
 
 .custom-select {
