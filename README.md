@@ -2,7 +2,8 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-    <img src="images/logo/logo6.png" alt="Logo" width="250" height="200">
+<!-- light.png -->
+    <img src="images/logos/rounded-corner-logo/light.png" alt="Logo" width="300" height="300" border-radius="10px;">
 
   ### Celerity
 
